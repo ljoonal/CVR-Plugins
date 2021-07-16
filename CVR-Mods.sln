@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8476E7C8-A3FE-A27D-F6AB-404730DE4319}") = "CVR-Mods", "CVR-Mods.csproj", "{E27C30D7-54D3-A487-807C-5A0A7324B7AC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E27C30D7-54D3-A487-807C-5A0A7324B7AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E27C30D7-54D3-A487-807C-5A0A7324B7AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E27C30D7-54D3-A487-807C-5A0A7324B7AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E27C30D7-54D3-A487-807C-5A0A7324B7AC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {460AB829-F9CE-4318-3232-96749F8C6CF2}
+	EndGlobalSection
+EndGlobal
