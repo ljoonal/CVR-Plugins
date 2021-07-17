@@ -20,6 +20,9 @@
     <Reference Include="HarmonyLib">
       <HintPath>..\Libs\0Harmony.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.InputLegacyModule">
+      <HintPath>..\Libs\UnityEngine.InputLegacyModule.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

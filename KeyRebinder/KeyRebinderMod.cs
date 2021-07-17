@@ -21,14 +21,14 @@ namespace KeyRebinder
 	public class KeyRebinderMod : BaseUnityPlugin
 	{
 		private const string KeybindsCategory = "Keybinds";
-		private static ConfigEntry<KeyboardShortcut> ConfigMuteButton;
+		private static ConfigEntry<KeyCode> ConfigMuteButton;
 
 		KeyRebinderMod()
 		{
 			ConfigMuteButton = Config.Bind(
 				KeybindsCategory,
 				"MuteButton",
-				new KeyboardShortcut(KeyCode.Mouse3),
+				KeyCode.Mouse3,
 				"The key for muting/unmuting");
 		}
 
@@ -56,10 +56,15 @@ namespace KeyRebinder
 		[HarmonyPrefix]
 		static void MicMute()
 		{
+			// using only GetKey seems a bit glitchy in toggle to talk, so use GetKeyDown in that mode.
+			var isDown = ABI_RC.Core.Player.InputManager.Instance.pushToTalk ?
+				Input.GetKey(ConfigMuteButton.Value) :
+				Input.GetKeyDown(ConfigMuteButton.Value);
+
 			// Setting these only in the Harmony patch prefix,
 			// because otherwise the game input handling will overwrite our changes on Update
-			ABI_RC.Core.Savior.CVRInputManager.Instance.mute = ConfigMuteButton.Value.IsDown();
-			ABI_RC.Core.Savior.CVRInputManager.Instance.muteDown = ConfigMuteButton.Value.IsDown();
+			ABI_RC.Core.Savior.CVRInputManager.Instance.mute = isDown;
+			ABI_RC.Core.Savior.CVRInputManager.Instance.muteDown = isDown;
 		}
 	}
 }
