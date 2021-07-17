@@ -8,22 +8,53 @@
 			"type": "process",
 			"args": [
 				"build",
-				"${workspaceFolder}/KeyRebinder/KeyRebinder.csproj",
-				"/property:GenerateFullPaths=true",
-				"/consoleloggerparameters:NoSummary"
+				"--configuration",
+				"Release",
+				"--output",
+				"${workspaceFolder}/bin",
+				"${workspaceFolder}/KeyRebinder/KeyRebinder.csproj"
+			],
+			"problemMatcher": "$msCompile"
+		},
+		{
+			"label": "Debug KeyRebinder",
+			"group": "test",
+			"command": "dotnet",
+			"type": "process",
+			"args": [
+				"build",
+				"--configuration",
+				"Debug",
+				"--output",
+				"${workspaceFolder}/bin",
+				"${workspaceFolder}/KeyRebinder/KeyRebinder.csproj"
 			],
 			"problemMatcher": "$msCompile"
 		},
 		{
 			"label": "Clean KeyRebinder",
-			"group": "build",
 			"command": "dotnet",
 			"type": "process",
 			"args": [
 				"clean",
-				"${workspaceFolder}/KeyRebinder/KeyRebinder.csproj",
-				"/property:GenerateFullPaths=true",
-				"/consoleloggerparameters:NoSummary"
+				"--output",
+				"${workspaceFolder}/bin",
+				"${workspaceFolder}/KeyRebinder/KeyRebinder.csproj"
+			],
+			"problemMatcher": "$msCompile"
+		},
+		{
+			"label": "Debug SpoofHWID",
+			"group": "test",
+			"command": "dotnet",
+			"type": "process",
+			"args": [
+				"build",
+				"--configuration",
+				"Debug",
+				"--output",
+				"${workspaceFolder}/bin",
+				"${workspaceFolder}/SpoofHWID/SpoofHWID.csproj"
 			],
 			"problemMatcher": "$msCompile"
 		},
@@ -34,22 +65,23 @@
 			"type": "process",
 			"args": [
 				"build",
-				"${workspaceFolder}/SpoofHWID/SpoofHWID.csproj",
-				"/property:GenerateFullPaths=true",
-				"/consoleloggerparameters:NoSummary"
+				"--configuration",
+				"Release",
+				"--output",
+				"${workspaceFolder}/bin",
+				"${workspaceFolder}/SpoofHWID/SpoofHWID.csproj"
 			],
 			"problemMatcher": "$msCompile"
 		},
 		{
 			"label": "Clean SpoofHWID",
-			"group": "build",
 			"command": "dotnet",
 			"type": "process",
 			"args": [
 				"clean",
-				"${workspaceFolder}/SpoofHWID/SpoofHWID.csproj",
-				"/property:GenerateFullPaths=true",
-				"/consoleloggerparameters:NoSummary"
+				"--output",
+				"${workspaceFolder}/bin",
+				"${workspaceFolder}/SpoofHWID/SpoofHWID.csproj"
 			],
 			"problemMatcher": "$msCompile"
 		}
