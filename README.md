@@ -9,8 +9,15 @@ Generally though, I will not be making anything malicious, so hopefully the CVR 
 ### KeyRebinder
 
 A mod to allow for some keyboard rebinds.
-Currently only supports rebinding the Mic key. And by rebinding I mean adding an additional button for it.
-Because the keybinds seem to be hardcoded into one function, it's a bit difficult to do unbinds.
+
+### Status
+
+- [x] Mic
+- [ ] Prone
+- [ ] Crouch
+- [ ] Gesture controls
+- [ ] State controls
+- [ ] Emote controls
 
 ### SpoofHWID
 
