@@ -51,17 +51,10 @@ namespace SpoofHWID
 
 		void Awake()
 		{
-			try
-			{
-				Logger.LogInfo($"HWID before patch: {SystemInfo.deviceUniqueIdentifier}");
-				Harmony.CreateAndPatchAll(typeof(SpoofHWIDMod));
-				Logger.LogInfo($"HWID after patch: {SystemInfo.deviceUniqueIdentifier}");
-				Logger.LogInfo($"HWID target:  {ConfigHWID.Value}");
-			}
-			catch (Exception ex)
-			{
-				Logger.LogError(ex.ToString());
-			}
+			Logger.LogInfo($"HWID before patch: {SystemInfo.deviceUniqueIdentifier}");
+			Harmony.CreateAndPatchAll(typeof(SpoofHWIDMod));
+			Logger.LogInfo($"HWID after patch: {SystemInfo.deviceUniqueIdentifier}");
+			Logger.LogInfo($"HWID target:  {ConfigHWID.Value}");
 		}
 
 		[HarmonyPatch(typeof(SystemInfo), "deviceUniqueIdentifier", MethodType.Getter)]
