@@ -21,6 +21,7 @@ namespace KeyRebinder
 	public class KeyRebinderMod : BaseUnityPlugin
 	{
 		private const string KeybindsCategory = "Keybinds";
+		// Not using KeyboardShortcut because it messes up in push to talk when moving around & holding down Shift for example.
 		private static ConfigEntry<KeyCode> ConfigMuteButton;
 
 		KeyRebinderMod()
