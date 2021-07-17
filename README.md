@@ -7,7 +7,8 @@ Generally though, I will not be making anything malicious, so hopefully the CVR 
 But I do want an early start so I can perhaps affect which tools modders will use.
 
 I'd really love for BepInEx to be used instead of MelonLoader, because it has far better compatibility for linux.
-I can actually build my mods on Linux with BepInEx unlike MelonLoader, because it does not require .NET framework.
+I can actually build my mods on Linux with BepInEx unlike MelonLoader, because .NET framework is not available for linux.
+This is also why the build system is with VSC tasks instead of Visual Studio in this repository.
 
 ## Mod list
 
