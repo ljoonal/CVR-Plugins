@@ -2,6 +2,7 @@ using UnityEngine;
 using System;
 using BepInEx;
 using BepInEx.Configuration;
+using HarmonyLib;
 
 namespace KeyRebinder
 {
@@ -20,7 +21,7 @@ namespace KeyRebinder
 	public class KeyRebinderMod : BaseUnityPlugin
 	{
 		private const string KeybindsCategory = "Keybinds";
-		private ConfigEntry<KeyboardShortcut> ConfigMuteButton;
+		private static ConfigEntry<KeyboardShortcut> ConfigMuteButton;
 
 		KeyRebinderMod()
 		{
@@ -34,17 +35,31 @@ namespace KeyRebinder
 
 		void Awake()
 		{
-			Logger.LogInfo("Keybind is set to: " + ConfigMuteButton.Value);
+			try
+			{
+				Harmony.CreateAndPatchAll(typeof(KeyRebinderMod));
+				Logger.LogInfo("Patched keybinds successfully");
+			}
+			catch (Exception ex)
+			{
+				Logger.LogError(ex.ToString());
+			}
 		}
 
-		void Update()
+
+		//ABI_RC.Core.Savior.CVRInputManager.Instance.mute = true;
+		//ABI_RC.Core.Savior.CVRInputManager.Instance.muteDown = true;
+		// ABI_RC.Core.Base.Audio.SetMicrophoneActive(true);
+		// ABI_RC.Core.Base.Audio.ToggleMicrophone();
+
+		[HarmonyPatch(typeof(ABI_RC.Core.Player.InputManager), "Update")]
+		[HarmonyPrefix]
+		static void MicMute()
 		{
-			//Mouse3 - upper side button, Mouse4 - downed side button
-			if (ConfigMuteButton.Value.IsDown())
-			{
-				Logger.LogInfo("Keybind is down");
-				ABI_RC.Core.Savior.CVRInputManager.Instance.muteDown = true;
-			}
+			// Setting these only in the Harmony patch prefix,
+			// because otherwise the game input handling will overwrite our changes on Update
+			ABI_RC.Core.Savior.CVRInputManager.Instance.mute = ConfigMuteButton.Value.IsDown();
+			ABI_RC.Core.Savior.CVRInputManager.Instance.muteDown = ConfigMuteButton.Value.IsDown();
 		}
 	}
 }

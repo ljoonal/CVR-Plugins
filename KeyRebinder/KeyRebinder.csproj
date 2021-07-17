@@ -17,6 +17,9 @@
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>..\Libs\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
+    <Reference Include="HarmonyLib">
+      <HintPath>..\Libs\0Harmony.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
