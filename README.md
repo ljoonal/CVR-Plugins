@@ -12,7 +12,9 @@ Do not use these mods if you aren't prepared to get punished, for example by bei
 
 ## Why BepInEx and not MelonLoader
 
-MelonLoader is the tool used with VRC modding. While it's a great tool, it requires .NET framework. Which is not available for linux.
+If you're asking: "MelonLoader is the tool used with VRC modding, so why not use it for CVR too?"
+
+While it's a great tool, it requires .NET framework. Which is not available for linux.
 I can actually build my mods on Linux with BepInEx unlike MelonLoader.
 This is also why the build system is with VSC tasks instead of Visual Studio in this repository.
 
