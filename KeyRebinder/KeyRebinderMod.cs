@@ -29,13 +29,36 @@ namespace KeyRebinder
 
 		void Awake()
 		{
-			if (EnableModuleMisc.Value) MiscPatches.Patch();
-			if (EnableModuleMic.Value) MicPatches.Patch();
-			if (EnableModuleMovement.Value) MovementPatches.Patch();
-			if (EnableModuleGestures.Value) GesturePatches.Patch();
-			if (EnableModuleStates.Value) StatePatches.Patch();
-			if (EnableModuleEmotes.Value) EmotePatches.Patch();
-			Logger.LogInfo("Patched successfully");
+			if (EnableModuleMisc.Value)
+			{
+				MiscPatches.Patch();
+				Logger.LogInfo($"{nameof(MiscPatches)} applied");
+			}
+			if (EnableModuleMic.Value)
+			{
+				MicPatches.Patch();
+				Logger.LogInfo($"{nameof(MicPatches)} applied");
+			}
+			if (EnableModuleMovement.Value)
+			{
+				MovementPatches.Patch();
+				Logger.LogInfo($"{nameof(MovementPatches)} applied");
+			}
+			if (EnableModuleGestures.Value)
+			{
+				GesturePatches.Patch();
+				Logger.LogInfo($"{nameof(GesturePatches)} applied");
+			}
+			if (EnableModuleStates.Value)
+			{
+				StatePatches.Patch();
+				Logger.LogInfo($"{nameof(StatePatches)} applied");
+			}
+			if (EnableModuleEmotes.Value)
+			{
+				EmotePatches.Patch();
+				Logger.LogInfo($"{nameof(EmotePatches)} applied");
+			}
 		}
 
 		private void RegisterEnabledModuleConfigs()
