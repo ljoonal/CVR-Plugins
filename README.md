@@ -7,7 +7,10 @@ This repository contains some of my mods for [ChilloutVR](https://store.steampow
 ## Warning
 
 No warranty is provided for these mods, and they're provided as-is.
-Do not use these mods if you aren't prepared to get punished, for example by being banned from CVR.
+Please have a look at the source code & build from source for maximal safety.
+
+As far as I'm aware, the CVR devs allow modding to some extent now.
+But if they ever do change their minds, it's up to you to make sure that you're following their TOS.
 
 ## Why BepInEx and not MelonLoader
 
