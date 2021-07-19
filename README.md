@@ -26,6 +26,8 @@ MelonLoader also does not have a few features that BepInEx does, and BepInEx jus
 
 ### KeyRebinder
 
+[Roadmap entry](https://hub.abinteractive.net/roadmap/inspect?job=212).
+
 A mod to allow for some desktop mode keyboard rebinds, since the game does not include it as a feature.
 
 #### Status
@@ -38,6 +40,15 @@ A mod to allow for some desktop mode keyboard rebinds, since the game does not i
 - [x] Emote controls
 - [x] Flying controls
 - [ ] Other controls
+
+### SpeedMultiplier
+
+[Feature request](https://forums.abinteractive.net/d/187-flight-speed-multiplier).
+
+This mod does not work yet, haven't had enough time to properly implement it.
+
+A mod that allows changing your flying speed.
+
 
 ## Building
 
