@@ -42,48 +42,6 @@
 				"${workspaceFolder}/KeyRebinder/KeyRebinder.csproj"
 			],
 			"problemMatcher": "$msCompile"
-		},
-		{
-			"label": "Debug SpoofHWID",
-			"group": "test",
-			"command": "dotnet",
-			"type": "process",
-			"args": [
-				"build",
-				"--configuration",
-				"Debug",
-				"--output",
-				"${workspaceFolder}/bin",
-				"${workspaceFolder}/SpoofHWID/SpoofHWID.csproj"
-			],
-			"problemMatcher": "$msCompile"
-		},
-		{
-			"label": "Build SpoofHWID",
-			"group": "build",
-			"command": "dotnet",
-			"type": "process",
-			"args": [
-				"build",
-				"--configuration",
-				"Release",
-				"--output",
-				"${workspaceFolder}/bin",
-				"${workspaceFolder}/SpoofHWID/SpoofHWID.csproj"
-			],
-			"problemMatcher": "$msCompile"
-		},
-		{
-			"label": "Clean SpoofHWID",
-			"command": "dotnet",
-			"type": "process",
-			"args": [
-				"clean",
-				"--output",
-				"${workspaceFolder}/bin",
-				"${workspaceFolder}/SpoofHWID/SpoofHWID.csproj"
-			],
-			"problemMatcher": "$msCompile"
 		}
 	]
 }

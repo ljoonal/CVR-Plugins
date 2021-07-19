@@ -35,15 +35,6 @@ A mod to allow for some desktop mode keyboard rebinds, since the game does not i
 - [x] Emote controls
 - [ ] Other movement controls
 
-### SpoofHWID
-
-A non-IL2CPP Unity BepInEx mod to spoof the HWID.
-I strongly oppose anything privacy invasive, and wanted to learn modding so created this as my first plugin, thusly it was created.
-
-Malicious users will always find a way to achieve the same effect (running in VM's for example).
-So I don't see an issue with providing the source code for how to do it with BepInEx.
-Since other smart modders could just look at knah's similar MelonLoader mod anyway.
-
 ## Building
 
 Drag the required DLL's (listed in the .csproj files) into the Libs folder, open in VSCodium press `F1` and run the build tasks. Please note that it working does depend on you having the `dotnet` command available in your environment.
