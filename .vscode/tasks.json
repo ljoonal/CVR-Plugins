@@ -42,6 +42,48 @@
 				"${workspaceFolder}/KeyRebinder/KeyRebinder.csproj"
 			],
 			"problemMatcher": "$msCompile"
+		},
+		{
+			"label": "Build SpeedMultiplier",
+			"group": "build",
+			"command": "dotnet",
+			"type": "process",
+			"args": [
+				"build",
+				"--configuration",
+				"Release",
+				"--output",
+				"${workspaceFolder}/bin",
+				"${workspaceFolder}/SpeedMultiplier/SpeedMultiplier.csproj"
+			],
+			"problemMatcher": "$msCompile"
+		},
+		{
+			"label": "Debug SpeedMultiplier",
+			"group": "test",
+			"command": "dotnet",
+			"type": "process",
+			"args": [
+				"build",
+				"--configuration",
+				"Debug",
+				"--output",
+				"${workspaceFolder}/bin",
+				"${workspaceFolder}/SpeedMultiplier/SpeedMultiplier.csproj"
+			],
+			"problemMatcher": "$msCompile"
+		},
+		{
+			"label": "Clean SpeedMultiplier",
+			"command": "dotnet",
+			"type": "process",
+			"args": [
+				"clean",
+				"--output",
+				"${workspaceFolder}/bin",
+				"${workspaceFolder}/SpeedMultiplier/SpeedMultiplier.csproj"
+			],
+			"problemMatcher": "$msCompile"
 		}
 	]
 }
