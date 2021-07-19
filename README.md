@@ -2,8 +2,7 @@
 
 Join my discord if you're interested in CVR modding: [https://discord.gg/2WR6rGVzht](https://discord.gg/2WR6rGVzht)
 
-This repository does not yet officially exist though, since CVR devs are figuring out what kinda rules they want for modding.
-I won't be making anything malicious, so hopefully the CVR devs won't care too much, but I still would prefer to keep a low profile at this point.
+This repository contains some of my mods for [ChilloutVR](https://store.steampowered.com/app/661130/ChilloutVR/) using [BepInEx](https://github.com/BepInEx/BepInEx), and also some general BepInEx mods for any Unity games.
 
 ## Warning
 
@@ -24,7 +23,7 @@ MelonLoader also does not have a few features that BepInEx does, and BepInEx jus
 
 ### KeyRebinder
 
-A mod to allow for some keyboard rebinds, since the game does not include it as a feature.
+A mod to allow for some desktop mode keyboard rebinds, since the game does not include it as a feature.
 
 #### Status
 
