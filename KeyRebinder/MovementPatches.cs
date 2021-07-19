@@ -47,6 +47,8 @@ namespace KeyRebinder
 			// Setting these only in the Harmony patch prefix,
 			// because otherwise the game input handling will overwrite our changes on Update
 
+			ABI_RC.Core.Savior.CVRInputManager.Instance.crouchToggle = Input.GetKeyDown(ConfigCrouch.Value);
+			ABI_RC.Core.Savior.CVRInputManager.Instance.proneToggle = Input.GetKeyDown(ConfigProne.Value);
 			ABI_RC.Core.Savior.CVRInputManager.Instance.jump = Input.GetKey(ConfigJump.Value);
 			ABI_RC.Core.Savior.CVRInputManager.Instance.sprint = Input.GetKey(ConfigSprint.Value);
 		}
