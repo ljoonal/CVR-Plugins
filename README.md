@@ -36,7 +36,8 @@ A mod to allow for some desktop mode keyboard rebinds, since the game does not i
 - [x] Gesture controls
 - [x] State controls
 - [x] Emote controls
-- [ ] Other movement controls
+- [x] Flying controls
+- [ ] Other controls
 
 ## Building
 
