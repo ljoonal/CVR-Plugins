@@ -28,11 +28,12 @@ A mod to allow for some desktop mode keyboard rebinds, since the game does not i
 #### Status
 
 - [x] Mic
-- [ ] Prone
-- [ ] Crouch
-- [ ] Gesture controls
-- [ ] State controls
-- [ ] Emote controls
+- [x] Prone
+- [x] Crouch
+- [x] Gesture controls
+- [x] State controls
+- [x] Emote controls
+- [ ] Other movement controls
 
 ### SpoofHWID
 
