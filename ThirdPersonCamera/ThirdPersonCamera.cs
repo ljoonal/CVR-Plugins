@@ -19,7 +19,7 @@ namespace ThirdPersonCamera
 				"Settings",
 				"Keybind",
 				new KeyboardShortcut(KeyCode.T, new KeyCode[] { KeyCode.LeftControl }),
-				"If the flying speed patch is enabled or not. Requires restart to take effect.");
+				"The keybind for toggling third person mode");
 		}
 
 		void Update()
