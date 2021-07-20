@@ -32,7 +32,8 @@ A mod to allow for some desktop mode keyboard rebinds, since the game does not i
 
 #### Status
 
-- [x] Mic
+- [x] Toggling nameplates
+- [x] Mic standard & extra push to talk key
 - [x] Prone
 - [x] Crouch
 - [x] Gesture controls

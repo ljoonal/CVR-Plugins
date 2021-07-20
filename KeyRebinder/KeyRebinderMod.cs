@@ -16,48 +16,92 @@ namespace KeyRebinder
 		private static ConfigEntry<bool> EnableModuleStates;
 		private static ConfigEntry<bool> EnableModuleEmotes;
 
-		KeyRebinderMod()
-		{
-			RegisterEnabledModuleConfigs();
-			MiscPatches.RegisterConfigs(Config);
-			MicPatches.RegisterConfigs(Config);
-			MovementPatches.RegisterConfigs(Config);
-			GesturePatches.RegisterConfigs(Config);
-			StatePatches.RegisterConfigs(Config);
-			EmotePatches.RegisterConfigs(Config);
-		}
-
 		void Awake()
 		{
-			if (EnableModuleMisc.Value)
+			RegisterEnabledModuleConfigs();
+
+			try // MiscPatches
 			{
-				MiscPatches.Patch();
-				Logger.LogInfo($"{nameof(MiscPatches)} applied");
+				MiscPatches.RegisterConfigs(Config);
+				if (EnableModuleMisc.Value)
+				{
+					MiscPatches.Patch();
+					Logger.LogInfo($"{nameof(MiscPatches)} applied");
+				}
 			}
-			if (EnableModuleMic.Value)
+			catch (System.Exception ex)
 			{
-				MicPatches.Patch();
-				Logger.LogInfo($"{nameof(MicPatches)} applied");
+				Logger.LogError($"{nameof(MiscPatches)} failed: {ex}");
 			}
-			if (EnableModuleMovement.Value)
+
+			try // MicPatches
 			{
-				MovementPatches.Patch();
-				Logger.LogInfo($"{nameof(MovementPatches)} applied");
+				MicPatches.RegisterConfigs(Config);
+				if (EnableModuleMic.Value)
+				{
+					MicPatches.Patch();
+					Logger.LogInfo($"{nameof(MicPatches)} applied");
+				}
 			}
-			if (EnableModuleGestures.Value)
+			catch (System.Exception ex)
 			{
-				GesturePatches.Patch();
-				Logger.LogInfo($"{nameof(GesturePatches)} applied");
+				Logger.LogError($"{nameof(MicPatches)} failed: {ex}");
 			}
-			if (EnableModuleStates.Value)
+
+			try // MovementPatches
 			{
-				StatePatches.Patch();
-				Logger.LogInfo($"{nameof(StatePatches)} applied");
+				MovementPatches.RegisterConfigs(Config);
+				if (EnableModuleMovement.Value)
+				{
+					MovementPatches.Patch();
+					Logger.LogInfo($"{nameof(MovementPatches)} applied");
+				}
 			}
-			if (EnableModuleEmotes.Value)
+			catch (System.Exception ex)
 			{
-				EmotePatches.Patch();
-				Logger.LogInfo($"{nameof(EmotePatches)} applied");
+				Logger.LogError($"{nameof(MovementPatches)} failed: {ex}");
+			}
+
+			try // GesturePatches
+			{
+				GesturePatches.RegisterConfigs(Config);
+				if (EnableModuleGestures.Value)
+				{
+					GesturePatches.Patch();
+					Logger.LogInfo($"{nameof(GesturePatches)} applied");
+				}
+			}
+			catch (System.Exception ex)
+			{
+				Logger.LogError($"{nameof(GesturePatches)} failed: {ex}");
+			}
+
+			try // StatePatches
+			{
+				StatePatches.RegisterConfigs(Config);
+				if (EnableModuleStates.Value)
+				{
+					StatePatches.Patch();
+					Logger.LogInfo($"{nameof(StatePatches)} applied");
+				}
+			}
+			catch (System.Exception ex)
+			{
+				Logger.LogError($"{nameof(StatePatches)} failed: {ex}");
+			}
+
+			try // EmotePatches
+			{
+				EmotePatches.RegisterConfigs(Config);
+				if (EnableModuleEmotes.Value)
+				{
+					EmotePatches.Patch();
+					Logger.LogInfo($"{nameof(EmotePatches)} applied");
+				}
+			}
+			catch (System.Exception ex)
+			{
+				Logger.LogError($"{nameof(EmotePatches)} failed: {ex}");
 			}
 		}
 

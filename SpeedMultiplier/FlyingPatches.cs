@@ -10,6 +10,7 @@ namespace SpeedMultiplier
 
 		public static void Setup(ConfigFile Config)
 		{
+			float defaultFlySpeed = 5f;
 			PatchEnabled = Config.Bind(
 				nameof(FlyingPatches),
 				"Enabled",
@@ -18,7 +19,7 @@ namespace SpeedMultiplier
 			FlyingMultiplier = Config.Bind(
 				nameof(FlyingPatches),
 				"Speed",
-				5f,
+				defaultFlySpeed,
 				"The flying speed multiplier");
 
 			FlyingMultiplier.SettingChanged += new System.EventHandler(OnSettingsChanged);
