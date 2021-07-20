@@ -24,6 +24,12 @@ MelonLoader also does not have a few features that BepInEx does, and BepInEx jus
 
 ## Mod list
 
+### Third person camera
+
+[Roadmap entry for third person camera](https://hub.abinteractive.net/roadmap/inspect?job=198).
+
+Allows you to toggle to a third person mode with a keybind, and zoom in and out with your mouse scrollwheel.
+
 ### KeyRebinder
 
 There is a [Roadmap entry for rebindable keys](https://hub.abinteractive.net/roadmap/inspect?job=212), and a [feature request for nametag toggle keybind](https://forums.abinteractive.net/d/183-toggle-nametag-hotkey).

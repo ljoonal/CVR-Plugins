@@ -84,6 +84,48 @@
 				"${workspaceFolder}/SpeedMultiplier/SpeedMultiplier.csproj"
 			],
 			"problemMatcher": "$msCompile"
+		},
+		{
+			"label": "Build ThirdPersonCamera",
+			"group": "build",
+			"command": "dotnet",
+			"type": "process",
+			"args": [
+				"build",
+				"--configuration",
+				"Release",
+				"--output",
+				"${workspaceFolder}/bin",
+				"${workspaceFolder}/ThirdPersonCamera/ThirdPersonCamera.csproj"
+			],
+			"problemMatcher": "$msCompile"
+		},
+		{
+			"label": "Debug ThirdPersonCamera",
+			"group": "test",
+			"command": "dotnet",
+			"type": "process",
+			"args": [
+				"build",
+				"--configuration",
+				"Debug",
+				"--output",
+				"${workspaceFolder}/bin",
+				"${workspaceFolder}/ThirdPersonCamera/ThirdPersonCamera.csproj"
+			],
+			"problemMatcher": "$msCompile"
+		},
+		{
+			"label": "Clean ThirdPersonCamera",
+			"command": "dotnet",
+			"type": "process",
+			"args": [
+				"clean",
+				"--output",
+				"${workspaceFolder}/bin",
+				"${workspaceFolder}/ThirdPersonCamera/ThirdPersonCamera.csproj"
+			],
+			"problemMatcher": "$msCompile"
 		}
 	]
 }
