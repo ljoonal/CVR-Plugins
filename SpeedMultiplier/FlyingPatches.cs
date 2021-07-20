@@ -1,51 +1,47 @@
 using BepInEx.Configuration;
-using BepInEx.Logging;
-using UnityEngine;
 using System.Reflection;
 
 namespace SpeedMultiplier
 {
 	class FlyingPatches
 	{
-		private static float OriginalFlyingSpeedMultiplier;
 		private static ConfigEntry<bool> PatchEnabled;
 		private static ConfigEntry<float> FlyingMultiplier;
-		private static PropertyInfo FlyingSpeedPropertyInfo;
 
 		public static void Setup(ConfigFile Config)
 		{
-			FlyingSpeedPropertyInfo = typeof(ABI_RC.Core.Player.CVR_MovementSystem).GetProperty("floatSpeedMultiplier", BindingFlags.Instance | BindingFlags.NonPublic);
-			OriginalFlyingSpeedMultiplier = (float)FlyingSpeedPropertyInfo.GetValue(ABI_RC.Core.Player.PlayerSetup.Instance._movementSystem);
 			PatchEnabled = Config.Bind(
 				nameof(FlyingPatches),
 				"Enabled",
 				true,
-				"If the flying speed patch is enabled or not.");
+				"If the flying speed patch is enabled or not. Requires restart to take effect.");
 			FlyingMultiplier = Config.Bind(
 				nameof(FlyingPatches),
 				"Speed",
 				5f,
 				"The flying speed multiplier");
 
-			PatchEnabled.SettingChanged += new System.EventHandler(OnSettingsChanged);
+			FlyingMultiplier.SettingChanged += new System.EventHandler(OnSettingsChanged);
 
-			PatchOrUnpatch();
+			if (PatchEnabled.Value) SetFlySpeedMultiplier(FlyingMultiplier.Value);
 		}
 
 		private static void OnSettingsChanged(object sender, System.EventArgs e)
 		{
-			PatchOrUnpatch();
-		}
-
-		private static void PatchOrUnpatch()
-		{
 			if (PatchEnabled.Value) SetFlySpeedMultiplier(FlyingMultiplier.Value);
-			else SetFlySpeedMultiplier(OriginalFlyingSpeedMultiplier);
 		}
 
-		private static void SetFlySpeedMultiplier(float speed)
+		private static async void SetFlySpeedMultiplier(float speed)
 		{
-			FlyingSpeedPropertyInfo.SetValue(ABI_RC.Core.Player.PlayerSetup.Instance._movementSystem, speed);
+			if (ABI_RC.Core.Player.PlayerSetup.Instance is null)
+			{
+				await System.Threading.Tasks.Task.Delay(1000);
+				SetFlySpeedMultiplier(speed);
+			}
+			else
+			{
+				typeof(ABI_RC.Core.Player.CVR_MovementSystem).GetField("floatSpeedMultiplier", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(ABI_RC.Core.Player.PlayerSetup.Instance._movementSystem, speed);
+			}
 		}
 	}
 }
