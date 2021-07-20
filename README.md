@@ -26,9 +26,11 @@ MelonLoader also does not have a few features that BepInEx does, and BepInEx jus
 
 ### KeyRebinder
 
-[Roadmap entry](https://hub.abinteractive.net/roadmap/inspect?job=212).
+There is a [Roadmap entry for rebindable keys](https://hub.abinteractive.net/roadmap/inspect?job=212), and a [feature request for nametag toggle keybind](https://forums.abinteractive.net/d/183-toggle-nametag-hotkey).
 
 A mod to allow for some desktop mode keyboard rebinds, since the game does not include it as a feature.
+
+Please note that the defaults are what I prefer, and for example have F1-8 rather than standard 1-8 for Gestures&States&Emotes. You can change the keys back easily by changing `F1` to `Alpha1` and so on in the config file.
 
 #### Status
 
@@ -46,10 +48,7 @@ A mod to allow for some desktop mode keyboard rebinds, since the game does not i
 
 [Feature request](https://forums.abinteractive.net/d/187-flight-speed-multiplier).
 
-This mod does not work yet, haven't had enough time to properly implement it.
-
 A mod that allows changing your flying speed.
-
 
 ## Building
 
