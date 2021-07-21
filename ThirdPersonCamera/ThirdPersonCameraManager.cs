@@ -26,11 +26,11 @@ namespace ThirdPersonCamera
 			OurCamera.GetComponent<Camera>().enabled = true;
 
 			ForwardOrBack(5f);
-			EnsureLookingAtOriginalViewpoint();
 		}
 
 		private void EnsureLookingAtOriginalViewpoint()
 		{
+			// TODO; Fix camera being sideways when looking directly up or down.
 			OurCamera.transform.LookAt(ABI_RC.Core.Player.PlayerSetup.Instance.desktopCamera.transform.position);
 		}
 
@@ -43,7 +43,7 @@ namespace ThirdPersonCamera
 
 		public void ForwardOrBack(float forwardOrBack)
 		{
-			OurCamera.transform.Translate(0f, 0f, forwardOrBack, ABI_RC.Core.Player.PlayerSetup.Instance.desktopCameraRig.transform);
+			OurCamera.transform.localPosition += new Vector3(0f, 0f, forwardOrBack);
 			EnsureLookingAtOriginalViewpoint();
 		}
 	}
