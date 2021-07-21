@@ -15,6 +15,7 @@ namespace ThirdPersonCamera
 			var parent = ABI_RC.Core.Player.PlayerSetup.Instance.desktopCamera.transform;
 
 			OurCamera = new GameObject("ThirdPersonCamera");
+			OurCamera.tag = "MainCamera";
 			OurCamera.AddComponent<Camera>();
 			OurCamera.GetComponent<Camera>().fieldOfView = 75f;
 			OurCamera.transform.parent = parent.transform;
