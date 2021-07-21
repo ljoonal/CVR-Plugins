@@ -6,6 +6,6 @@ namespace KeyRebinder
 
 		public const string Name = "Key Rebinder";
 
-		public const string Version = "1.2.0";
+		public const string Version = "1.3.0";
 	}
 }

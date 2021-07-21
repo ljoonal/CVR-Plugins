@@ -40,7 +40,6 @@ Please note that the defaults are what I prefer, and for example have F1-8 rathe
 
 #### Status
 
-- [x] Toggling nameplates
 - [x] Mic standard & extra push to talk key
 - [x] Prone
 - [x] Crouch
@@ -48,6 +47,7 @@ Please note that the defaults are what I prefer, and for example have F1-8 rathe
 - [x] State controls
 - [x] Emote controls
 - [x] Flying controls
+- [ ] Toggling hud & nameplates
 - [ ] Other controls
 
 ### SpeedMultiplier

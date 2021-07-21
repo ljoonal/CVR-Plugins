@@ -10,6 +10,7 @@ namespace KeyRebinder
 		private static ConfigEntry<KeyboardShortcut> ConfigKeybindReload;
 		private static ConfigEntry<KeyboardShortcut> ConfigKeybindSwitchMode;
 		private static ConfigEntry<KeyboardShortcut> ConfigKeybindNameplatesToggle;
+		private static ConfigEntry<KeyboardShortcut> ConfigKeybindHudToggle;
 
 		public static void RegisterConfigs(ConfigFile Config)
 		{
@@ -17,17 +18,22 @@ namespace KeyRebinder
 				nameof(MiscPatches),
 				"BindReload",
 				new KeyboardShortcut(KeyCode.F9, new KeyCode[] { KeyCode.LeftControl }),
-				"The shortcut for reloading");
+				"The shortcut for reloading (Set to None to let the game manage it)");
 			ConfigKeybindSwitchMode = Config.Bind(
 				nameof(MiscPatches),
 				"BindSwitchMode",
 				new KeyboardShortcut(KeyCode.F9, new KeyCode[] { KeyCode.LeftShift }),
-				"The shortcut for switching mode..? (Probably admin related?)");
+				"The shortcut for switching mode (Set to None to let the game manage it)");
 			ConfigKeybindNameplatesToggle = Config.Bind(
 				nameof(MiscPatches),
 				"BindNameplateToggle",
-				new KeyboardShortcut(KeyCode.N, new KeyCode[] { KeyCode.LeftControl }),
-				"The shortcut for toggling nameplate visibility.");
+				new KeyboardShortcut(KeyCode.None),
+				"The shortcut for toggling nameplate visibility. (Set to None to let the game manage it)");
+			ConfigKeybindHudToggle = Config.Bind(
+				nameof(MiscPatches),
+				"BindHudToggle",
+				new KeyboardShortcut(KeyCode.None),
+				"The shortcut for toggling hud visibility. (Set to None to let the game manage it)");
 		}
 
 		public static void Patch()
@@ -39,17 +45,16 @@ namespace KeyRebinder
 		[HarmonyPostfix]
 		static void OverwriteInputs()
 		{
-			if (ConfigKeybindNameplatesToggle.Value.IsDown())
-			{
-				ABI_RC.Core.Savior.MetaPort.Instance.settings.SetSettingsBool(
-					"GeneralShowNameplates",
-					!ABI_RC.Core.Savior.MetaPort.Instance.settings.GetSettingsBool("GeneralShowNameplates")
-				);
-			}
 			// Setting these only in the Harmony patch prefix,
 			// because otherwise the game input handling may overwrite our changes on Update
-			ABI_RC.Core.Savior.CVRInputManager.Instance.reload = ConfigKeybindReload.Value.IsDown();
-			ABI_RC.Core.Savior.CVRInputManager.Instance.switchMode = ConfigKeybindSwitchMode.Value.IsDown();
+			if (ConfigKeybindReload.Value.MainKey != KeyCode.None)
+				ABI_RC.Core.Savior.CVRInputManager.Instance.reload = ConfigKeybindReload.Value.IsDown();
+			if (ConfigKeybindSwitchMode.Value.MainKey != KeyCode.None)
+				ABI_RC.Core.Savior.CVRInputManager.Instance.switchMode = ConfigKeybindSwitchMode.Value.IsDown();
+			if (ConfigKeybindNameplatesToggle.Value.MainKey != KeyCode.None)
+				ABI_RC.Core.Savior.CVRInputManager.Instance.toggleNameplates = ConfigKeybindNameplatesToggle.Value.IsDown();
+			if (ConfigKeybindHudToggle.Value.MainKey != KeyCode.None)
+				ABI_RC.Core.Savior.CVRInputManager.Instance.toggleHud = ConfigKeybindHudToggle.Value.IsDown();
 		}
 	}
 }
