@@ -37,6 +37,8 @@ namespace ThirdPersonCamera
 		// Resets the camera back to the original
 		public void ResetToOriginal()
 		{
+			OurCamera.GetComponent<Camera>().enabled = false;
+			OurCamera.SetActive(false);
 			GameObject.Destroy(OurCamera);
 			ABI_RC.Core.Player.PlayerSetup.Instance.desktopCamera.GetComponent<Camera>().enabled = true;
 		}
