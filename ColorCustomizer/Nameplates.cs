@@ -7,10 +7,10 @@ namespace ColorCustomizer
 	class NameplatePatches
 	{
 		private static string ConfigCategory = "Nameplates";
-		private static ConfigEntry<int> TalkingModifierR;
-		private static ConfigEntry<int> TalkingModifierG;
-		private static ConfigEntry<int> TalkingModifierB;
-		private static ConfigEntry<int> TalkingModifierA;
+		private static ConfigEntry<float> TalkingModifierR;
+		private static ConfigEntry<float> TalkingModifierG;
+		private static ConfigEntry<float> TalkingModifierB;
+		private static ConfigEntry<float> TalkingModifierA;
 		private static ConfigEntry<Color> NameplateColorDefault;
 		private static ConfigEntry<Color> NameplateColorLegend;
 		private static ConfigEntry<Color> NameplateColorCommunityGuide;
@@ -22,22 +22,22 @@ namespace ColorCustomizer
 			TalkingModifierR = Config.Bind(
 				ConfigCategory,
 				"TalkingModifierR",
-				0,
+				0.1f,
 				"How to modify the red when an user is talking. Can use negative numbers.");
 			TalkingModifierG = Config.Bind(
 				ConfigCategory,
 				"TalkingModifierG",
-				0,
+				0.1f,
 				"How to modify the green when an user is talking. Can use negative numbers.");
 			TalkingModifierB = Config.Bind(
 				ConfigCategory,
 				"TalkingModifierB",
-				0,
+				0.1f,
 				"How to modify the blue when an user is talking. Can use negative numbers.");
 			TalkingModifierA = Config.Bind(
 				ConfigCategory,
 				"TalkingModifierA",
-				0,
+				0.3f,
 				"How to modify the alpha when an user is talking. Can use negative numbers.");
 			NameplateColorDefault = Config.Bind(
 				ConfigCategory,
@@ -77,12 +77,12 @@ namespace ColorCustomizer
 			return NameplateColorDefault.Value;
 		}
 
-		private static Color32 ModifyColorWithTuple(Color color, (int, int, int, int) tuple)
+		private static Color32 ModifyColorWithTuple(Color color, (float, float, float, float) tuple)
 		{
-			color.r = (float)(tuple.Item1 * 0.01 + color.r);
-			color.g = (float)(tuple.Item2 * 0.01 + color.g);
-			color.b = (float)(tuple.Item3 * 0.01 + color.b);
-			color.a = (float)(tuple.Item4 * 0.01 + color.a);
+			color.r = (float)(tuple.Item1 + color.r);
+			color.g = (float)(tuple.Item2 + color.g);
+			color.b = (float)(tuple.Item3 + color.b);
+			color.a = (float)(tuple.Item4 + color.a);
 			return color;
 		}
 
