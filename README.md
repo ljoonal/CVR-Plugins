@@ -24,6 +24,25 @@ MelonLoader also does not have a few features that BepInEx does, and BepInEx jus
 
 ## Mod list
 
+### Color Customizer
+
+[Roadmap entry for customizing UI](https://hub.abinteractive.net/roadmap/inspect?job=191).
+
+A mod to allow customizing the colors.
+
+Currently implemented:
+
+- [x] Nameplates
+- [ ] Mic indicator
+- [ ] Menus Background
+- [ ] Menus lines
+- [ ] Menus text
+- [ ] Menus Icons
+- [ ] User status indicator
+
+Menu related patches probably won't be added before CVR rolls out their new menu system.
+And maybe that'll make this mod not need to implement them if it's natively supported.
+
 ### Third person camera
 
 [Roadmap entry for third person camera](https://hub.abinteractive.net/roadmap/inspect?job=198).

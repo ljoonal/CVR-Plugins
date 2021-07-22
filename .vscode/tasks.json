@@ -126,6 +126,48 @@
 				"${workspaceFolder}/ThirdPersonCamera/ThirdPersonCamera.csproj"
 			],
 			"problemMatcher": "$msCompile"
+		},
+		{
+			"label": "Build ColorCustomizer",
+			"group": "build",
+			"command": "dotnet",
+			"type": "process",
+			"args": [
+				"build",
+				"--configuration",
+				"Release",
+				"--output",
+				"${workspaceFolder}/bin",
+				"${workspaceFolder}/ColorCustomizer/ColorCustomizer.csproj"
+			],
+			"problemMatcher": "$msCompile"
+		},
+		{
+			"label": "Debug ColorCustomizer",
+			"group": "test",
+			"command": "dotnet",
+			"type": "process",
+			"args": [
+				"build",
+				"--configuration",
+				"Debug",
+				"--output",
+				"${workspaceFolder}/bin",
+				"${workspaceFolder}/ColorCustomizer/ColorCustomizer.csproj"
+			],
+			"problemMatcher": "$msCompile"
+		},
+		{
+			"label": "Clean ColorCustomizer",
+			"command": "dotnet",
+			"type": "process",
+			"args": [
+				"clean",
+				"--output",
+				"${workspaceFolder}/bin",
+				"${workspaceFolder}/ColorCustomizer/ColorCustomizer.csproj"
+			],
+			"problemMatcher": "$msCompile"
 		}
 	]
 }
