@@ -66,7 +66,7 @@ Please note that the defaults are what I prefer, and for example have F1-8 rathe
 - [x] State controls
 - [x] Emote controls
 - [x] Flying controls
-- [ ] Toggling hud & nameplates
+- [x] Toggling hud & nameplates
 - [ ] Other controls
 
 ### SpeedMultiplier
