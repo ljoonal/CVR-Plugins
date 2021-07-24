@@ -2,11 +2,11 @@ using UnityEngine;
 
 namespace ThirdPersonCamera
 {
-	public class ThirdPersonCameraManager
+	public class OurCameraManager
 	{
 		private GameObject OurCamera;
 
-		public ThirdPersonCameraManager()
+		public OurCameraManager()
 		{
 			ABI_RC.Core.Player.PlayerSetup.Instance.desktopCamera.GetComponent<Camera>().enabled = false;
 

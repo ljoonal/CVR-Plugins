@@ -13,7 +13,7 @@ namespace ThirdPersonCamera
 		private static ConfigEntry<KeyCode> KeybindCameraMove;
 
 #nullable enable
-		private static ThirdPersonCameraManager? ThirdPersonCameraManagerInstance = null;
+		private static OurCameraManager? OurCameraManagerInstance = null;
 #nullable disable
 		void Awake()
 		{
@@ -42,24 +42,24 @@ namespace ThirdPersonCamera
 		{
 			if (KeybindToggle.Value.IsDown())
 			{
-				if (ThirdPersonCameraManagerInstance is null) ThirdPersonCameraManagerInstance = new ThirdPersonCameraManager();
+				if (OurCameraManagerInstance is null) OurCameraManagerInstance = new OurCameraManager();
 				else
 				{
-					ThirdPersonCameraManagerInstance.ResetToOriginal();
-					ThirdPersonCameraManagerInstance = null;
+					OurCameraManagerInstance.ResetToOriginal();
+					OurCameraManagerInstance = null;
 				}
 			}
 
-			if (ThirdPersonCameraManagerInstance is not null)
+			if (OurCameraManagerInstance is not null)
 			{
 				var sideways = Input.GetKey(KeybindCameraMove.Value) ? Input.GetAxis("Mouse X") : 0f;
 				var upOrDown = Input.GetKey(KeybindCameraMove.Value) ? Input.GetAxis("Mouse Y") : 0f;
 				var forwardOrBack = Input.GetAxis("Mouse ScrollWheel");
 
 
-				ThirdPersonCameraManagerInstance.EnsureLookingAtOriginalViewpoint();
+				OurCameraManagerInstance.EnsureLookingAtOriginalViewpoint();
 				if (forwardOrBack != 0f || sideways != 0f || upOrDown != 0f)
-					ThirdPersonCameraManagerInstance.MoveCamera(sideways, upOrDown, forwardOrBack);
+					OurCameraManagerInstance.MoveCamera(sideways, upOrDown, forwardOrBack);
 			}
 		}
 
@@ -67,7 +67,7 @@ namespace ThirdPersonCamera
 		[HarmonyPostfix]
 		static void InputPatches()
 		{
-			if (ThirdPersonCameraManagerInstance is not null)
+			if (OurCameraManagerInstance is not null)
 			{
 				if (Input.GetKey(KeybindCameraMove.Value))
 					ABI_RC.Core.Savior.CVRInputManager.Instance.lookVector = Vector2.zero;
