@@ -1,5 +1,3 @@
-using BepInEx;
-using BepInEx.Configuration;
 using UnityEngine;
 
 namespace ThirdPersonCamera
@@ -25,10 +23,10 @@ namespace ThirdPersonCamera
 			OurCamera.SetActive(true);
 			OurCamera.GetComponent<Camera>().enabled = true;
 
-			ForwardOrBack(5f);
+			MoveCamera(forwardOrBack: 5f);
 		}
 
-		private void EnsureLookingAtOriginalViewpoint()
+		public void EnsureLookingAtOriginalViewpoint()
 		{
 			// TODO; Fix camera being sideways when looking directly up or down.
 			OurCamera.transform.LookAt(ABI_RC.Core.Player.PlayerSetup.Instance.desktopCamera.transform.position);
@@ -43,10 +41,19 @@ namespace ThirdPersonCamera
 			ABI_RC.Core.Player.PlayerSetup.Instance.desktopCamera.GetComponent<Camera>().enabled = true;
 		}
 
-		public void ForwardOrBack(float forwardOrBack)
+		public void MoveCamera(float sideways = 0f, float upOrDown = 0f, float forwardOrBack = 0f)
 		{
-			OurCamera.transform.localPosition += new Vector3(0f, 0f, forwardOrBack);
-			EnsureLookingAtOriginalViewpoint();
+			// TODO: Learn Quaternions to replace this jank.
+			if (forwardOrBack != 0f)
+				OurCamera.transform.localPosition += new Vector3(0f, 0f, forwardOrBack);
+			if (sideways != 0f)
+				OurCamera.transform.RotateAround(
+					ABI_RC.Core.Player.PlayerSetup.Instance.desktopCamera.transform.position, Vector3.up, sideways
+					);
+			if (upOrDown != 0f)
+				OurCamera.transform.RotateAround(
+					ABI_RC.Core.Player.PlayerSetup.Instance.desktopCamera.transform.position, Vector3.forward, upOrDown
+					);
 		}
 	}
 }

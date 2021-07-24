@@ -1,6 +1,7 @@
 using BepInEx;
 using BepInEx.Configuration;
 using UnityEngine;
+using HarmonyLib;
 
 namespace ThirdPersonCamera
 {
@@ -9,17 +10,32 @@ namespace ThirdPersonCamera
 	public class ThirdPersonCameraMod : BaseUnityPlugin
 	{
 		private static ConfigEntry<KeyboardShortcut> KeybindToggle;
+		private static ConfigEntry<KeyCode> KeybindCameraMove;
 
 #nullable enable
-		private ThirdPersonCameraManager? ThirdPersonCameraManagerInstance = null;
+		private static ThirdPersonCameraManager? ThirdPersonCameraManagerInstance = null;
 #nullable disable
 		void Awake()
 		{
 			KeybindToggle = Config.Bind(
 				"Settings",
-				"Keybind",
+				"KeybindToggle",
 				new KeyboardShortcut(KeyCode.T, new KeyCode[] { KeyCode.LeftControl }),
 				"The keybind for toggling third person mode");
+			KeybindCameraMove = Config.Bind(
+				"Settings",
+				"KeybindCameraMoveMode",
+				KeyCode.LeftControl,
+				"The keybind for moving the camera around around whilst holding it down.");
+
+			try
+			{
+				Harmony.CreateAndPatchAll(typeof(ThirdPersonCameraMod));
+			}
+			catch (System.Exception ex)
+			{
+				Logger.LogError($"Harmony patching failed: {ex}");
+			}
 		}
 
 		void Update()
@@ -34,10 +50,27 @@ namespace ThirdPersonCamera
 				}
 			}
 
-			var scroll = Input.GetAxis("Mouse ScrollWheel");
-			if (ThirdPersonCameraManagerInstance is not null && scroll != 0f)
+			if (ThirdPersonCameraManagerInstance is not null)
 			{
-				ThirdPersonCameraManagerInstance.ForwardOrBack(scroll);
+				var sideways = Input.GetKey(KeybindCameraMove.Value) ? Input.GetAxis("Mouse X") : 0f;
+				var upOrDown = Input.GetKey(KeybindCameraMove.Value) ? Input.GetAxis("Mouse Y") : 0f;
+				var forwardOrBack = Input.GetAxis("Mouse ScrollWheel");
+
+
+				ThirdPersonCameraManagerInstance.EnsureLookingAtOriginalViewpoint();
+				if (forwardOrBack != 0f || sideways != 0f || upOrDown != 0f)
+					ThirdPersonCameraManagerInstance.MoveCamera(sideways, upOrDown, forwardOrBack);
+			}
+		}
+
+		[HarmonyPatch(typeof(ABI_RC.Core.Savior.InputModuleMouseKeyboard), "UpdateInput")]
+		[HarmonyPostfix]
+		static void InputPatches()
+		{
+			if (ThirdPersonCameraManagerInstance is not null)
+			{
+				if (Input.GetKey(KeybindCameraMove.Value))
+					ABI_RC.Core.Savior.CVRInputManager.Instance.lookVector = Vector2.zero;
 			}
 		}
 	}
