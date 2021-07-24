@@ -6,18 +6,16 @@ namespace KeyRebinder
 {
 	class MicPatches
 	{
-		private static ConfigEntry<KeyCode> ConfigKeybindMic;
+		private static ConfigEntry<KeyCode> ConfigKeybindMicToggle;
 		private static ConfigEntry<KeyCode> ConfigKeybindMicPushToTalk;
-		// Only null when UpdateInput has not run yet.
-		private static bool? WasPushToTalkEnabled;
 
 		public static void RegisterConfigs(ConfigFile Config)
 		{
-			ConfigKeybindMic = Config.Bind(
+			ConfigKeybindMicToggle = Config.Bind(
 				nameof(MicPatches),
-				"Bind",
+				"BindToggle",
 				KeyCode.V,
-				"The key for muting/unmuting and push to talk.");
+				"The key for toggling mute");
 			ConfigKeybindMicPushToTalk = Config.Bind(
 				nameof(MicPatches),
 					"BindPushToTalk",
@@ -36,11 +34,8 @@ namespace KeyRebinder
 		{
 			var isMuteDown = false;
 
-
-			if (WasPushToTalkEnabled is null) WasPushToTalkEnabled = ABI_RC.Core.Player.InputManager.Instance.pushToTalk;
 			if (Input.GetKeyDown(ConfigKeybindMicPushToTalk.Value))
 			{
-				WasPushToTalkEnabled = ABI_RC.Core.Player.InputManager.Instance.pushToTalk;
 				ABI_RC.Core.Player.InputManager.Instance.pushToTalk = true;
 				isMuteDown = true;
 			}
@@ -48,15 +43,11 @@ namespace KeyRebinder
 			{
 				// To turn off the mic, we need the mute button to be down here too.
 				isMuteDown = true;
-				ABI_RC.Core.Player.InputManager.Instance.pushToTalk = WasPushToTalkEnabled.Value;
+				ABI_RC.Core.Player.InputManager.Instance.pushToTalk = false;
 			}
 			else if (
 				Input.GetKey(ConfigKeybindMicPushToTalk.Value) ||
-				(
-					ABI_RC.Core.Player.InputManager.Instance.pushToTalk ?
-					Input.GetKey(ConfigKeybindMic.Value) :
-					Input.GetKeyDown(ConfigKeybindMic.Value)
-				)
+				Input.GetKeyDown(ConfigKeybindMicToggle.Value)
 			)
 			{
 				isMuteDown = true;
