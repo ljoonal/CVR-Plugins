@@ -9,12 +9,24 @@ namespace ThirdPersonCamera
 	[BepInProcess("ChilloutVR.exe")]
 	public class ThirdPersonCameraMod : BaseUnityPlugin
 	{
+		private static ThirdPersonCameraMod Instance;
 		private static ConfigEntry<KeyboardShortcut> KeybindToggle;
 		private static ConfigEntry<KeyCode> KeybindCameraMove;
 
 #nullable enable
 		private static OurCameraManager? OurCameraManagerInstance = null;
 #nullable disable
+
+		public static BepInEx.Logging.ManualLogSource GetLogger()
+		{
+			return Instance.Logger;
+		}
+
+		public static KeyCode GetCameraMoveKeyCode()
+		{
+			return KeybindCameraMove.Value;
+		}
+
 		void Awake()
 		{
 			KeybindToggle = Config.Bind(
@@ -27,15 +39,6 @@ namespace ThirdPersonCamera
 				"KeybindCameraMoveMode",
 				KeyCode.LeftControl,
 				"The keybind for moving the camera around around whilst holding it down.");
-
-			try
-			{
-				Harmony.CreateAndPatchAll(typeof(ThirdPersonCameraMod));
-			}
-			catch (System.Exception ex)
-			{
-				Logger.LogError($"Harmony patching failed: {ex}");
-			}
 		}
 
 		void Update()
@@ -60,17 +63,6 @@ namespace ThirdPersonCamera
 				OurCameraManagerInstance.EnsureLookingAtOriginalViewpoint();
 				if (forwardOrBack != 0f || sideways != 0f || upOrDown != 0f)
 					OurCameraManagerInstance.MoveCamera(sideways, upOrDown, forwardOrBack);
-			}
-		}
-
-		[HarmonyPatch(typeof(ABI_RC.Core.Savior.InputModuleMouseKeyboard), "UpdateInput")]
-		[HarmonyPostfix]
-		static void InputPatches()
-		{
-			if (OurCameraManagerInstance is not null)
-			{
-				if (Input.GetKey(KeybindCameraMove.Value))
-					ABI_RC.Core.Savior.CVRInputManager.Instance.lookVector = Vector2.zero;
 			}
 		}
 	}
