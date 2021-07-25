@@ -73,7 +73,10 @@ namespace ColorCustomizer
 
 		private static Color32 GetColorForNameplate(ABI_RC.Core.Player.PlayerNameplate nameplate)
 		{
-			if (nameplate.player.userRank == "Legend") return NameplateColorDefault.Value;
+			if (nameplate.player.userRank == "Legend") return NameplateColorLegend.Value;
+			if (nameplate.player.userRank == "Community Guide") return NameplateColorCommunityGuide.Value;
+			if (nameplate.player.userRank == "Moderator") return NameplateColorModerator.Value;
+			if (nameplate.player.userRank == "Developer") return NameplateColorDeveloper.Value;
 			return NameplateColorDefault.Value;
 		}
 
