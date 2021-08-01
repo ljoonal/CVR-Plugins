@@ -50,7 +50,7 @@ And maybe that'll make this mod not need to implement them if it's natively supp
 
 ### Third person camera
 
-[Roadmap entry for third person camera](https://hub.abinteractive.net/roadmap/inspect?job=198).
+[Link to roadmap entry for third person camera](https://hub.abinteractive.net/roadmap/inspect?job=198).
 
 Allows you to toggle to a third person mode with a keybind, and zoom in and out with your mouse scrollwheel.
 
@@ -58,7 +58,7 @@ This is quite heavily WIP still, expect jank! It's currently being reworked to w
 
 ### KeyRebinder
 
-There is a [Roadmap entry for rebindable keys](https://hub.abinteractive.net/roadmap/inspect?job=212), and a [feature request for nametag toggle keybind](https://forums.abinteractive.net/d/183-toggle-nametag-hotkey).
+[Link to thew roadmap entry for rebindable keys](https://hub.abinteractive.net/roadmap/inspect?job=212).
 
 A mod to allow for some desktop mode keyboard rebinds, since the game does not include it as a feature.
 
@@ -78,7 +78,7 @@ Please note that the defaults are what I prefer, and for example have F1-8 rathe
 
 ### SpeedMultiplier
 
-[Feature request](https://forums.abinteractive.net/d/187-flight-speed-multiplier).
+[Link to Feature request](https://forums.abinteractive.net/d/187-flight-speed-multiplier).
 
 A mod that allows changing your flying speed.
 
