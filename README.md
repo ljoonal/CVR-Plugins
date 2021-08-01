@@ -2,7 +2,12 @@
 
 Join my discord if you're interested in CVR modding: [https://discord.gg/2WR6rGVzht](https://discord.gg/2WR6rGVzht)
 
-This repository contains some of my mods for [ChilloutVR](https://store.steampowered.com/app/661130/ChilloutVR/) using [BepInEx](https://github.com/BepInEx/BepInEx), and also some general BepInEx mods for any Unity games.
+This repository contains some of my mods for [ChilloutVR](https://store.steampowered.com/app/661130/ChilloutVR/) using [BepInEx](https://github.com/BepInEx/BepInEx).
+
+Basically to install though, just follow the [BepInEx guide](https://docs.bepinex.dev/articles/user_guide/installation/index.html) for Unity games for windows.
+After that just drag'n'drop the DLL's into the `BepInEx/plugins` folder.
+
+I'd recommend you also get [sinai-dev's BepInExConfigManager](https://github.com/sinai-dev/BepInExConfigManager) so that you can edit your configs in game. You'll want the Mono version for CVR.
 
 ## Warning
 
@@ -49,7 +54,7 @@ And maybe that'll make this mod not need to implement them if it's natively supp
 
 Allows you to toggle to a third person mode with a keybind, and zoom in and out with your mouse scrollwheel.
 
-This is quite heavily WIP still, expect jank!
+This is quite heavily WIP still, expect jank! It's currently being reworked to work more closely like the one I made for VRC.
 
 ### KeyRebinder
 
@@ -79,9 +84,10 @@ A mod that allows changing your flying speed.
 
 ## Building
 
-Drag the required DLL's (listed in the .csproj files) into the Libs folder, open in VSCodium press `F1` and run the build tasks. Please note that it working does depend on you having the `dotnet` command available in your environment.
+Drag the required DLL's (listed in the .csproj files) into the Libs folder, open in VSCodium/VSCode press `F1` and run the build tasks. Please note that it working does depend on you having the `dotnet` command available in your environment.
 
 Alternatively you can try to open the folder in Visual Studio, but I cannot provide help for using that.
+If you do want to improve the situation, do feel free to contribute!
 
 ## Contributing
 
