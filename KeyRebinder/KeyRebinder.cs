@@ -6,7 +6,7 @@ namespace KeyRebinder
 
 	[BepInPlugin(BuildInfo.GUID, BuildInfo.Name, BuildInfo.Version)]
 	[BepInProcess("ChilloutVR.exe")]
-	public class KeyRebinderMod : BaseUnityPlugin
+	public class KeyRebinderPlugin : BaseUnityPlugin
 	{
 		private const string EnabledModules = "EnabledModules";
 		private static ConfigEntry<bool> EnableModuleMic;

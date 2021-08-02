@@ -6,7 +6,7 @@ namespace ColorCustomizer
 
 	[BepInPlugin(BuildInfo.GUID, BuildInfo.Name, BuildInfo.Version)]
 	[BepInProcess("ChilloutVR.exe")]
-	public class ColorCustomizerMod : BaseUnityPlugin
+	public class ColorCustomizerPlugin : BaseUnityPlugin
 	{
 		private const string EnabledFeatures = "EnabledFeatures";
 		private static ConfigEntry<bool> EnableNameplates;

@@ -15,7 +15,7 @@ namespace ThirdPersonCamera
 
 	[BepInPlugin(BuildInfo.GUID, BuildInfo.Name, BuildInfo.Version)]
 	[BepInProcess("ChilloutVR.exe")]
-	public class ThirdPersonCameraMod : BaseUnityPlugin
+	public class ThirdPersonCameraPlugin : BaseUnityPlugin
 	{
 		private static ConfigEntry<KeyboardShortcut> KeybindCycle, KeybindFrontCam, KeybindBackCam, KeybindFreeformCam;
 		private static ConfigEntry<KeyCode> KeybindFreeformMovement;
@@ -72,7 +72,7 @@ namespace ThirdPersonCamera
 
 			try
 			{
-				Harmony.CreateAndPatchAll(typeof(ThirdPersonCameraMod));
+				Harmony.CreateAndPatchAll(typeof(ThirdPersonCameraPlugin));
 				Logger.LogInfo("Started successfully!");
 			}
 			catch (System.Exception ex)

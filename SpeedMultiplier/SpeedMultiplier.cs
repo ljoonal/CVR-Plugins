@@ -5,7 +5,7 @@ namespace SpeedMultiplier
 
 	[BepInPlugin(BuildInfo.GUID, BuildInfo.Name, BuildInfo.Version)]
 	[BepInProcess("ChilloutVR.exe")]
-	public class SpeedMultiplierMod : BaseUnityPlugin
+	public class SpeedMultiplierPlugin : BaseUnityPlugin
 	{
 		void Awake()
 		{
