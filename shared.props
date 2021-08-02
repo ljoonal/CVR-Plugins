@@ -2,6 +2,10 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <LangVersion>9.0</LangVersion>
+    <BaseOutputPath>..\bin</BaseOutputPath>
+    <BuildProjectReferences>false</BuildProjectReferences>
+    <Deterministic>true</Deterministic>
+    <CopyLocal>false</CopyLocal>
   </PropertyGroup>
 
 	<ItemGroup>
@@ -24,4 +28,12 @@
       <HintPath>..\Libs\UnityEngine.InputLegacyModule.dll</HintPath>
     </Reference>
   </ItemGroup>
+
+
+  <!-- make all references non-private, so they won't be copied to the output folder -->
+  <Target Name="ClearReferenceCopyLocalPaths" AfterTargets="ResolveAssemblyReferences">
+    <ItemGroup>
+      <ReferenceCopyLocalPaths Remove="@(ReferenceCopyLocalPaths)" />
+    </ItemGroup>
+  </Target>
 </Project>
