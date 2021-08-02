@@ -90,7 +90,7 @@ Still very early WIP, most likely not working yet.
 
 ## Building
 
-Drag the required DLL's (listed in the .csproj files) into the Libs folder, open in VSCodium/VSCode press `F1` and run the build tasks. Please note that it working does depend on you having the `dotnet` command available in your environment.
+Drag the required DLL's (listed in the `shared.props` file and the `.csproj` files) into the Libs folder, open in VSCodium/VSCode press `F1` and run the build tasks. Please note that it working does depend on you having the `dotnet` command available in your environment. Or if you're not using VSC, you can just copy the commands and execute them manually on the command line.
 
 Alternatively you can try to open the folder in Visual Studio, but I cannot provide help for using that.
 If you do want to improve the situation, do feel free to contribute!
