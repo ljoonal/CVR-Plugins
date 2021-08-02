@@ -82,6 +82,12 @@ Please note that the defaults are what I prefer, and for example have F1-8 rathe
 
 A plugin that allows changing your flying speed.
 
+### Player Rotater
+
+A plugin that allows rotating your own avatar whilst in flying mode.
+
+Still very early WIP, most likely not working yet.
+
 ## Building
 
 Drag the required DLL's (listed in the .csproj files) into the Libs folder, open in VSCodium/VSCode press `F1` and run the build tasks. Please note that it working does depend on you having the `dotnet` command available in your environment.

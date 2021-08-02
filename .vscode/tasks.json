@@ -144,6 +144,44 @@
 				"${workspaceFolder}/ColorCustomizer/ColorCustomizer.csproj"
 			],
 			"problemMatcher": "$msCompile"
+		},
+		{
+			"label": "Build PlayerRotater",
+			"group": "build",
+			"command": "dotnet",
+			"type": "process",
+			"args": [
+				"build",
+				"--configuration",
+				"Release",
+				"${workspaceFolder}/PlayerRotater/PlayerRotater.csproj"
+			],
+			"problemMatcher": "$msCompile"
+		},
+		{
+			"label": "Debug PlayerRotater",
+			"group": "test",
+			"command": "dotnet",
+			"type": "process",
+			"args": [
+				"build",
+				"--configuration",
+				"Debug",
+				"${workspaceFolder}/PlayerRotater/PlayerRotater.csproj"
+			],
+			"problemMatcher": "$msCompile"
+		},
+		{
+			"label": "Clean PlayerRotater",
+			"command": "dotnet",
+			"type": "process",
+			"args": [
+				"clean",
+				"--output",
+				"${workspaceFolder}/bin",
+				"${workspaceFolder}/PlayerRotater/PlayerRotater.csproj"
+			],
+			"problemMatcher": "$msCompile"
 		}
 	]
 }
