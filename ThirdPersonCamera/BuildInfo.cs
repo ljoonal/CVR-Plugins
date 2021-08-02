@@ -6,6 +6,6 @@ namespace ThirdPersonCamera
 
 		public const string Name = "Third person camera";
 
-		public const string Version = "1.0.1";
+		public const string Version = "2.0.0";
 	}
 }
