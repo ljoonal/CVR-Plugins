@@ -8,7 +8,7 @@
     <CopyLocal>false</CopyLocal>
   </PropertyGroup>
 
-	<ItemGroup>
+  <ItemGroup>
     <Reference Include="BepInEx">
       <HintPath>..\Libs\BepInEx.dll</HintPath>
     </Reference>
