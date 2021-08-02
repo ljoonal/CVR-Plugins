@@ -6,6 +6,6 @@ namespace ColorCustomizer
 
 		public const string Name = "Color Customizer";
 
-		public const string Version = "0.1.0";
+		public const string Version = "0.2.0";
 	}
 }
