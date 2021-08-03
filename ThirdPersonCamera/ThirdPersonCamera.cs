@@ -88,14 +88,14 @@ namespace ThirdPersonCamera
 			{
 				if (KeybindCycle.Value.IsDown())
 				{
-					if (CurrentCameraState == CameraState.Default) useFrontCamera();
-					else if (CurrentCameraState == CameraState.Front) useBackCamera();
-					else if (CurrentCameraState == CameraState.Back) useFreeformCamera();
+					if (CurrentCameraState == CameraState.Default) toggleFrontCamera();
+					else if (CurrentCameraState == CameraState.Front) toggleBackCamera();
+					else if (CurrentCameraState == CameraState.Back) toggleFreeformCamera();
 					else useDefaultCamera();
 				}
-				else if (KeybindFrontCam.Value.IsDown()) useFrontCamera();
-				else if (KeybindBackCam.Value.IsDown()) useBackCamera();
-				else if (KeybindFreeformCam.Value.IsDown()) useFreeformCamera();
+				else if (KeybindFrontCam.Value.IsDown()) toggleFrontCamera();
+				else if (KeybindBackCam.Value.IsDown()) toggleBackCamera();
+				else if (KeybindFreeformCam.Value.IsDown()) toggleFreeformCamera();
 			}
 
 			if (CurrentCameraState != CameraState.Default)
@@ -111,8 +111,13 @@ namespace ThirdPersonCamera
 			updateActiveCamera();
 		}
 
-		private void useFrontCamera()
+		private void toggleFrontCamera()
 		{
+			if (CurrentCameraState == CameraState.Front)
+			{
+				useDefaultCamera();
+				return;
+			}
 			CurrentCameraState = CameraState.Front;
 			CameraObject.transform.parent = Reference;
 			CameraObject.transform.position = Reference.position + Reference.forward;
@@ -121,8 +126,13 @@ namespace ThirdPersonCamera
 			updateActiveCamera();
 		}
 
-		private void useBackCamera()
+		private void toggleBackCamera()
 		{
+			if (CurrentCameraState == CameraState.Back)
+			{
+				useDefaultCamera();
+				return;
+			}
 			CurrentCameraState = CameraState.Back;
 			CameraObject.transform.parent = Reference;
 			CameraObject.transform.position = Reference.position - Reference.forward;
@@ -131,8 +141,13 @@ namespace ThirdPersonCamera
 			updateActiveCamera();
 		}
 
-		private void useFreeformCamera()
+		private void toggleFreeformCamera()
 		{
+			if (CurrentCameraState == CameraState.Freeform)
+			{
+				useDefaultCamera();
+				return;
+			}
 			CurrentCameraState = CameraState.Freeform;
 			CameraObject.transform.parent = null;
 			updateActiveCamera();
