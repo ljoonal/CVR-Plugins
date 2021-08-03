@@ -122,7 +122,7 @@ namespace ThirdPersonCamera
 			CameraObject.transform.parent = Reference;
 			CameraObject.transform.position = Reference.position + Reference.forward;
 			CameraObject.transform.LookAt(Reference);
-			zoomOurCamera(-4f);
+			zoomOurCamera(-2f);
 			updateActiveCamera();
 		}
 
@@ -137,7 +137,7 @@ namespace ThirdPersonCamera
 			CameraObject.transform.parent = Reference;
 			CameraObject.transform.position = Reference.position - Reference.forward;
 			CameraObject.transform.LookAt(Reference);
-			zoomOurCamera(-4f);
+			zoomOurCamera(-2f);
 			updateActiveCamera();
 		}
 
