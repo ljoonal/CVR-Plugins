@@ -115,8 +115,8 @@ namespace PlayerRotater
 			if (mouseLookEnabled == EnabledState.Off) return;
 
 			rotatePlayer(
-				pitch: ABI_RC.Core.Savior.CVRInputManager.Instance.lookVector.y * -1,
-				roll: ABI_RC.Core.Savior.CVRInputManager.Instance.lookVector.x
+				pitch: ABI_RC.Core.Savior.CVRInputManager.Instance.lookVector.y,
+				roll: ABI_RC.Core.Savior.CVRInputManager.Instance.lookVector.x * -1
 			);
 
 			ABI_RC.Core.Savior.CVRInputManager.Instance.lookVector = Vector2.zero;
