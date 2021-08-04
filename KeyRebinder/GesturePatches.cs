@@ -120,9 +120,11 @@ namespace KeyRebinder
 		{
 			// Storing these in the Harmony state so that other functions can still modify the values,
 			// But any changes made by Game code during UpdateInput are overridden by the Postfix.
-			__state = new LeftAndRightGesture();
-			__state.Left = ABI_RC.Core.Savior.CVRInputManager.Instance.gestureLeft;
-			__state.Right = ABI_RC.Core.Savior.CVRInputManager.Instance.gestureRight;
+			__state = new LeftAndRightGesture
+			{
+				Left = ABI_RC.Core.Savior.CVRInputManager.Instance.gestureLeft,
+				Right = ABI_RC.Core.Savior.CVRInputManager.Instance.gestureRight
+			};
 		}
 
 

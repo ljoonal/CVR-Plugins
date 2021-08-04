@@ -54,7 +54,7 @@ namespace ThirdPersonCamera
 		private const string _general_preferences_category = "Settings";
 
 
-		void Awake()
+		public void Awake()
 		{
 			KeybindCycle = Config.Bind(
 				_general_preferences_category,
@@ -81,85 +81,85 @@ namespace ThirdPersonCamera
 			}
 		}
 
-		void Update()
+		public void Update()
 		{
-			if (CurrentCameraState != CameraState.Default && Input.GetKeyDown(KeyCode.Escape)) useDefaultCamera();
+			if (CurrentCameraState != CameraState.Default && Input.GetKeyDown(KeyCode.Escape)) UseDefaultCamera();
 			else
 			{
 				if (KeybindCycle.Value.IsDown())
 				{
-					if (CurrentCameraState == CameraState.Default) toggleFrontCamera();
-					else if (CurrentCameraState == CameraState.Front) toggleBackCamera();
-					else if (CurrentCameraState == CameraState.Back) toggleFreeformCamera();
-					else useDefaultCamera();
+					if (CurrentCameraState == CameraState.Default) ToggleFrontCamera();
+					else if (CurrentCameraState == CameraState.Front) ToggleBackCamera();
+					else if (CurrentCameraState == CameraState.Back) ToggleFreeformCamera();
+					else UseDefaultCamera();
 				}
-				else if (KeybindFrontCam.Value.IsDown()) toggleFrontCamera();
-				else if (KeybindBackCam.Value.IsDown()) toggleBackCamera();
-				else if (KeybindFreeformCam.Value.IsDown()) toggleFreeformCamera();
+				else if (KeybindFrontCam.Value.IsDown()) ToggleFrontCamera();
+				else if (KeybindBackCam.Value.IsDown()) ToggleBackCamera();
+				else if (KeybindFreeformCam.Value.IsDown()) ToggleFreeformCamera();
 			}
 
 			if (CurrentCameraState != CameraState.Default)
 			{
 				float scroll = Input.GetAxis("Mouse ScrollWheel");
-				if (scroll != 0f) zoomOurCamera(scroll);
+				if (scroll != 0f) ZoomOurCamera(scroll);
 			}
 		}
 
-		private void useDefaultCamera()
+		private void UseDefaultCamera()
 		{
 			CurrentCameraState = CameraState.Default;
-			updateActiveCamera();
+			UpdateActiveCamera();
 		}
 
-		private void toggleFrontCamera()
+		private void ToggleFrontCamera()
 		{
 			if (CurrentCameraState == CameraState.Front)
 			{
-				useDefaultCamera();
+				UseDefaultCamera();
 				return;
 			}
 			CurrentCameraState = CameraState.Front;
 			CameraObject.transform.parent = Reference;
 			CameraObject.transform.position = Reference.position + Reference.forward;
 			CameraObject.transform.LookAt(Reference);
-			zoomOurCamera(-2f);
-			updateActiveCamera();
+			ZoomOurCamera(-2f);
+			UpdateActiveCamera();
 		}
 
-		private void toggleBackCamera()
+		private void ToggleBackCamera()
 		{
 			if (CurrentCameraState == CameraState.Back)
 			{
-				useDefaultCamera();
+				UseDefaultCamera();
 				return;
 			}
 			CurrentCameraState = CameraState.Back;
 			CameraObject.transform.parent = Reference;
 			CameraObject.transform.position = Reference.position - Reference.forward;
 			CameraObject.transform.LookAt(Reference);
-			zoomOurCamera(-2f);
-			updateActiveCamera();
+			ZoomOurCamera(-2f);
+			UpdateActiveCamera();
 		}
 
-		private void toggleFreeformCamera()
+		private void ToggleFreeformCamera()
 		{
 			if (CurrentCameraState == CameraState.Freeform)
 			{
-				useDefaultCamera();
+				UseDefaultCamera();
 				return;
 			}
 			CurrentCameraState = CameraState.Freeform;
 			CameraObject.transform.parent = null;
-			updateActiveCamera();
+			UpdateActiveCamera();
 		}
 
 		// Negative values 'zoom' (move) out, positive move closer.
-		private void zoomOurCamera(float forwardOrBack)
+		private void ZoomOurCamera(float forwardOrBack)
 		{
 			CameraObject.transform.position += (CameraObject.transform.forward * forwardOrBack);
 		}
 
-		private void updateActiveCamera()
+		private void UpdateActiveCamera()
 		{
 			Logger.LogInfo($"Toggling camera mode to: {CurrentCameraState}");
 			bool useDefaultCamera = CurrentCameraState == CameraState.Default;
@@ -170,7 +170,7 @@ namespace ThirdPersonCamera
 		// A patch to allow freeform mode movement using standard input methods.
 		[HarmonyPatch(typeof(ABI_RC.Core.Savior.InputModuleMouseKeyboard), "UpdateInput")]
 		[HarmonyPostfix]
-		static void InputPatches()
+		public static void InputPatches()
 		{
 			if (CurrentCameraState == CameraState.Freeform && Input.GetKey(KeybindFreeformMovement.Value))
 			{
@@ -183,7 +183,7 @@ namespace ThirdPersonCamera
 
 				var ogMovement = ABI_RC.Core.Savior.CVRInputManager.Instance.movementVector;
 
-				Vector3 movement = new Vector3();
+				Vector3 movement = new();
 				movement += CameraObject.transform.up * ogMovement.y;
 				movement += CameraObject.transform.right * ogMovement.x;
 				movement += CameraObject.transform.forward * ogMovement.z;

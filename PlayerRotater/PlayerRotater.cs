@@ -20,7 +20,7 @@ namespace PlayerRotater
 		private ConfigEntry<KeyboardShortcut> mouseModeToggleKeybind;
 		private ConfigEntry<KeyCode> mouseModeHoldKey;
 		private Vector3? originalRotation = null;
-		private Transform playerAvatarTransform
+		private Transform PlayerAvatarTransform
 		{
 			get
 			{
@@ -30,7 +30,7 @@ namespace PlayerRotater
 
 		private EnabledState _mouseLookEnabledField = EnabledState.Off;
 
-		private EnabledState mouseLookEnabled
+		private EnabledState MouseLookEnabled
 		{
 			get
 			{
@@ -45,7 +45,7 @@ namespace PlayerRotater
 			}
 		}
 
-		void Awake()
+		public void Awake()
 		{
 			const string inputPrefsCategory = "Inputs";
 
@@ -73,15 +73,15 @@ namespace PlayerRotater
 			}
 		}
 
-		private void rotatePlayer(float pitch = 0f, float roll = 0f, float yaw = 0f)
+		private void RotatePlayer(float pitch = 0f, float roll = 0f, float yaw = 0f)
 		{
-			playerAvatarTransform.Rotate(new Vector3(pitch, yaw, roll));
+			PlayerAvatarTransform.Rotate(new Vector3(pitch, yaw, roll));
 		}
 
 		// A patch to handle mouse mode.
 		[HarmonyPatch(typeof(ABI_RC.Core.Savior.InputModuleMouseKeyboard), "UpdateInput")]
 		[HarmonyPostfix]
-		static void InputPatch()
+		public static void InputPatch()
 		{
 			Instance.OnUpdateInput();
 		}
@@ -94,12 +94,12 @@ namespace PlayerRotater
 			// Only use rotation whilst flying.
 			if (!ABI_RC.Core.Player.PlayerSetup.Instance._movementSystem.flying)
 			{
-				mouseLookEnabled = EnabledState.Off;
+				MouseLookEnabled = EnabledState.Off;
 				if (originalRotation is not null)
 				{
-					playerAvatarTransform.eulerAngles = new Vector3(
+					PlayerAvatarTransform.eulerAngles = new Vector3(
 						originalRotation.Value.x,
-						playerAvatarTransform.eulerAngles.y,
+						PlayerAvatarTransform.eulerAngles.y,
 						originalRotation.Value.z
 					);
 					originalRotation = null;
@@ -107,14 +107,14 @@ namespace PlayerRotater
 				return;
 			}
 
-			if (originalRotation is null) originalRotation = playerAvatarTransform.eulerAngles;
+			if (originalRotation is null) originalRotation = PlayerAvatarTransform.eulerAngles;
 
-			processMouseLookState();
+			ProcessMouseLookState();
 
 			// After this everything is for when mouse look is enabled.
-			if (mouseLookEnabled == EnabledState.Off) return;
+			if (MouseLookEnabled == EnabledState.Off) return;
 
-			rotatePlayer(
+			RotatePlayer(
 				pitch: ABI_RC.Core.Savior.CVRInputManager.Instance.lookVector.y,
 				roll: ABI_RC.Core.Savior.CVRInputManager.Instance.lookVector.x * -1
 			);
@@ -122,15 +122,15 @@ namespace PlayerRotater
 			ABI_RC.Core.Savior.CVRInputManager.Instance.lookVector = Vector2.zero;
 		}
 
-		private void processMouseLookState()
+		private void ProcessMouseLookState()
 		{
 			if (mouseModeToggleKeybind.Value.IsDown())
 			{
-				if (mouseLookEnabled == EnabledState.Toggled) mouseLookEnabled = EnabledState.Off;
-				else mouseLookEnabled = EnabledState.Toggled;
+				if (MouseLookEnabled == EnabledState.Toggled) MouseLookEnabled = EnabledState.Off;
+				else MouseLookEnabled = EnabledState.Toggled;
 			}
-			else if (Input.GetKey(mouseModeHoldKey.Value)) mouseLookEnabled = EnabledState.Holding;
-			else if (mouseLookEnabled == EnabledState.Holding) mouseLookEnabled = EnabledState.Off;
+			else if (Input.GetKey(mouseModeHoldKey.Value)) MouseLookEnabled = EnabledState.Holding;
+			else if (MouseLookEnabled == EnabledState.Holding) MouseLookEnabled = EnabledState.Off;
 		}
 	}
 }

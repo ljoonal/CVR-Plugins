@@ -6,7 +6,7 @@ namespace ColorCustomizer
 {
 	class NameplatePatches
 	{
-		private static string ConfigCategory = "Nameplates";
+		private const string ConfigCategory = "Nameplates";
 		private static ConfigEntry<float> TalkingModifierR;
 		private static ConfigEntry<float> TalkingModifierG;
 		private static ConfigEntry<float> TalkingModifierB;
@@ -101,7 +101,7 @@ namespace ColorCustomizer
 
 		[HarmonyPatch(typeof(ABI_RC.Core.Player.PlayerNameplate), "TalkerState")]
 		[HarmonyPostfix]
-		static void NormalNameplateColorPatch(float __0, ABI_RC.Core.Player.PlayerNameplate __instance)
+		public static void NormalNameplateColorPatch(float __0, ABI_RC.Core.Player.PlayerNameplate __instance)
 		{
 			var namePlateColor = GetColorForNameplate(__instance);
 			if (__0 > 0) namePlateColor = ModifyColorWithTuple(namePlateColor,
@@ -112,7 +112,7 @@ namespace ColorCustomizer
 
 		[HarmonyPatch(typeof(ABI_RC.Core.Player.PlayerNameplate), "UpdateNamePlate")]
 		[HarmonyPostfix]
-		static void TalkerNameplateColorPatch(ABI_RC.Core.Player.PlayerNameplate __instance)
+		public static void TalkerNameplateColorPatch(ABI_RC.Core.Player.PlayerNameplate __instance)
 		{
 			PatchNameplateColor(__instance, GetColorForNameplate(__instance));
 		}
