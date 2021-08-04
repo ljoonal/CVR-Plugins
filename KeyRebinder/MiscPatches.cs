@@ -1,16 +1,19 @@
 using HarmonyLib;
 using BepInEx.Configuration;
 using UnityEngine;
+using System.Reflection;
 
 namespace KeyRebinder
 {
-	// TODO: Headturn
 	class MiscPatches
 	{
-		private static ConfigEntry<KeyboardShortcut> ConfigKeybindReload;
-		private static ConfigEntry<KeyboardShortcut> ConfigKeybindSwitchMode;
-		private static ConfigEntry<KeyboardShortcut> ConfigKeybindNameplatesToggle;
-		private static ConfigEntry<KeyboardShortcut> ConfigKeybindHudToggle;
+		private static ConfigEntry<KeyboardShortcut> ConfigKeybindReload,
+			ConfigKeybindSwitchMode,
+			ConfigKeybindNameplatesToggle,
+			ConfigKeybindHudToggle,
+			ConfigKeybindDisconnect,
+			ConfigKeybindDisconnectAndGoHome,
+			ConfigKeybindRejoinCurrentInstance;
 
 		public static void RegisterConfigs(ConfigFile Config)
 		{
@@ -34,6 +37,23 @@ namespace KeyRebinder
 				"BindHudToggle",
 				new KeyboardShortcut(KeyCode.None),
 				"The shortcut for toggling hud visibility. (Set to None to let the game manage it)");
+
+			// Connection related
+			ConfigKeybindDisconnect = Config.Bind(
+				nameof(MiscPatches),
+				"BindDisconnect",
+				new KeyboardShortcut(KeyCode.Y, new KeyCode[] { KeyCode.LeftControl }),
+				"The shortcut for disconnecting from current instance.");
+			ConfigKeybindDisconnectAndGoHome = Config.Bind(
+				nameof(MiscPatches),
+				"BindDisconnectAndGoHome",
+				new KeyboardShortcut(KeyCode.U, new KeyCode[] { KeyCode.LeftControl }),
+				"The shortcut for disconnecting from current instance and going home.");
+			ConfigKeybindRejoinCurrentInstance = Config.Bind(
+				nameof(MiscPatches),
+				"BindRejoinCurrentInstance",
+				new KeyboardShortcut(KeyCode.R, new KeyCode[] { KeyCode.LeftControl }),
+				"The shortcut for rejoining the current instance.");
 		}
 
 		public static void Patch()
@@ -55,6 +75,26 @@ namespace KeyRebinder
 				ABI_RC.Core.Savior.CVRInputManager.Instance.toggleNameplates = ConfigKeybindNameplatesToggle.Value.IsDown();
 			if (ConfigKeybindHudToggle.Value.MainKey != KeyCode.None)
 				ABI_RC.Core.Savior.CVRInputManager.Instance.toggleHud = ConfigKeybindHudToggle.Value.IsDown();
+
+			// Connection related
+			if (ConfigKeybindDisconnect.Value.IsDown())
+			{
+				ABI_RC.Core.Networking.NetworkManager.Instance.OnDisconnectionRequested(0, false);
+			}
+			else if (ConfigKeybindDisconnectAndGoHome.Value.IsDown())
+			{
+				ABI_RC.Core.Networking.NetworkManager.Instance.OnDisconnectionRequested(0, true);
+			}
+			else if (ConfigKeybindRejoinCurrentInstance.Value.IsDown())
+			{
+				var instanceID = ABI_RC.Core.Savior.MetaPort.Instance.CurrentInstanceId;
+				var worldID = GameObject.FindObjectOfType<ABI.CCK.Components.CVRWorld>().GetComponent<ABI.CCK.Components.CVRAssetInfo>().guid;
+				if (instanceID is string && worldID is string)
+				{
+					ABI_RC.Core.Networking.IO.Instancing.Instances.SetJoinTarget(instanceID, worldID);
+				}
+			}
+
 		}
 	}
 }
