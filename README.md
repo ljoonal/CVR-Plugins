@@ -54,7 +54,7 @@ And maybe that'll make this plugin not need to implement them if it's natively s
 
 Allows you to toggle to a third person mode with a keybind, and zoom in and out with your mouse scrollwheel.
 
-This is quite heavily WIP still, expect jank! It's currently being reworked to work more closely like the one I made for VRC.
+This is quite heavily WIP still, expect jank!
 
 ### KeyRebinder
 
