@@ -22,8 +22,11 @@ But if they ever do change their minds, it's up to you to make sure that you're 
 If you're asking: "MelonLoader is the tool used with VRC modding, so why not use it for CVR too?"
 
 While it's a great tool, it requires .NET framework. Which is not available for linux.
-I can actually build my plugins on Linux with BepInEx unlike MelonLoader.
+I can actually build my plugins on Linux with BepInEx and run them without needing to do wineprefix trickery.
 This is also why the build system is with VSC tasks instead of Visual Studio in this repository.
+
+While it's technically possible to build MelonLoader mods on linux, most mods aren't done that way.
+And running MelonLoader still requires .NET framework anyway, which BepInEx does not.
 
 MelonLoader also does not have a few features that BepInEx does, and BepInEx just seems way more mature for modding Unity (non-IL2CPP) games.
 
