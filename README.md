@@ -13,9 +13,11 @@ I'd recommend you also get [sinai-dev's BepInExConfigManager](https://github.com
 
 No warranty is provided for these plugins, and they're provided as-is.
 Please have a look at the source code & build from source for maximal safety.
+I also recommend mirroring this git repository if you want to make sure you always have access to the source code.
 
 As far as I'm aware, the CVR devs allow modding to some extent now.
-But if they ever do change their minds, it's up to you to make sure that you're following their TOS.
+This doesn't mean though that they endorse the mods by me or that I'm in any way representing or affiliated with CVR or Alpha Blend Interactive.
+It's up to you to make sure that you're following their rules & TOS, as I am only providing the code for my plugins and nothing else.
 
 ## Why BepInEx and not MelonLoader
 
