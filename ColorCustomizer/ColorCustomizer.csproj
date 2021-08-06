@@ -1,11 +1,7 @@
-﻿
-<Project Sdk="Microsoft.NET.Sdk">
-  <Import Project="../shared.props" />
-
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <ItemGroup>
     <Reference Include="UnityEngine.UI">
-      <HintPath>..\Libs\UnityEngine.UI.dll</HintPath>
+      <HintPath>$(GameRefsPath)UnityEngine.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
-
 </Project>

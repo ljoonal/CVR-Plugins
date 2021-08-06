@@ -1,0 +1,47 @@
+<Project>
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>9.0</LangVersion>
+    <BaseOutputPath>..\bin</BaseOutputPath>
+    <BuildProjectReferences>false</BuildProjectReferences>
+    <Deterministic>true</Deterministic>
+    <CopyLocal>false</CopyLocal>
+    <CVRPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\ChilloutVR\')">C:\Program Files (x86)\Steam\steamapps\common\ChilloutVR\</CVRPath>
+    <CVRPath Condition="Exists('$(HOME)/.steam/steam/steamapps/common/ChilloutVR/')">$(HOME)/.steam/steam/steamapps/common/ChilloutVR/</CVRPath>
+    <GameRefsPath>Libs\</GameRefsPath>
+    <GameRefsPath Condition="Exists('$(CVRPath)ChilloutVR_Data\Managed\')">$(CVRPath)ChilloutVR_Data\Managed\</GameRefsPath>
+    <BepInExCoreRefsPath>Libs\</BepInExCoreRefsPath>
+    <BepInExCoreRefsPath Condition="Exists('$(CVRPath)BepInEx\core\')">$(CVRPath)BepInEx\core\</BepInExCoreRefsPath>
+    <BepInExPluginRefsPath>Libs\</BepInExPluginRefsPath>
+    <BepInExPluginRefsPath Condition="Exists('$(CVRPath)BepInEx\core\')">$(CVRPath)BepInEx\plugins\</BepInExPluginRefsPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="BepInEx">
+      <HintPath>$(BepInExCoreRefsPath)BepInEx.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>$(GameRefsPath)Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="HarmonyLib">
+      <HintPath>$(BepInExCoreRefsPath)0Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>$(GameRefsPath)UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>$(GameRefsPath)UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.InputLegacyModule">
+      <HintPath>$(GameRefsPath)UnityEngine.InputLegacyModule.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+
+  <!-- make all references non-private, so they won't be copied to the output folder -->
+  <Target Name="ClearReferenceCopyLocalPaths" AfterTargets="ResolveAssemblyReferences">
+    <ItemGroup>
+      <ReferenceCopyLocalPaths Remove="@(ReferenceCopyLocalPaths)" />
+    </ItemGroup>
+  </Target>
+</Project>
