@@ -95,7 +95,7 @@ A plugin that allows rotating your own avatar whilst in flying mode.
 
 Ever wanted to rotate items in desktop mode? Well now you can with this plugin!
 
-FUCK QUATERNIONS this project will probably never get finished.
+This plugin will probably never get finished due to Quaternions slowly driving me insane.
 
 ## Building
 
