@@ -76,11 +76,9 @@ namespace RotateIt
 
 			if (rotationInputs != Vector3.zero)
 			{
-				Transform referenceTransform = __instance._controllerRay.transform;
-				Quaternion rotationInputQuaternion = Quaternion.identity;
-				rotationInputQuaternion *= Quaternion.AngleAxis(rotationInputs.x, referenceTransform.up);
-				rotationInputQuaternion *= Quaternion.AngleAxis(rotationInputs.y, referenceTransform.right);
-				rotationInputQuaternion *= Quaternion.AngleAxis(rotationInputs.z, referenceTransform.forward);
+				Quaternion rotationInputQuaternion = Quaternion.Euler(rotationInputs);
+				//Transform referenceTransform = ABI_RC.Core.Player.PlayerSetup.Instance.desktopCamera.transform;
+				//Vector3 rotationInputsWorldSpace = referenceTransform.TransformVector(rotationInputs);
 
 				GrabbedRotation *= rotationInputQuaternion;
 #if DEBUG
@@ -89,13 +87,16 @@ namespace RotateIt
 #endif
 			}
 
+
+
 			__instance.transform.rotation *= GrabbedRotation;
 		}
 
 		[HarmonyPatch(typeof(CVRPickupObject), "Grab")]
 		[HarmonyPostfix]
-		public static void OnGrabObject()
+		public static void OnGrabObject(CVRPickupObject __instance)
 		{
+			//GrabbedRotation = __instance.transform.rotation;
 			GrabbedRotation = Quaternion.identity;
 		}
 	}
