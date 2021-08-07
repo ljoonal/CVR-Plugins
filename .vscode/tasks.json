@@ -182,6 +182,44 @@
 				"${workspaceFolder}/PlayerRotater/PlayerRotater.csproj"
 			],
 			"problemMatcher": "$msCompile"
+		},
+		{
+			"label": "Build RotateIt!",
+			"group": "build",
+			"command": "dotnet",
+			"type": "process",
+			"args": [
+				"build",
+				"--configuration",
+				"Release",
+				"${workspaceFolder}/RotateIt/RotateIt.csproj"
+			],
+			"problemMatcher": "$msCompile"
+		},
+		{
+			"label": "Debug RotateIt!",
+			"group": "test",
+			"command": "dotnet",
+			"type": "process",
+			"args": [
+				"build",
+				"--configuration",
+				"Debug",
+				"${workspaceFolder}/RotateIt/RotateIt.csproj"
+			],
+			"problemMatcher": "$msCompile"
+		},
+		{
+			"label": "Clean RotateIt!",
+			"command": "dotnet",
+			"type": "process",
+			"args": [
+				"clean",
+				"--output",
+				"${workspaceFolder}/bin",
+				"${workspaceFolder}/RotateIt/RotateIt.csproj"
+			],
+			"problemMatcher": "$msCompile"
 		}
 	]
 }
