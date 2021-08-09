@@ -77,21 +77,15 @@ namespace RotateIt
 			__instance.transform.rotation *= GrabbedRotationOffset;
 
 			Quaternion originalRotation = __instance.transform.rotation;
+			Transform referenceTransform = ABI_RC.Core.Player.PlayerSetup.Instance.PlayerAvatarParent.transform;
 
 			(float pitch, float yaw, float roll) = Instance.GetRotationInput();
-			Transform referenceTransform = ABI_RC.Core.Player.PlayerSetup.Instance._avatar.transform;
+			__instance.transform.RotateAround(__instance.transform.position, referenceTransform.right, pitch);
+			__instance.transform.RotateAround(__instance.transform.position, referenceTransform.up, yaw);
+			__instance.transform.RotateAround(__instance.transform.position, referenceTransform.forward, roll);
 
-			if (pitch != 0f) __instance.transform.RotateAround(__instance.transform.position, referenceTransform.right, pitch);
-			if (yaw != 0f) __instance.transform.RotateAround(__instance.transform.position, referenceTransform.up, yaw);
-			if (roll != 0f) __instance.transform.RotateAround(__instance.transform.position, referenceTransform.forward, roll);
-
-#if DEBUG
-			if (pitch != 0f || yaw != 0f || roll != 0f)
-				Instance.Logger.LogInfo(
-					$"Adding rotations {(pitch, yaw, roll)}, result: {GrabbedRotationOffset}");
-#endif
-
-			GrabbedRotationOffset *= (Quaternion.Inverse(__instance.transform.rotation) * originalRotation);
+			// Add the new difference between the og rotation and our newly added rotation the the stored offset.
+			GrabbedRotationOffset *= Quaternion.Inverse(__instance.transform.rotation) * originalRotation;
 		}
 
 		[HarmonyPatch(typeof(CVRPickupObject), "Grab")]
