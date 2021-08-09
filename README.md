@@ -79,6 +79,7 @@ Please note that the defaults are what I prefer, and for example have F1-8 rathe
 - [x] Emote controls
 - [x] Flying controls
 - [x] Toggling hud & nameplates
+- [x] Reconnecting keybinds
 - [ ] Other controls
 
 ### Speed Multiplier
@@ -94,8 +95,7 @@ A plugin that allows rotating your own avatar whilst in flying mode.
 ### Rotate It
 
 Ever wanted to rotate items in desktop mode? Well now you can with this plugin!
-
-This plugin will probably never get finished due to Quaternions slowly driving me insane.
+With configurable rotation speed and keybinds.
 
 ## Building
 
