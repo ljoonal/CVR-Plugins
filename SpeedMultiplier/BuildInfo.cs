@@ -6,6 +6,6 @@ namespace SpeedMultiplier
 
 		public const string Name = "Speed Multiplier";
 
-		public const string Version = "0.1.0";
+		public const string Version = "0.1.1";
 	}
 }
