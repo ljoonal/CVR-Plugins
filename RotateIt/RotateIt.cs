@@ -77,7 +77,7 @@ namespace RotateIt
 			__instance.transform.rotation *= GrabbedRotationOffset;
 
 			Quaternion originalRotation = __instance.transform.rotation;
-			Transform referenceTransform = ABI_RC.Core.Player.PlayerSetup.Instance.PlayerAvatarParent.transform;
+			Transform referenceTransform = ABI_RC.Core.Player.PlayerSetup.Instance.desktopCamera.transform;
 
 			(float pitch, float yaw, float roll) = Instance.GetRotationInput();
 			__instance.transform.RotateAround(__instance.transform.position, referenceTransform.right, pitch);
