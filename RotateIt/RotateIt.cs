@@ -15,7 +15,7 @@ namespace RotateIt
 		private readonly ConfigEntry<KeyCode> KeyPitchRight, KeyPitchLeft, KeyYawRight, KeyYawLeft, KeyRollRight, KeyRollLeft;
 		private readonly ConfigEntry<float> RotationSpeed;
 
-		private static Quaternion GrabbedRotation = Quaternion.identity;
+		private static Quaternion GrabbedRotationOffset = Quaternion.identity;
 
 		private ConfigEntry<KeyCode> RegisterKeybind(string prefName, KeyCode keyCode, string description)
 		{
@@ -49,20 +49,22 @@ namespace RotateIt
 			}
 		}
 
-		private Vector3 GetRotationInput()
+		private (float, float, float) GetRotationInput()
 		{
-			Vector3 inputs = new();
 
-			if (Input.GetKey(KeyPitchRight.Value)) inputs.x += RotationSpeed.Value;
-			if (Input.GetKey(KeyPitchLeft.Value)) inputs.x -= RotationSpeed.Value;
+			float pitch = 0f;
+			if (Input.GetKey(KeyPitchRight.Value)) pitch += RotationSpeed.Value;
+			if (Input.GetKey(KeyPitchLeft.Value)) pitch -= RotationSpeed.Value;
 
-			if (Input.GetKey(KeyYawRight.Value)) inputs.y += RotationSpeed.Value;
-			if (Input.GetKey(KeyYawLeft.Value)) inputs.y -= RotationSpeed.Value;
+			float yaw = 0f;
+			if (Input.GetKey(KeyYawRight.Value)) yaw += RotationSpeed.Value;
+			if (Input.GetKey(KeyYawLeft.Value)) yaw -= RotationSpeed.Value;
 
-			if (Input.GetKey(KeyRollRight.Value)) inputs.z += RotationSpeed.Value;
-			if (Input.GetKey(KeyRollLeft.Value)) inputs.z -= RotationSpeed.Value;
+			float roll = 0f;
+			if (Input.GetKey(KeyRollRight.Value)) roll += RotationSpeed.Value;
+			if (Input.GetKey(KeyRollLeft.Value)) roll -= RotationSpeed.Value;
 
-			return inputs;
+			return (pitch, yaw, roll);
 		}
 
 		[HarmonyPatch(typeof(CVRPickupObject), "Update")]
@@ -72,32 +74,33 @@ namespace RotateIt
 			// Need to only run when the object is grabbed by the local player
 			if (__instance._controllerRay is null) return;
 
-			Vector3 rotationInputs = Instance.GetRotationInput();
+			__instance.transform.rotation *= GrabbedRotationOffset;
 
-			if (rotationInputs != Vector3.zero)
-			{
-				Quaternion rotationInputQuaternion = Quaternion.Euler(rotationInputs);
-				//Transform referenceTransform = ABI_RC.Core.Player.PlayerSetup.Instance.desktopCamera.transform;
-				//Vector3 rotationInputsWorldSpace = referenceTransform.TransformVector(rotationInputs);
+			Quaternion originalRotation = __instance.transform.rotation;
 
-				GrabbedRotation *= rotationInputQuaternion;
+			(float pitch, float yaw, float roll) = Instance.GetRotationInput();
+			Transform referenceTransform = ABI_RC.Core.Player.PlayerSetup.Instance._avatar.transform;
+
+			if (pitch != 0f) __instance.transform.RotateAround(__instance.transform.position, referenceTransform.right, pitch);
+			if (yaw != 0f) __instance.transform.RotateAround(__instance.transform.position, referenceTransform.up, yaw);
+			if (roll != 0f) __instance.transform.RotateAround(__instance.transform.position, referenceTransform.forward, roll);
+
 #if DEBUG
+			if (pitch != 0f || yaw != 0f || roll != 0f)
 				Instance.Logger.LogInfo(
-					$"Adding rotations {rotationInputs} = {rotationInputQuaternion.eulerAngles}, result = {GrabbedRotation.eulerAngles}");
+					$"Adding rotations {(pitch, yaw, roll)}, result: {GrabbedRotationOffset}");
 #endif
-			}
 
-
-
-			__instance.transform.rotation *= GrabbedRotation;
+			GrabbedRotationOffset *= (Quaternion.Inverse(__instance.transform.rotation) * originalRotation);
 		}
 
 		[HarmonyPatch(typeof(CVRPickupObject), "Grab")]
 		[HarmonyPostfix]
-		public static void OnGrabObject(CVRPickupObject __instance)
+		public static void OnGrabObject()
+		//public static void OnGrabObject(CVRPickupObject __instance)
 		{
-			//GrabbedRotation = __instance.transform.rotation;
-			GrabbedRotation = Quaternion.identity;
+			//GrabbedRotationOffset = __instance.transform.rotation;
+			GrabbedRotationOffset = Quaternion.identity;
 		}
 	}
 }
