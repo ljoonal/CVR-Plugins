@@ -15,6 +15,7 @@
     <BepInExPluginRefsPath>Libs\</BepInExPluginRefsPath>
     <BepInExPluginRefsPath Condition="Exists('$(CVRPath)BepInEx\plugins\')">$(CVRPath)BepInEx\plugins\</BepInExPluginRefsPath>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
 
   <ItemGroup>
