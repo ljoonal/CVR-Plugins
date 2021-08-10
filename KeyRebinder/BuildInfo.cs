@@ -1,3 +1,12 @@
+using System.Reflection;
+using System.Runtime.InteropServices;
+
+[assembly: ComVisible(false)]
+[assembly: AssemblyTitle(KeyRebinder.BuildInfo.GUID)]
+[assembly: AssemblyProduct(KeyRebinder.BuildInfo.Name)]
+[assembly: AssemblyVersion(KeyRebinder.BuildInfo.Version)]
+[assembly: AssemblyCompany("cvr.ljoonal.xyz")]
+
 namespace KeyRebinder
 {
 	public static class BuildInfo

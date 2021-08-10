@@ -1,3 +1,12 @@
+using System.Reflection;
+using System.Runtime.InteropServices;
+
+[assembly: ComVisible(false)]
+[assembly: AssemblyTitle(SpeedMultiplier.BuildInfo.GUID)]
+[assembly: AssemblyProduct(SpeedMultiplier.BuildInfo.Name)]
+[assembly: AssemblyVersion(SpeedMultiplier.BuildInfo.Version)]
+[assembly: AssemblyCompany("cvr.ljoonal.xyz")]
+
 namespace SpeedMultiplier
 {
 	public static class BuildInfo

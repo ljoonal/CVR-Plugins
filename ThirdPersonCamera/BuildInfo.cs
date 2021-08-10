@@ -1,3 +1,12 @@
+using System.Reflection;
+using System.Runtime.InteropServices;
+
+[assembly: ComVisible(false)]
+[assembly: AssemblyTitle(ThirdPersonCamera.BuildInfo.GUID)]
+[assembly: AssemblyProduct(ThirdPersonCamera.BuildInfo.Name)]
+[assembly: AssemblyVersion(ThirdPersonCamera.BuildInfo.Version)]
+[assembly: AssemblyCompany("cvr.ljoonal.xyz")]
+
 namespace ThirdPersonCamera
 {
 	public static class BuildInfo
