@@ -99,7 +99,8 @@ With configurable rotation speed and keybinds.
 
 ## Building
 
-Drag the required DLL's (listed in the `shared.props` file and the `.csproj` files) into the Libs folder, open in VSCodium/VSCode press `F1` and run the build tasks. Please note that it working does depend on you having the `dotnet` command available in your environment. Or if you're not using VSC, you can just copy the commands and execute them manually on the command line.
+Ensure that the required DLL's (listed in the `Directory.build.props` file and in the individual `.csproj` files) can be found from standard installation paths or from under the `Libs` folder.
+Then run `dotnet build -c Release CVR-Plugins.csproj` to build all the plugins in release mode.
 
 Alternatively you can try to open the folder in Visual Studio, but I cannot provide help for using that.
 If you do want to improve the situation, do feel free to contribute!
