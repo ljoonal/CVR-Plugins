@@ -101,6 +101,23 @@ A plugin that allows rotating your own avatar whilst in flying mode.
 Ever wanted to rotate items in desktop mode? Well now you can with this plugin!
 With configurable rotation speed and keybinds.
 
+### M.A Logger
+
+A plugin for logging possibly Malicious Activity.
+The logging is only for the ID's though, so this won't be too useful for other than possibly reporting malicious activity.
+
+An example use case would be to get the last change before you crashed.
+Since if a lot of people crashed at once, it's probably a fault of the most recently loaded thing.
+Then you'll at least have the ID's of the avatar and the user who changed into it.
+
+Current status:
+
+- [x] Avatar changes
+- [x] Prop spawns
+- [x] Portal drops
+- [ ] Avatar state changes
+- [ ] Prop state changes
+
 ## Building
 
 Ensure that the required DLL's (listed in the `Directory.build.props` file and in the individual `.csproj` files) can be found from standard installation paths or from under the `Libs` folder.
