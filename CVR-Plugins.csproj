@@ -1,12 +1,12 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
-<!-- Builds all *.csproj files under this repository. -->
-<ItemGroup>
+  <!-- Builds all other *.csproj files under this repository. -->
+  <ItemGroup>
     <ProjectFiles Include="**/*.csproj" Exclude="CVR-Plugins.csproj" />
-</ItemGroup>
+  </ItemGroup>
 
-<Target Name="Build">
+  <Target Name="Build">
     <MSBuild Projects="@(ProjectFiles)" Targets="Rebuild" />
-</Target>
+  </Target>
 
 </Project>
