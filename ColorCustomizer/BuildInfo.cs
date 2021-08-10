@@ -7,7 +7,6 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyVersion(ColorCustomizer.BuildInfo.Version)]
 [assembly: AssemblyCompany("cvr.ljoonal.xyz")]
 
-
 namespace ColorCustomizer
 {
 	public static class BuildInfo
