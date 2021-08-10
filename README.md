@@ -34,6 +34,8 @@ MelonLoader also does not have a few features that BepInEx does, and BepInEx jus
 
 ## Plugin list
 
+If you want the feature enough to get the plugin for it, you should probably also go upvote the feature request if there is one.
+
 ### Color Customizer
 
 [Roadmap entry for customizing UI](https://hub.abinteractive.net/roadmap/inspect?job=191).
