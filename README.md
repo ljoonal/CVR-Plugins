@@ -94,6 +94,8 @@ A plugin that allows rotating your own avatar whilst in flying mode.
 
 ### Rotate It
 
+[Link to Feature request](https://forums.abinteractive.net/d/97-object-rotation-in-desktop).
+
 Ever wanted to rotate items in desktop mode? Well now you can with this plugin!
 With configurable rotation speed and keybinds.
 
