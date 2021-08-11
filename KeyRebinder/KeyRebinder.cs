@@ -26,7 +26,9 @@ namespace KeyRebinder
 				if (EnableModuleMisc.Value)
 				{
 					MiscPatches.Patch();
+#if DEBUG
 					Logger.LogInfo($"{nameof(MiscPatches)} applied");
+#endif
 				}
 			}
 			catch (System.Exception ex)
@@ -40,7 +42,9 @@ namespace KeyRebinder
 				if (EnableModuleMic.Value)
 				{
 					MicPatches.Patch();
+#if DEBUG
 					Logger.LogInfo($"{nameof(MicPatches)} applied");
+#endif
 				}
 			}
 			catch (System.Exception ex)
@@ -54,7 +58,9 @@ namespace KeyRebinder
 				if (EnableModuleMovement.Value)
 				{
 					MovementPatches.Patch();
+#if DEBUG
 					Logger.LogInfo($"{nameof(MovementPatches)} applied");
+#endif
 				}
 			}
 			catch (System.Exception ex)
@@ -68,7 +74,9 @@ namespace KeyRebinder
 				if (EnableModuleGestures.Value)
 				{
 					GesturePatches.Patch();
+#if DEBUG
 					Logger.LogInfo($"{nameof(GesturePatches)} applied");
+#endif
 				}
 			}
 			catch (System.Exception ex)
@@ -82,7 +90,9 @@ namespace KeyRebinder
 				if (EnableModuleStates.Value)
 				{
 					StatePatches.Patch();
+#if DEBUG
 					Logger.LogInfo($"{nameof(StatePatches)} applied");
+#endif
 				}
 			}
 			catch (System.Exception ex)
@@ -96,7 +106,9 @@ namespace KeyRebinder
 				if (EnableModuleEmotes.Value)
 				{
 					EmotePatches.Patch();
+#if DEBUG
 					Logger.LogInfo($"{nameof(EmotePatches)} applied");
+#endif
 				}
 			}
 			catch (System.Exception ex)

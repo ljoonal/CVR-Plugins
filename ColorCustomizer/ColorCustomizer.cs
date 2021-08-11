@@ -21,7 +21,9 @@ namespace ColorCustomizer
 				if (EnableNameplates.Value)
 				{
 					NameplatePatches.Patch();
+#if DEBUG
 					Logger.LogInfo($"{nameof(NameplatePatches)} applied");
+#endif
 				}
 			}
 			catch (System.Exception ex)

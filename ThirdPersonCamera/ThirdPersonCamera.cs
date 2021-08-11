@@ -73,7 +73,9 @@ namespace ThirdPersonCamera
 			try
 			{
 				Harmony.CreateAndPatchAll(typeof(ThirdPersonCameraPlugin));
+#if DEBUG
 				Logger.LogInfo("Started successfully!");
+#endif
 			}
 			catch (System.Exception ex)
 			{
