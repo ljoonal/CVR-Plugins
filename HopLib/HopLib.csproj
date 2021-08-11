@@ -1,0 +1,5 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<DocumentationFile>$(ProjectDir)HopApi.xml</DocumentationFile>
+	</PropertyGroup>
+</Project>

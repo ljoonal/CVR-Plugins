@@ -118,6 +118,33 @@ Current status:
 - [ ] Avatar state changes
 - [ ] Prop state changes
 
+### Hop Lib
+
+A library plugin for other plugins to use. Mainly supposed to help making mods more wholesome easily, leading to less code repeat & complex code needing to be implemented only once.
+
+You really should write the source code to see all the available ways to use it, but the basics are as follows:
+
+```csharp
+void Awake() {
+  HopApi.InstanceJoined += delegate { DoThings(); };
+  HopApi.InstanceJoined += AlternativeHandler;
+}
+
+void DoThings() {
+  if (HopApi.CurrentGameModeId != "SocialVR") {
+    return;
+  }
+  // Do stuff...
+}
+
+void AlternativeHandler(object sender, System.EventArgs e) {
+  // sender & args are gonna be null, but you do you...
+  DoThings();
+}
+```
+
+It's still under heavy development, I'd suggest others don't rely on it yet, as I'm trying to figure out what are the most useful & required abstractions.
+
 ## Building
 
 Ensure that the required DLL's (listed in the `Directory.build.props` file and in the individual `.csproj` files) can be found from standard installation paths or from under the `Libs` folder.

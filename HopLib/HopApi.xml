@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>HopLib</name>
+    </assembly>
+    <members>
+        <member name="T:HopLib.HopApi">
+            <summary>The main Hop API.</summary>
+            <remarks>
+            The Hop API's purpose is to help modders.
+            It will eventually have events and utilities for commonly required things.
+            Currently it is under heavy development, so expect breaking changes even with minor revisions before the 1.0.0 release
+            </remarks>
+        </member>
+        <member name="P:HopLib.HopApi.CurrentGameModeId">
+            <summary>The current game mode's ID.</summary>
+            <remarks>Currently it'll just a static default, but in the future this will be implemented if possible.</remarks>
+        </member>
+        <member name="P:HopLib.HopApi.CurrentInstanceId">
+            <summary>The current instance's ID.</summary>
+        </member>
+        <member name="P:HopLib.HopApi.CurrentWorldId">
+            <summary>The current world's ID.</summary>
+        </member>
+        <member name="E:HopLib.HopApi.InstanceJoined">
+            <summary>Invoked when the local player has joined a new instance.</summary>
+        </member>
+        <member name="T:HopLib.HopLibInfo">
+            <summary>Info about the current HopLib.</summary>
+        </member>
+        <member name="F:HopLib.HopLibInfo.GUID">
+            <summary>The plugin's constant GUID.</summary>
+        </member>
+        <member name="F:HopLib.HopLibInfo.Version">
+            <summary>The current version of HopLib.</summary>
+        </member>
+    </members>
+</doc>
