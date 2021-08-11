@@ -122,7 +122,7 @@ Current status:
 
 A library plugin for other plugins to use. Mainly supposed to help making mods more wholesome easily, leading to less code repeat & complex code needing to be implemented only once.
 
-You really should write the source code to see all the available ways to use it, but the basics are as follows:
+You really should read the source code to see all the available ways to use it, but the basics are as follows:
 
 ```csharp
 void Awake() {
