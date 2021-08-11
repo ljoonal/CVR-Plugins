@@ -70,6 +70,9 @@ namespace PlayerRotater
 			try
 			{
 				Harmony.CreateAndPatchAll(typeof(PlayerRotaterPlugin));
+#if DEBUG
+					Logger.LogInfo($"{nameof(PlayerRotaterPlugin)} started successfully");
+#endif
 			}
 			catch (System.Exception ex)
 			{
