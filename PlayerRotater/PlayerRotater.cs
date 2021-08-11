@@ -6,6 +6,7 @@ using CVRInputManager = ABI_RC.Core.Savior.CVRInputManager;
 using InputModuleMouseKeyboard = ABI_RC.Core.Savior.InputModuleMouseKeyboard;
 using PlayerSetup = ABI_RC.Core.Player.PlayerSetup;
 using CVR_MovementSystem = ABI_RC.Core.Player.CVR_MovementSystem;
+using HopLib;
 
 namespace PlayerRotater
 {
@@ -16,6 +17,7 @@ namespace PlayerRotater
 		Holding
 	}
 
+	[BepInDependency(HopLibInfo.GUID, HopLibInfo.Version)]
 	[BepInPlugin(BuildInfo.GUID, BuildInfo.Name, BuildInfo.Version)]
 	[BepInProcess("ChilloutVR.exe")]
 	public class PlayerRotaterPlugin : BaseUnityPlugin
@@ -70,6 +72,8 @@ namespace PlayerRotater
 			try
 			{
 				Harmony.CreateAndPatchAll(typeof(PlayerRotaterPlugin));
+				HopApi.InstanceJoined += delegate { ResetRotation(); };
+
 #if DEBUG
 					Logger.LogInfo($"{nameof(PlayerRotaterPlugin)} started successfully");
 #endif
@@ -95,6 +99,23 @@ namespace PlayerRotater
 			Instance.OnUpdateInput();
 		}
 
+		private void ResetRotation()
+		{
+			MouseLookEnabled = EnabledState.Off;
+			if (originalRotation is not null)
+			{
+#if DEBUG
+					Logger.LogInfo($"Disabled rotation mode");
+#endif
+				PlayerRotationTransform.eulerAngles = new Vector3(
+					originalRotation.Value.x,
+					PlayerRotationTransform.eulerAngles.y,
+					originalRotation.Value.z
+				);
+				originalRotation = null;
+			}
+		}
+
 		private void OnUpdateInput()
 		{
 			// Don't touch rotations if CVR doesn't want us to currently.
@@ -103,16 +124,7 @@ namespace PlayerRotater
 			// Only use rotation whilst flying.
 			if (!PlayerSetup.Instance._movementSystem.flying)
 			{
-				MouseLookEnabled = EnabledState.Off;
-				if (originalRotation is not null)
-				{
-					PlayerRotationTransform.eulerAngles = new Vector3(
-						originalRotation.Value.x,
-						PlayerRotationTransform.eulerAngles.y,
-						originalRotation.Value.z
-					);
-					originalRotation = null;
-				}
+				ResetRotation();
 				return;
 			}
 
@@ -140,7 +152,13 @@ namespace PlayerRotater
 
 			if (MouseLookEnabled == EnabledState.Off) return;
 
-			if (originalRotation is null) originalRotation = PlayerRotationTransform.eulerAngles;
+			if (originalRotation is null)
+			{
+#if DEBUG
+					Logger.LogInfo($"Enabled rotation mode");
+#endif
+				originalRotation = PlayerRotationTransform.eulerAngles;
+			}
 
 			RotatePlayer(pitch: lookVector.y * -1, roll: lookVector.x * -1);
 		}
