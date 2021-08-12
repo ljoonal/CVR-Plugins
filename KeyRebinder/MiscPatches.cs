@@ -15,6 +15,8 @@ namespace KeyRebinder
 			ConfigKeybindDisconnectAndGoHome,
 			ConfigKeybindRejoinCurrentInstance;
 
+		private static ConfigEntry<KeyCode> ConfigKeyZoom;
+
 		public static void RegisterConfigs(ConfigFile Config)
 		{
 			ConfigKeybindReload = Config.Bind(
@@ -37,6 +39,12 @@ namespace KeyRebinder
 				"BindHudToggle",
 				new KeyboardShortcut(KeyCode.None),
 				"The shortcut for toggling hud visibility. (Set to None to let the game manage it)");
+
+			ConfigKeyZoom = Config.Bind(
+				nameof(MiscPatches),
+				"BindZoom",
+				KeyCode.Mouse2,
+				"The key for zooming.");
 
 			// Connection related
 			ConfigKeybindDisconnect = Config.Bind(
@@ -75,6 +83,8 @@ namespace KeyRebinder
 				ABI_RC.Core.Savior.CVRInputManager.Instance.toggleNameplates = ConfigKeybindNameplatesToggle.Value.IsDown();
 			if (ConfigKeybindHudToggle.Value.MainKey != KeyCode.None)
 				ABI_RC.Core.Savior.CVRInputManager.Instance.toggleHud = ConfigKeybindHudToggle.Value.IsDown();
+			if (ConfigKeyZoom.Value != KeyCode.None)
+				ABI_RC.Core.Savior.CVRInputManager.Instance.zoom = Input.GetKey(ConfigKeyZoom.Value);
 
 			// Connection related
 			if (ConfigKeybindDisconnect.Value.IsDown())

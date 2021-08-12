@@ -74,6 +74,7 @@ Please note that the defaults are what I prefer, and for example have F1-8 rathe
 #### Status
 
 - [x] Mic standard & extra push to talk key
+- [x] Zoom
 - [x] Prone
 - [x] Crouch
 - [x] Gesture controls

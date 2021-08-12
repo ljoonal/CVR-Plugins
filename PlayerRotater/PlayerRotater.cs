@@ -64,7 +64,7 @@ namespace PlayerRotater
 			mouseModeHoldKey = Config.Bind(
 				inputPrefsCategory,
 				"KeycodeMouseModeHold",
-				KeyCode.Mouse2,
+				KeyCode.Mouse0,
 				"A key that enables mouse mode when holding it down.");
 
 			Instance = this;
