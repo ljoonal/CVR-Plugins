@@ -6,11 +6,11 @@
 [![GPL-3](https://img.shields.io/badge/license-GPL--3-black?style=flat)](https://tldrlegal.com/license/gnu-general-public-license-v3-(gpl-3))
 ![Lines of code](https://img.shields.io/tokei/lines/git.ljoonal.xyz/ljoonal/CVR-Mods?label=code%20lines&style=flat)
 
-
 This repository contains some of my plugins for [ChilloutVR](https://store.steampowered.com/app/661130/ChilloutVR/) using [BepInEx](https://github.com/BepInEx/BepInEx).
 
-Basically to install though, just follow the [BepInEx guide](https://docs.bepinex.dev/articles/user_guide/installation/index.html) for Unity games for windows.
+To install, just follow the [BepInEx guide](https://docs.bepinex.dev/articles/user_guide/installation/index.html) for Unity games for windows.
 After that just drag'n'drop the DLL's into the `BepInEx/plugins` folder.
+If you need help, I encourage you to join my [CVR modding discord corner](https://discord.gg/2WR6rGVzht).
 
 I'd recommend you also get [sinai-dev's BepInExConfigManager](https://github.com/sinai-dev/BepInExConfigManager) so that you can edit your configs in game. You'll want the Mono version for CVR.
 
@@ -128,7 +128,8 @@ Current status:
 
 ### Hop Lib
 
-A library plugin for other plugins to use. Mainly supposed to help making mods more wholesome easily, leading to less code repeat & complex code needing to be implemented only once.
+A library plugin for other plugins to use.
+Mainly supposed to help making mods more wholesome easily, leading to less code repeat & complex code needing to be implemented only once.
 
 You really should read the source code to see all the available ways to use it, but the basics are as follows:
 
@@ -155,12 +156,15 @@ It's still under heavy development, I'd suggest others don't rely on it yet, as 
 
 ## Building
 
-Ensure that the required DLL's (listed in the `Directory.build.props` file and in the individual `.csproj` files) can be found from standard installation paths or from under the `Libs` folder.
-Then run `dotnet build -c Release CVR-Plugins.csproj` to build all the plugins in release mode.
+Ensure that the required DLL's (listed in the `Directory.build.props` file and in the individual `.csproj` files) can be found from standard installation paths (check `Directory.build.props`).
+Then use the `dotnet build` command to build.
+A few examples include running `dotnet build HopLib/HopLib.csproj` to build HopLib in development mode or `dotnet build -c Release CVR-Plugins.csproj` to build all the plugins in release mode.
 
 Alternatively you can try to open the folder in Visual Studio, but I cannot provide help for using that.
 If you do want to improve the situation, do feel free to contribute!
 
-## Contributing
+## Contacting & contributing
 
-Contact me [on Discord](https://discord.gg/2WR6rGVzht) or send me git patches that you want merged.
+Contact me [on Discord](https://discord.gg/2WR6rGVzht), [elsewhere](https://ljoonal.xyz/contact), and possibly send me git patches if you've already written any code that you'd like to get merged.
+
+Also if anyone from the CVR team is reading this, do feel free to get in touch! I tried to email you a few times but stopped after never hearing a reply.
