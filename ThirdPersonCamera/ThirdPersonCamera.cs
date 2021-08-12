@@ -162,7 +162,9 @@ namespace ThirdPersonCamera
 
 		private void UpdateActiveCamera()
 		{
+#if DEBUG
 			Logger.LogInfo($"Toggling camera mode to: {CurrentCameraState}");
+#endif
 			bool useDefaultCamera = CurrentCameraState == CameraState.Default;
 			CameraObject.GetComponent<Camera>().enabled = !useDefaultCamera;
 			ABI_RC.Core.Player.PlayerSetup.Instance.desktopCamera.GetComponent<Camera>().enabled = useDefaultCamera;
