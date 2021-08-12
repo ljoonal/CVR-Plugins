@@ -4,10 +4,11 @@ using UnityEngine;
 using HarmonyLib;
 using CVRPickupObject = ABI.CCK.Components.CVRPickupObject;
 using HopLib.Extras;
+using HopLib;
 
 namespace RotateIt
 {
-
+	[BepInDependency(HopLibInfo.GUID, HopLibInfo.Version)]
 	[BepInPlugin(BuildInfo.GUID, BuildInfo.Name, BuildInfo.Version)]
 	[BepInProcess("ChilloutVR.exe")]
 	public class RotateItPlugin : BaseUnityPlugin

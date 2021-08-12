@@ -3,6 +3,7 @@ using BepInEx.Configuration;
 using UnityEngine;
 using HarmonyLib;
 using HopLib.Extras;
+using HopLib;
 
 namespace ThirdPersonCamera
 {
@@ -14,6 +15,7 @@ namespace ThirdPersonCamera
 		Freeform
 	}
 
+	[BepInDependency(HopLibInfo.GUID, HopLibInfo.Version)]
 	[BepInPlugin(BuildInfo.GUID, BuildInfo.Name, BuildInfo.Version)]
 	[BepInProcess("ChilloutVR.exe")]
 	public class ThirdPersonCameraPlugin : BaseUnityPlugin
