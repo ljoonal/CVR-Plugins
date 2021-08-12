@@ -40,6 +40,8 @@ If you want the feature enough to get the plugin for it, you should probably als
 
 [Roadmap entry for customizing UI](https://hub.abinteractive.net/roadmap/inspect?job=191).
 
+![Works in 2021r160 EV2](https://img.shields.io/badge/2021r160%20EV2-Works-brightgreen?style=flat)
+
 A plugin to allow customizing the colors.
 
 Currently implemented:
@@ -59,6 +61,8 @@ And maybe that'll make this plugin not need to implement them if it's natively s
 
 [Link to roadmap entry for third person camera](https://hub.abinteractive.net/roadmap/inspect?job=198).
 
+![Works in 2021r160 EV2](https://img.shields.io/badge/2021r160%20EV2-Works-brightgreen?style=flat)
+
 Allows you to toggle to a third person mode with a keybind, and zoom in and out with your mouse scrollwheel.
 
 This is quite heavily WIP still, expect jank!
@@ -66,6 +70,8 @@ This is quite heavily WIP still, expect jank!
 ### KeyRebinder
 
 [Link to thew roadmap entry for rebindable keys](https://hub.abinteractive.net/roadmap/inspect?job=212).
+
+![Works in 2021r160 EV2](https://img.shields.io/badge/2021r160%20EV2-Works-brightgreen?style=flat)
 
 A plugin to allow for some desktop mode keyboard rebinds, since the game does not include it as a feature.
 
@@ -89,9 +95,13 @@ Please note that the defaults are what I prefer, and for example have F1-8 rathe
 
 [Link to Feature request](https://forums.abinteractive.net/d/187-flight-speed-multiplier).
 
+![Broken in 2021r160 EV2](https://img.shields.io/badge/2021r160%20EV2-Broken-red?style=flat)
+
 A plugin that allows changing your flying speed.
 
 ### Player Rotater
+
+![Works in 2021r160 EV2](https://img.shields.io/badge/2021r160%20EV2-Works-brightgreen?style=flat)
 
 A plugin that allows rotating your own avatar whilst in flying mode.
 
@@ -99,10 +109,14 @@ A plugin that allows rotating your own avatar whilst in flying mode.
 
 [Link to Feature request](https://forums.abinteractive.net/d/97-object-rotation-in-desktop).
 
+![Works in 2021r160 EV2](https://img.shields.io/badge/2021r160%20EV2-Works-brightgreen?style=flat)
+
 Ever wanted to rotate items in desktop mode? Well now you can with this plugin!
 With configurable rotation speed and keybinds.
 
 ### M.A Logger
+
+![Works in 2021r160 EV2](https://img.shields.io/badge/2021r160%20EV2-Works-brightgreen?style=flat)
 
 A plugin for logging possibly Malicious Activity.
 The logging is only for the ID's though, so this won't be too useful for other than possibly reporting malicious activity.
@@ -120,6 +134,8 @@ Current status:
 - [ ] Prop state changes
 
 ### Hop Lib
+
+![Works in 2021r160 EV2](https://img.shields.io/badge/2021r160%20EV2-Works-brightgreen?style=flat)
 
 A library plugin for other plugins to use. Mainly supposed to help making mods more wholesome easily, leading to less code repeat & complex code needing to be implemented only once.
 
