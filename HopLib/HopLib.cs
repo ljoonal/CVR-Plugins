@@ -3,8 +3,12 @@ using BepInEx.Configuration;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using HarmonyLib;
-using CVRObjectLoader = ABI_RC.Core.IO.CVRObjectLoader;
+using CVRWorld = ABI.CCK.Components.CVRWorld;
+using CVRAssetInfo = ABI.CCK.Components.CVRAssetInfo;
 using Instancing = ABI_RC.Core.Networking.IO.Instancing;
+
+// This file contains some logic that requires keeping state.
+// If you're just wanting to use the HopApi, head over to the `Api` folder instead,
 
 namespace HopLib
 {
@@ -15,15 +19,20 @@ namespace HopLib
 		internal static HopLibPlugin Instance;
 		private static string _joinTargetId;
 		internal static string InstanceId;
-		internal static ABI.CCK.Components.CVRWorld World;
+		internal static CVRWorld World;
 		internal static string WorldId
 		{
 			get
 			{
-				return World.gameObject.GetComponent<ABI.CCK.Components.CVRAssetInfo>().guid;
+				return World.gameObject.GetComponent<CVRAssetInfo>().guid;
 			}
 		}
 		internal static string GameModeId = "SocialVR";
+
+		internal static BepInEx.Logging.ManualLogSource GetLogger()
+		{
+			return Instance.Logger;
+		}
 
 		[HarmonyPatch(typeof(Instancing.Instances), nameof(Instancing.Instances.SetJoinTarget))]
 		[HarmonyPostfix]
@@ -40,7 +49,7 @@ namespace HopLib
 		private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
 		{
 
-			ABI.CCK.Components.CVRWorld world = GameObject.FindObjectOfType<ABI.CCK.Components.CVRWorld>();
+			CVRWorld world = FindObjectOfType<CVRWorld>();
 			if (world == null || world.gameObject.scene != scene)
 			{
 #if DEBUG
@@ -63,11 +72,15 @@ namespace HopLib
 				return;
 			}
 
+			if (InstanceId is null || InstanceId == "")
+			{
 #if DEBUG
-			Instance.Logger.LogInfo($"Invoking InstanceJoined: {InstanceId}. {WorldId}");
+				Instance.Logger.LogWarning($"Not invoking InstanceJoined, InstanceId is empty");
 #endif
+				return;
+			}
 
-			HopApi.InvokeInstanceJoined();
+			HopApi.InvokeInstanceJoined(new InstanceEventArgs(InstanceId, World));
 		}
 
 		private HopLibPlugin()
@@ -87,6 +100,7 @@ namespace HopLib
 			{
 				SceneManager.sceneLoaded += OnSceneLoaded;
 				Harmony.CreateAndPatchAll(typeof(HopLibPlugin));
+				Harmony.CreateAndPatchAll(typeof(HopApi));
 #if DEBUG
 					Logger.LogInfo($"{nameof(HopLibPlugin)} started successfully");
 #endif

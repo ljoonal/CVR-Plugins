@@ -4,6 +4,102 @@
         <name>HopLib</name>
     </assembly>
     <members>
+        <member name="T:HopLib.HopApi">
+            <summary>The main Hop API.</summary>
+            <remarks>
+            The Hop API's purpose is to help modders.
+            It will eventually have events and utilities for commonly required things.
+            Currently it is under heavy development, so expect breaking changes even with minor revisions before the 1.0.0 release
+            </remarks>
+            <example><code>
+            using ABI_RC.Core.Player;
+            using HopLib;
+            HopApi.PlayerJoined += (object sender, PropEventArgs e) => {
+              Player.CVRPlayerEntity player = Player.CVRPlayerManager.Find(
+              	(Player.CVRPlayerEntity p) => p.Uuid == e.playerId
+              );
+            };
+            </code></example>
+        </member>
+        <member name="E:HopLib.HopApi.AvatarLoaded">
+            <summary>Invoked when an user's avatar has been loaded.</summary>
+        </member>
+        <member name="P:HopLib.HopApi.CurrentGameModeId">
+            <summary>The current game mode's ID.</summary>
+            <remarks>
+            Currently it'll just a static default, but in the future this will be implemented if possible.
+            If you only need this on instance change, prefer using <see cref="E:HopLib.HopApi.InstanceJoined" />.
+            </remarks>
+        </member>
+        <member name="P:HopLib.HopApi.CurrentInstanceId">
+            <summary>The current instance's ID.</summary>
+            <remarks>If you only need this on instance change, prefer using <see cref="E:HopLib.HopApi.InstanceJoined" />.</remarks>
+        </member>
+        <member name="P:HopLib.HopApi.CurrentWorldId">
+            <summary>The current world's ID.</summary>
+            <remarks>If you only need this on instance change, prefer using <see cref="E:HopLib.HopApi.InstanceJoined" />.</remarks>
+        </member>
+        <member name="E:HopLib.HopApi.InstanceJoined">
+            <summary>Invoked when the local player has joined a new instance.</summary>
+        </member>
+        <member name="E:HopLib.HopApi.PlayerJoining">
+            <summary>Invoked when a remote player has mostly joined, but it yet to be added to the.</summary>
+            <remarks>Not invoked for blocked players or local player.</remarks>
+        </member>
+        <member name="E:HopLib.HopApi.PortalLoaded">
+            <summary>Invoked when a portal has been loaded.</summary>
+        </member>
+        <member name="E:HopLib.HopApi.PropLoaded">
+            <summary>Invoked when a prop has been loaded.</summary>
+            <remarks>Not invoked for blocked props.</remarks>
+        </member>
+        <member name="T:HopLib.AvatarEventArgs">
+            <summary>Arguments for an avatar related event.</summary>
+            <remarks>Used for example in <see cref="E:HopLib.HopApi.AvatarLoaded" />.</remarks>
+        </member>
+        <member name="F:HopLib.AvatarEventArgs.Avatar">
+            <summary>The avatar that the event relates to.</summary>
+        </member>
+        <member name="F:HopLib.AvatarEventArgs.Target">
+            <summary>The player that the event is related to, null for local player.</summary>
+        </member>
+        <member name="P:HopLib.AvatarEventArgs.IsLocal">
+            <summary>If the target is the local player.</summary>
+        </member>
+        <member name="T:HopLib.InstanceEventArgs">
+            <summary>Arguments for an instance related event.</summary>
+            <remarks>Used for example in <see cref="E:HopLib.HopApi.InstanceJoined" />.</remarks>
+        </member>
+        <member name="F:HopLib.InstanceEventArgs.World">
+            <summary>The world that the event relates to.</summary>
+        </member>
+        <member name="F:HopLib.InstanceEventArgs.InstanceId">
+            <summary>The instance's ID that this event relates to.</summary>
+        </member>
+        <member name="T:HopLib.PlayerEventArgs">
+            <summary>Arguments for an avatar related event.</summary>
+            <remarks>
+            Used for example in <see cref="E:HopLib.HopApi.PlayerJoining" />.
+            If you want to access the player's avatar, you should instead use <see cref="E:HopLib.HopApi.AvatarLoaded" />.
+            </remarks>
+        </member>
+        <member name="F:HopLib.PlayerEventArgs.PlayerId">
+            <summary>The player's ID that the event relates to.</summary>
+        </member>
+        <member name="T:HopLib.PortalEventArgs">
+            <summary>Arguments for a portal related event.</summary>
+            <remarks>Used for example in <see cref="E:HopLib.HopApi.PortalLoaded" />.</remarks>
+        </member>
+        <member name="F:HopLib.PortalEventArgs.Portal">
+            <summary>The avatar that the event relates to.</summary>
+        </member>
+        <member name="T:HopLib.PropEventArgs">
+            <summary>Arguments for a prop related event.</summary>
+            <remarks>Used for example in <see cref="E:HopLib.HopApi.PropLoaded" />.</remarks>
+        </member>
+        <member name="F:HopLib.PropEventArgs.Prop">
+            <summary>The prop that the event relates to.</summary>
+        </member>
         <member name="T:HopLib.Extras.AllowingKeyboardShortcut">
             <summary>
             `KeyboardShortcut` but allows other keys to be pressed at the same time.
@@ -23,27 +119,6 @@
             <summary>
             Check if the main key was just lifted (Input.GetKeyUp), and specified modifier keys are all pressed, while also allowing other keys to be pressed.
             </summary>
-        </member>
-        <member name="T:HopLib.HopApi">
-            <summary>The main Hop API.</summary>
-            <remarks>
-            The Hop API's purpose is to help modders.
-            It will eventually have events and utilities for commonly required things.
-            Currently it is under heavy development, so expect breaking changes even with minor revisions before the 1.0.0 release
-            </remarks>
-        </member>
-        <member name="P:HopLib.HopApi.CurrentGameModeId">
-            <summary>The current game mode's ID.</summary>
-            <remarks>Currently it'll just a static default, but in the future this will be implemented if possible.</remarks>
-        </member>
-        <member name="P:HopLib.HopApi.CurrentInstanceId">
-            <summary>The current instance's ID.</summary>
-        </member>
-        <member name="P:HopLib.HopApi.CurrentWorldId">
-            <summary>The current world's ID.</summary>
-        </member>
-        <member name="E:HopLib.HopApi.InstanceJoined">
-            <summary>Invoked when the local player has joined a new instance.</summary>
         </member>
         <member name="T:HopLib.HopLibInfo">
             <summary>Info about the current HopLib.</summary>
