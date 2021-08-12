@@ -1,6 +1,11 @@
 # CVR-Mods
 
-Join my discord if you're interested in CVR modding: [https://discord.gg/2WR6rGVzht](https://discord.gg/2WR6rGVzht)
+[![Discord](https://img.shields.io/discord/865118898889031690?label=discord&logo=discord&style=flat)](https://discord.gg/2WR6rGVzht)
+[![Latest release](https://img.shields.io/badge/dynamic/json.svg?label=release&url=https://git.ljoonal.xyz/api/v1/repos/ljoonal/CVR-Mods/releases&query=$[0].tag_name&style=flat&logo=gitea)](./releases/latest)
+[![Works in 2021r160 EV2](https://img.shields.io/badge/CVR-2021r160%20EV2-brightgreen?style=flat&logo=steam)](https://store.steampowered.com/app/661130/ChilloutVR/)
+[![GPL-3](https://img.shields.io/badge/license-GPL--3-black?style=flat)](https://tldrlegal.com/license/gnu-general-public-license-v3-(gpl-3))
+![Lines of code](https://img.shields.io/tokei/lines/git.ljoonal.xyz/ljoonal/CVR-Mods?label=code%20lines&style=flat)
+
 
 This repository contains some of my plugins for [ChilloutVR](https://store.steampowered.com/app/661130/ChilloutVR/) using [BepInEx](https://github.com/BepInEx/BepInEx).
 
@@ -40,8 +45,6 @@ If you want the feature enough to get the plugin for it, you should probably als
 
 [Roadmap entry for customizing UI](https://hub.abinteractive.net/roadmap/inspect?job=191).
 
-![Works in 2021r160 EV2](https://img.shields.io/badge/2021r160%20EV2-Works-brightgreen?style=flat)
-
 A plugin to allow customizing the colors.
 
 Currently implemented:
@@ -61,8 +64,6 @@ And maybe that'll make this plugin not need to implement them if it's natively s
 
 [Link to roadmap entry for third person camera](https://hub.abinteractive.net/roadmap/inspect?job=198).
 
-![Works in 2021r160 EV2](https://img.shields.io/badge/2021r160%20EV2-Works-brightgreen?style=flat)
-
 Allows you to toggle to a third person mode with a keybind, and zoom in and out with your mouse scrollwheel.
 
 This is quite heavily WIP still, expect jank!
@@ -70,8 +71,6 @@ This is quite heavily WIP still, expect jank!
 ### KeyRebinder
 
 [Link to thew roadmap entry for rebindable keys](https://hub.abinteractive.net/roadmap/inspect?job=212).
-
-![Works in 2021r160 EV2](https://img.shields.io/badge/2021r160%20EV2-Works-brightgreen?style=flat)
 
 A plugin to allow for some desktop mode keyboard rebinds, since the game does not include it as a feature.
 
@@ -95,13 +94,11 @@ Please note that the defaults are what I prefer, and for example have F1-8 rathe
 
 [Link to Feature request](https://forums.abinteractive.net/d/187-flight-speed-multiplier).
 
-![Broken in 2021r160 EV2](https://img.shields.io/badge/2021r160%20EV2-Broken-red?style=flat)
+![Broken](https://img.shields.io/badge/Status-Broken-red?style=flat)
 
 A plugin that allows changing your flying speed.
 
 ### Player Rotater
-
-![Works in 2021r160 EV2](https://img.shields.io/badge/2021r160%20EV2-Works-brightgreen?style=flat)
 
 A plugin that allows rotating your own avatar whilst in flying mode.
 
@@ -109,14 +106,10 @@ A plugin that allows rotating your own avatar whilst in flying mode.
 
 [Link to Feature request](https://forums.abinteractive.net/d/97-object-rotation-in-desktop).
 
-![Works in 2021r160 EV2](https://img.shields.io/badge/2021r160%20EV2-Works-brightgreen?style=flat)
-
 Ever wanted to rotate items in desktop mode? Well now you can with this plugin!
 With configurable rotation speed and keybinds.
 
 ### M.A Logger
-
-![Works in 2021r160 EV2](https://img.shields.io/badge/2021r160%20EV2-Works-brightgreen?style=flat)
 
 A plugin for logging possibly Malicious Activity.
 The logging is only for the ID's though, so this won't be too useful for other than possibly reporting malicious activity.
@@ -134,8 +127,6 @@ Current status:
 - [ ] Prop state changes
 
 ### Hop Lib
-
-![Works in 2021r160 EV2](https://img.shields.io/badge/2021r160%20EV2-Works-brightgreen?style=flat)
 
 A library plugin for other plugins to use. Mainly supposed to help making mods more wholesome easily, leading to less code repeat & complex code needing to be implemented only once.
 
@@ -172,4 +163,4 @@ If you do want to improve the situation, do feel free to contribute!
 
 ## Contributing
 
-Contact me on Discord or send me git patches that you want merged.
+Contact me [on Discord](https://discord.gg/2WR6rGVzht) or send me git patches that you want merged.
