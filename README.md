@@ -112,7 +112,6 @@ With configurable rotation speed and keybinds.
 ### M.A Logger
 
 A plugin for logging possibly Malicious Activity.
-The logging is only for the ID's though, so this won't be too useful for other than possibly reporting malicious activity.
 
 An example use case would be to get the last change before you crashed.
 Since if a lot of people crashed at once, it's probably a fault of the most recently loaded thing.
