@@ -2,4 +2,10 @@
 	<PropertyGroup>
 		<DocumentationFile>$(ProjectDir)HopApi.xml</DocumentationFile>
 	</PropertyGroup>
+
+	<ItemGroup>
+		<Reference Include="UnityEngine.InputLegacyModule">
+      <HintPath>$(GameRefsPath)UnityEngine.InputLegacyModule.dll</HintPath>
+    </Reference>
+	</ItemGroup>
 </Project>

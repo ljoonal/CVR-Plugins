@@ -1,2 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+	<ItemGroup>
+		<ProjectReference Include="..\HopLib\HopLib.csproj" />
+		<Reference Include="UnityEngine.InputLegacyModule">
+      <HintPath>$(GameRefsPath)UnityEngine.InputLegacyModule.dll</HintPath>
+    </Reference>
+	</ItemGroup>
 </Project>

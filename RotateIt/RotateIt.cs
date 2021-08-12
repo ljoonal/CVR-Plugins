@@ -3,6 +3,7 @@ using BepInEx.Configuration;
 using UnityEngine;
 using HarmonyLib;
 using CVRPickupObject = ABI.CCK.Components.CVRPickupObject;
+using HopLib.Extras;
 
 namespace RotateIt
 {
@@ -12,15 +13,15 @@ namespace RotateIt
 	public class RotateItPlugin : BaseUnityPlugin
 	{
 		private static RotateItPlugin Instance;
-		private readonly ConfigEntry<KeyCode> KeyPitchRight, KeyPitchLeft, KeyYawRight, KeyYawLeft, KeyRollRight, KeyRollLeft;
+		private readonly ConfigEntry<KeyboardShortcut> KeyPitchRight, KeyPitchLeft, KeyYawRight, KeyYawLeft, KeyRollRight, KeyRollLeft;
 		private readonly ConfigEntry<float> RotationSpeed;
 
 		private static Quaternion GrabbedRotationOffset = Quaternion.identity;
 
-		private ConfigEntry<KeyCode> RegisterKeybind(string prefName, KeyCode keyCode, string description)
+		private ConfigEntry<KeyboardShortcut> RegisterKeybind(string prefName, KeyCode keyCode, string description)
 		{
 			const string keybindCategory = "Keybinds";
-			return Config.Bind(keybindCategory, prefName, keyCode, "The key for: " + description);
+			return Config.Bind(keybindCategory, prefName, new KeyboardShortcut(keyCode), "The key for: " + description);
 		}
 
 		RotateItPlugin()
@@ -53,16 +54,16 @@ namespace RotateIt
 		{
 
 			float pitch = 0f;
-			if (Input.GetKey(KeyPitchRight.Value)) pitch += RotationSpeed.Value;
-			if (Input.GetKey(KeyPitchLeft.Value)) pitch -= RotationSpeed.Value;
+			if (KeyPitchRight.Value.AllowingIsPressed()) pitch += RotationSpeed.Value;
+			if (KeyPitchLeft.Value.AllowingIsPressed()) pitch -= RotationSpeed.Value;
 
 			float yaw = 0f;
-			if (Input.GetKey(KeyYawRight.Value)) yaw += RotationSpeed.Value;
-			if (Input.GetKey(KeyYawLeft.Value)) yaw -= RotationSpeed.Value;
+			if (KeyYawRight.Value.AllowingIsPressed()) yaw += RotationSpeed.Value;
+			if (KeyYawLeft.Value.AllowingIsPressed()) yaw -= RotationSpeed.Value;
 
 			float roll = 0f;
-			if (Input.GetKey(KeyRollRight.Value)) roll += RotationSpeed.Value;
-			if (Input.GetKey(KeyRollLeft.Value)) roll -= RotationSpeed.Value;
+			if (KeyRollRight.Value.AllowingIsPressed()) roll += RotationSpeed.Value;
+			if (KeyRollLeft.Value.AllowingIsPressed()) roll -= RotationSpeed.Value;
 
 			return (pitch, yaw, roll);
 		}

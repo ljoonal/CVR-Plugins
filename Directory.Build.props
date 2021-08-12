@@ -36,9 +36,6 @@
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>$(GameRefsPath)UnityEngine.CoreModule.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.InputLegacyModule">
-      <HintPath>$(GameRefsPath)UnityEngine.InputLegacyModule.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
 

@@ -1,18 +1,19 @@
 using HarmonyLib;
 using BepInEx.Configuration;
 using UnityEngine;
+using HopLib.Extras;
 
 namespace KeyRebinder
 {
 	class MovementPatches
 	{
-		private static ConfigEntry<KeyCode> ConfigJump;
-		private static ConfigEntry<KeyCode> ConfigSprint;
-		private static ConfigEntry<KeyCode> ConfigCrouch;
-		private static ConfigEntry<KeyCode> ConfigProne;
-		private static ConfigEntry<KeyCode> ConfigFlyToggle;
-		private static ConfigEntry<KeyCode> ConfigFlyUp;
-		private static ConfigEntry<KeyCode> ConfigFlyDown;
+		private static ConfigEntry<KeyboardShortcut> ConfigJump,
+			ConfigSprint,
+			ConfigCrouch,
+			ConfigProne,
+			ConfigFlyToggle,
+			ConfigFlyUp,
+			ConfigFlyDown;
 		private static bool AllowFlyingToggle = true;
 
 		public static void RegisterConfigs(ConfigFile Config)
@@ -20,37 +21,37 @@ namespace KeyRebinder
 			ConfigJump = Config.Bind(
 				nameof(MovementPatches),
 				"BindJump",
-				KeyCode.Space,
+				new KeyboardShortcut(KeyCode.Space),
 				"The keybind for jumping");
 			ConfigSprint = Config.Bind(
 				nameof(MovementPatches),
 				"BindSprint",
-				KeyCode.LeftShift,
+				new KeyboardShortcut(KeyCode.LeftShift),
 				"The keybind for sprinting");
 			ConfigCrouch = Config.Bind(
 				nameof(MovementPatches),
 				"BindCrouch",
-				KeyCode.C,
+				new KeyboardShortcut(KeyCode.C),
 				"The keybind for crouching");
 			ConfigProne = Config.Bind(
 				nameof(MovementPatches),
 				"BindProne",
-				KeyCode.X,
+				new KeyboardShortcut(KeyCode.X),
 				"The keybind for going prone");
 			ConfigFlyToggle = Config.Bind(
 				nameof(MovementPatches),
 				"BindFlyToggle",
-				KeyCode.Keypad5,
+				new KeyboardShortcut(KeyCode.Keypad5),
 				"The keybind for toggling flying");
 			ConfigFlyUp = Config.Bind(
 				nameof(MovementPatches),
 				"BindFlyUp",
-				KeyCode.Space,
+				new KeyboardShortcut(KeyCode.Space),
 				"The keybind for flying up");
 			ConfigFlyDown = Config.Bind(
 				nameof(MovementPatches),
 				"BindFlyDown",
-				KeyCode.C,
+				new KeyboardShortcut(KeyCode.C),
 				"The keybind for flying down");
 		}
 
@@ -73,13 +74,13 @@ namespace KeyRebinder
 			// Setting these only in the Harmony patch prefix,
 			// because otherwise the game input handling will overwrite our changes on Update
 
-			ABI_RC.Core.Savior.CVRInputManager.Instance.crouchToggle = Input.GetKeyDown(ConfigCrouch.Value);
-			ABI_RC.Core.Savior.CVRInputManager.Instance.proneToggle = Input.GetKeyDown(ConfigProne.Value);
-			ABI_RC.Core.Savior.CVRInputManager.Instance.jump = Input.GetKey(ConfigJump.Value);
-			ABI_RC.Core.Savior.CVRInputManager.Instance.sprint = Input.GetKey(ConfigSprint.Value);
+			ABI_RC.Core.Savior.CVRInputManager.Instance.crouchToggle = ConfigCrouch.Value.AllowingIsDown();
+			ABI_RC.Core.Savior.CVRInputManager.Instance.proneToggle = ConfigProne.Value.AllowingIsDown();
+			ABI_RC.Core.Savior.CVRInputManager.Instance.jump = ConfigJump.Value.AllowingIsPressed();
+			ABI_RC.Core.Savior.CVRInputManager.Instance.sprint = ConfigSprint.Value.AllowingIsPressed();
 
-			if (Input.GetKey(ConfigFlyUp.Value)) __state += 1f;
-			if (Input.GetKey(ConfigFlyDown.Value)) __state -= 1f;
+			if (ConfigFlyUp.Value.AllowingIsPressed()) __state += 1f;
+			if (ConfigFlyDown.Value.AllowingIsPressed()) __state -= 1f;
 
 			ABI_RC.Core.Savior.CVRInputManager.Instance.floatDirection = __state;
 		}
@@ -88,7 +89,7 @@ namespace KeyRebinder
 		[HarmonyPrefix]
 		static void FlyingToggling()
 		{
-			if (Input.GetKeyDown(ConfigFlyToggle.Value))
+			if (ConfigFlyToggle.Value.AllowingIsDown())
 			{
 				ABI_RC.Core.Player.PlayerSetup.Instance._movementSystem.toggleFlight();
 			}

@@ -2,6 +2,7 @@ using HarmonyLib;
 using BepInEx.Configuration;
 using UnityEngine;
 using System.Reflection;
+using HopLib.Extras;
 
 namespace KeyRebinder
 {
@@ -13,9 +14,8 @@ namespace KeyRebinder
 			ConfigKeybindHudToggle,
 			ConfigKeybindDisconnect,
 			ConfigKeybindDisconnectAndGoHome,
-			ConfigKeybindRejoinCurrentInstance;
-
-		private static ConfigEntry<KeyCode> ConfigKeyZoom;
+			ConfigKeybindRejoinCurrentInstance,
+			ConfigKeyZoom;
 
 		public static void RegisterConfigs(ConfigFile Config)
 		{
@@ -43,7 +43,7 @@ namespace KeyRebinder
 			ConfigKeyZoom = Config.Bind(
 				nameof(MiscPatches),
 				"BindZoom",
-				KeyCode.Mouse2,
+				new KeyboardShortcut(KeyCode.Mouse2),
 				"The key for zooming.");
 
 			// Connection related
@@ -76,26 +76,26 @@ namespace KeyRebinder
 			// Setting these only in the Harmony patch prefix,
 			// because otherwise the game input handling may overwrite our changes on Update
 			if (ConfigKeybindReload.Value.MainKey != KeyCode.None)
-				ABI_RC.Core.Savior.CVRInputManager.Instance.reload = ConfigKeybindReload.Value.IsDown();
+				ABI_RC.Core.Savior.CVRInputManager.Instance.reload = ConfigKeybindReload.Value.AllowingIsDown();
 			if (ConfigKeybindSwitchMode.Value.MainKey != KeyCode.None)
-				ABI_RC.Core.Savior.CVRInputManager.Instance.switchMode = ConfigKeybindSwitchMode.Value.IsDown();
+				ABI_RC.Core.Savior.CVRInputManager.Instance.switchMode = ConfigKeybindSwitchMode.Value.AllowingIsDown();
 			if (ConfigKeybindNameplatesToggle.Value.MainKey != KeyCode.None)
-				ABI_RC.Core.Savior.CVRInputManager.Instance.toggleNameplates = ConfigKeybindNameplatesToggle.Value.IsDown();
+				ABI_RC.Core.Savior.CVRInputManager.Instance.toggleNameplates = ConfigKeybindNameplatesToggle.Value.AllowingIsDown();
 			if (ConfigKeybindHudToggle.Value.MainKey != KeyCode.None)
-				ABI_RC.Core.Savior.CVRInputManager.Instance.toggleHud = ConfigKeybindHudToggle.Value.IsDown();
-			if (ConfigKeyZoom.Value != KeyCode.None)
-				ABI_RC.Core.Savior.CVRInputManager.Instance.zoom = Input.GetKey(ConfigKeyZoom.Value);
+				ABI_RC.Core.Savior.CVRInputManager.Instance.toggleHud = ConfigKeybindHudToggle.Value.AllowingIsDown();
+			if (ConfigKeyZoom.Value.MainKey != KeyCode.None)
+				ABI_RC.Core.Savior.CVRInputManager.Instance.zoom = ConfigKeyZoom.Value.AllowingIsPressed();
 
 			// Connection related
-			if (ConfigKeybindDisconnect.Value.IsDown())
+			if (ConfigKeybindDisconnect.Value.AllowingIsDown())
 			{
 				ABI_RC.Core.Networking.NetworkManager.Instance.OnDisconnectionRequested(0, false);
 			}
-			else if (ConfigKeybindDisconnectAndGoHome.Value.IsDown())
+			else if (ConfigKeybindDisconnectAndGoHome.Value.AllowingIsDown())
 			{
 				ABI_RC.Core.Networking.NetworkManager.Instance.OnDisconnectionRequested(0, true);
 			}
-			else if (ConfigKeybindRejoinCurrentInstance.Value.IsDown())
+			else if (ConfigKeybindRejoinCurrentInstance.Value.AllowingIsDown())
 			{
 				var instanceID = ABI_RC.Core.Savior.MetaPort.Instance.CurrentInstanceId;
 				var worldID = GameObject.FindObjectOfType<ABI.CCK.Components.CVRWorld>().GetComponent<ABI.CCK.Components.CVRAssetInfo>().guid;

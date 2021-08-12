@@ -7,6 +7,7 @@ using InputModuleMouseKeyboard = ABI_RC.Core.Savior.InputModuleMouseKeyboard;
 using PlayerSetup = ABI_RC.Core.Player.PlayerSetup;
 using CVR_MovementSystem = ABI_RC.Core.Player.CVR_MovementSystem;
 using HopLib;
+using HopLib.Extras;
 
 namespace PlayerRotater
 {
@@ -23,8 +24,7 @@ namespace PlayerRotater
 	public class PlayerRotaterPlugin : BaseUnityPlugin
 	{
 		private static PlayerRotaterPlugin Instance;
-		private ConfigEntry<KeyboardShortcut> mouseModeToggleKeybind;
-		private ConfigEntry<KeyCode> mouseModeHoldKey;
+		private ConfigEntry<KeyboardShortcut> mouseModeToggleKeybind, mouseModeHoldKey;
 		private Vector3? originalRotation = null;
 		private Transform PlayerRotationTransform
 		{
@@ -64,7 +64,7 @@ namespace PlayerRotater
 			mouseModeHoldKey = Config.Bind(
 				inputPrefsCategory,
 				"KeycodeMouseModeHold",
-				KeyCode.Mouse0,
+				new KeyboardShortcut(KeyCode.Mouse0),
 				"A key that enables mouse mode when holding it down.");
 
 			Instance = this;
@@ -170,7 +170,7 @@ namespace PlayerRotater
 				if (MouseLookEnabled == EnabledState.Toggled) MouseLookEnabled = EnabledState.Off;
 				else MouseLookEnabled = EnabledState.Toggled;
 			}
-			else if (Input.GetKey(mouseModeHoldKey.Value)) MouseLookEnabled = EnabledState.Holding;
+			else if (mouseModeHoldKey.Value.AllowingIsPressed()) MouseLookEnabled = EnabledState.Holding;
 			else if (MouseLookEnabled == EnabledState.Holding) MouseLookEnabled = EnabledState.Off;
 		}
 	}

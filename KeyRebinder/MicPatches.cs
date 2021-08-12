@@ -1,25 +1,26 @@
 using HarmonyLib;
 using UnityEngine;
 using BepInEx.Configuration;
+using HopLib.Extras;
 
 namespace KeyRebinder
 {
 	class MicPatches
 	{
-		private static ConfigEntry<KeyCode> ConfigKeybindMicToggle;
-		private static ConfigEntry<KeyCode> ConfigKeybindMicPushToTalk;
+		private static ConfigEntry<KeyboardShortcut> ConfigKeybindMicToggle,
+			ConfigKeybindMicPushToTalk;
 
 		public static void RegisterConfigs(ConfigFile Config)
 		{
 			ConfigKeybindMicToggle = Config.Bind(
 				nameof(MicPatches),
 				"BindToggle",
-				KeyCode.V,
+				new KeyboardShortcut(KeyCode.V),
 				"The key for toggling mute");
 			ConfigKeybindMicPushToTalk = Config.Bind(
 				nameof(MicPatches),
 					"BindPushToTalk",
-					KeyCode.Mouse3,
+					new KeyboardShortcut(KeyCode.Mouse3),
 					"The key that enables push to talk whilst pressing it.");
 		}
 
@@ -34,20 +35,20 @@ namespace KeyRebinder
 		{
 			var isMuteDown = false;
 
-			if (Input.GetKeyDown(ConfigKeybindMicPushToTalk.Value))
+			if (ConfigKeybindMicPushToTalk.Value.AllowingIsDown())
 			{
 				ABI_RC.Core.Player.InputManager.Instance.pushToTalk = true;
 				isMuteDown = true;
 			}
-			else if (Input.GetKeyUp(ConfigKeybindMicPushToTalk.Value))
+			else if (ConfigKeybindMicPushToTalk.Value.AllowingIsUp())
 			{
 				// To turn off the mic, we need the mute button to be down here too.
 				isMuteDown = true;
 				ABI_RC.Core.Player.InputManager.Instance.pushToTalk = false;
 			}
 			else if (
-				Input.GetKey(ConfigKeybindMicPushToTalk.Value) ||
-				Input.GetKeyDown(ConfigKeybindMicToggle.Value)
+				ConfigKeybindMicPushToTalk.Value.AllowingIsPressed() ||
+				ConfigKeybindMicToggle.Value.AllowingIsDown()
 			)
 			{
 				isMuteDown = true;

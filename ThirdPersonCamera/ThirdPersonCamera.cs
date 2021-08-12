@@ -2,6 +2,7 @@ using BepInEx;
 using BepInEx.Configuration;
 using UnityEngine;
 using HarmonyLib;
+using HopLib.Extras;
 
 namespace ThirdPersonCamera
 {
@@ -17,9 +18,7 @@ namespace ThirdPersonCamera
 	[BepInProcess("ChilloutVR.exe")]
 	public class ThirdPersonCameraPlugin : BaseUnityPlugin
 	{
-		private static ConfigEntry<KeyboardShortcut> KeybindCycle, KeybindFrontCam, KeybindBackCam, KeybindFreeformCam;
-		private static ConfigEntry<KeyCode> KeybindFreeformMovement;
-
+		private static ConfigEntry<KeyboardShortcut> KeybindCycle, KeybindFrontCam, KeybindBackCam, KeybindFreeformCam, KeybindFreeformMovement;
 		private static CameraState CurrentCameraState = CameraState.Default;
 		private static Transform Reference
 		{
@@ -68,7 +67,7 @@ namespace ThirdPersonCamera
 			KeybindFreeformCam = Config.Bind(
 				_general_preferences_category, "KeybindFreeformCamera", new KeyboardShortcut(KeyCode.None), "The keybind used to turn on freeform camera mode (None disables)");
 			KeybindFreeformMovement = Config.Bind(
-				_general_preferences_category, "KeybindFreeformMovement", KeyCode.Mouse1, "The keycode that enables freeform looking around whilst being held (None disables)");
+				_general_preferences_category, "KeybindFreeformMovement", new KeyboardShortcut(KeyCode.Mouse1), "The keycode that enables freeform looking around whilst being held (None disables)");
 
 			try
 			{
@@ -88,16 +87,16 @@ namespace ThirdPersonCamera
 			if (CurrentCameraState != CameraState.Default && Input.GetKeyDown(KeyCode.Escape)) UseDefaultCamera();
 			else
 			{
-				if (KeybindCycle.Value.IsDown())
+				if (KeybindCycle.Value.AllowingIsDown())
 				{
 					if (CurrentCameraState == CameraState.Default) ToggleFrontCamera();
 					else if (CurrentCameraState == CameraState.Front) ToggleBackCamera();
 					else if (CurrentCameraState == CameraState.Back) ToggleFreeformCamera();
 					else UseDefaultCamera();
 				}
-				else if (KeybindFrontCam.Value.IsDown()) ToggleFrontCamera();
-				else if (KeybindBackCam.Value.IsDown()) ToggleBackCamera();
-				else if (KeybindFreeformCam.Value.IsDown()) ToggleFreeformCamera();
+				else if (KeybindFrontCam.Value.AllowingIsDown()) ToggleFrontCamera();
+				else if (KeybindBackCam.Value.AllowingIsDown()) ToggleBackCamera();
+				else if (KeybindFreeformCam.Value.AllowingIsDown()) ToggleFreeformCamera();
 			}
 
 			if (CurrentCameraState != CameraState.Default)
@@ -174,7 +173,7 @@ namespace ThirdPersonCamera
 		[HarmonyPostfix]
 		public static void InputPatches()
 		{
-			if (CurrentCameraState == CameraState.Freeform && Input.GetKey(KeybindFreeformMovement.Value))
+			if (CurrentCameraState == CameraState.Freeform && KeybindFreeformMovement.Value.AllowingIsPressed())
 			{
 				CameraObject.transform.eulerAngles += new Vector3(
 					ABI_RC.Core.Savior.CVRInputManager.Instance.lookVector.y * -1,
