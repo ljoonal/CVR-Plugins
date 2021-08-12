@@ -55,6 +55,14 @@ namespace HopLib
 			World = world;
 			InstanceId = _joinTargetId;
 
+			if (WorldId is null || WorldId == "")
+			{
+#if DEBUG
+			Instance.Logger.LogWarning($"Not invoking InstanceJoined, worldId is empty");
+#endif
+				return;
+			}
+
 #if DEBUG
 			Instance.Logger.LogInfo($"Invoking InstanceJoined: {InstanceId}. {WorldId}");
 #endif
