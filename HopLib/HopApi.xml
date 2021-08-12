@@ -4,6 +4,26 @@
         <name>HopLib</name>
     </assembly>
     <members>
+        <member name="T:HopLib.Extras.AllowingKeyboardShortcut">
+            <summary>
+            `KeyboardShortcut` but allows other keys to be pressed at the same time.
+            </summary>
+        </member>
+        <member name="M:HopLib.Extras.AllowingKeyboardShortcut.AllowingIsDown(BepInEx.Configuration.KeyboardShortcut)">
+            <summary>
+            Check if the main key was just pressed (Input.GetKeyDown), and specified modifier keys are all pressed, while also allowing other keys to be pressed.
+            </summary>
+        </member>
+        <member name="M:HopLib.Extras.AllowingKeyboardShortcut.AllowingIsPressed(BepInEx.Configuration.KeyboardShortcut)">
+            <summary>
+            Check if the main key is currently held down (Input.GetKey), and specified modifier keys are all pressed, while also allowing other keys to be pressed.
+            </summary>
+        </member>
+        <member name="M:HopLib.Extras.AllowingKeyboardShortcut.AllowingIsUp(BepInEx.Configuration.KeyboardShortcut)">
+            <summary>
+            Check if the main key was just lifted (Input.GetKeyUp), and specified modifier keys are all pressed, while also allowing other keys to be pressed.
+            </summary>
+        </member>
         <member name="T:HopLib.HopApi">
             <summary>The main Hop API.</summary>
             <remarks>
