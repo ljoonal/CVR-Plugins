@@ -2,12 +2,15 @@ using BepInEx;
 using BepInEx.Configuration;
 using UnityEngine;
 using HarmonyLib;
+using CVRPlayerManager = ABI_RC.Core.Player.CVRPlayerManager;
 using DownloadJob = ABI_RC.Core.IO.DownloadJob;
 using CVRObjectLoader = ABI_RC.Core.IO.CVRObjectLoader;
 using CVRPortalManager = ABI_RC.Core.InteractionSystem.CVRPortalManager;
+using HopLib;
 
 namespace MALogger
 {
+	[BepInDependency(HopLibInfo.GUID, HopLibInfo.Version)]
 	[BepInPlugin(BuildInfo.GUID, BuildInfo.Name, BuildInfo.Version)]
 	[BepInProcess("ChilloutVR.exe")]
 	public class MALoggerPlugin : BaseUnityPlugin
@@ -36,41 +39,34 @@ namespace MALogger
 
 			Instance = this;
 
-			try
-			{
-				Harmony.CreateAndPatchAll(typeof(MALoggerPlugin));
-			}
-			catch (System.Exception ex)
-			{
-				Logger.LogError($"Failed to apply patch: {ex}");
-			}
+			HopApi.AvatarLoaded += OnAvatarLoad;
+			HopApi.PropLoaded += OnPropLoad;
+			HopApi.PortalLoaded += OnPortalLoad;
 		}
 
-		[HarmonyPatch(typeof(CVRObjectLoader), "InstantiateAvatar")]
-		[HarmonyPostfix]
-		public static void OnAvatarLoadPatch(string objectId, string instTarget)
+		private void OnAvatarLoad(object sender, AvatarEventArgs ev)
 		{
 			if (!Instance.AvatarLoggingEnabled.Value) return;
-			string targetText = instTarget != null ? " for " + instTarget : "";
-			Instance.Logger.LogInfo($"Avatar {objectId}{targetText}");
+			string avatarGuid = ev.Avatar.GetComponent<ABI.CCK.Components.CVRAssetInfo>().guid;
+			string username = ev.Target?.userName ?? ABI_RC.Core.Savior.MetaPort.Instance.username;
+			string userId = ev.Target?.ownerId ?? ABI_RC.Core.Savior.MetaPort.Instance.ownerId;
+			Instance.Logger.LogInfo($"Avatar {avatarGuid} by {username} ({userId})");
 		}
 
-		[HarmonyPatch(typeof(CVRObjectLoader), "InstantiateProp")]
-		[HarmonyPostfix]
-		public static void OnPropLoadPatch(string objectId, string instTarget)
+		private void OnPropLoad(object sender, PropEventArgs ev)
 		{
 			if (!Instance.PropLoggingEnabled.Value) return;
-			string targetText = instTarget != null ? " for " + instTarget : "";
-			Instance.Logger.LogInfo($"Prop {objectId}{targetText}");
+			string spawnerId = ev.Prop.SpawnedBy;
+			string spawnerName = CVRPlayerManager.Instance.TryGetPlayerName(spawnerId);
+			Instance.Logger.LogInfo($"Prop {ev.Prop.Spawnable.guid} by {spawnerName} ({spawnerId})");
 		}
 
-		// Patch a bit later so that the data is initialized properly.
-		[HarmonyPatch(typeof(CVRPortalManager), "WriteData")]
-		[HarmonyPostfix]
-		public static void OnPortalDropPatch(CVRPortalManager __instance)
+		private void OnPortalLoad(object sender, PortalEventArgs ev)
 		{
-			if (!Instance.PortalLoggingEnabled.Value || __instance.type != CVRPortalManager.PortalType.Instance) return;
-			Instance.Logger.LogInfo($"Portal to {__instance.GetInstanceId} ({__instance.GetWorldId}) by {__instance.portalOwner}");
+			if (!Instance.PortalLoggingEnabled.Value || ev.Portal.type != CVRPortalManager.PortalType.Instance) return;
+			string dropperId = ev.Portal.portalOwner;
+			string dropperName = CVRPlayerManager.Instance.TryGetPlayerName(dropperId);
+			Instance.Logger.LogInfo($"Portal to {ev.Portal.Portal.PortalName} by {dropperName} ({dropperId})");
 		}
 	}
 }
