@@ -24,23 +24,18 @@
         <member name="E:HopLib.HopApi.AvatarLoaded">
             <summary>Invoked when an user's avatar has been loaded.</summary>
         </member>
-        <member name="P:HopLib.HopApi.CurrentGameModeId">
-            <summary>The current game mode's ID.</summary>
-            <remarks>
-            Currently it'll just a static default, but in the future this will be implemented if possible.
-            If you only need this on instance change, prefer using <see cref="E:HopLib.HopApi.InstanceJoined" />.
-            </remarks>
-        </member>
         <member name="P:HopLib.HopApi.CurrentInstanceId">
             <summary>The current instance's ID.</summary>
             <remarks>If you only need this on instance change, prefer using <see cref="E:HopLib.HopApi.InstanceJoined" />.</remarks>
         </member>
-        <member name="P:HopLib.HopApi.CurrentWorldId">
-            <summary>The current world's ID.</summary>
-            <remarks>If you only need this on instance change, prefer using <see cref="E:HopLib.HopApi.InstanceJoined" />.</remarks>
+        <member name="E:HopLib.HopApi.InstanceJoiningStarted">
+            <summary>Invoked when the local player has started the process of joining another instance. One of the only reliable ways to retrieve the instance ID.</summary>
         </member>
         <member name="E:HopLib.HopApi.InstanceJoined">
-            <summary>Invoked when the local player has joined a new instance.</summary>
+            <summary>Invoked when the local player has joined a new instance, but the world is probably not loaded fully yet.</summary>
+        </member>
+        <member name="E:HopLib.HopApi.InstanceDisconnect">
+            <summary>Invoked when the local player has disconnected from the game network.</summary>
         </member>
         <member name="E:HopLib.HopApi.PlayerJoining">
             <summary>Invoked when a remote player has mostly joined, but it yet to be added to the.</summary>
@@ -52,6 +47,12 @@
         <member name="E:HopLib.HopApi.PropLoaded">
             <summary>Invoked when a prop has been loaded.</summary>
             <remarks>Not invoked for blocked props.</remarks>
+        </member>
+        <member name="P:HopLib.HopApi.CurrentWorld">
+            <summary>The current world.</summary>
+        </member>
+        <member name="E:HopLib.HopApi.WorldStarted">
+            <summary>Invoked when a world has been loaded.</summary>
         </member>
         <member name="T:HopLib.AvatarEventArgs">
             <summary>Arguments for an avatar related event.</summary>
@@ -70,15 +71,8 @@
             <summary>Arguments for an instance related event.</summary>
             <remarks>Used for example in <see cref="E:HopLib.HopApi.InstanceJoined" />.</remarks>
         </member>
-        <member name="F:HopLib.InstanceEventArgs.World">
-            <summary>The world that the event relates to.</summary>
-        </member>
         <member name="F:HopLib.InstanceEventArgs.InstanceId">
             <summary>The instance's ID that this event relates to.</summary>
-        </member>
-        <member name="P:HopLib.InstanceEventArgs.GamemodeId">
-            <summary>The instance's gamemode that this event relates to.</summary>
-            <remarks>Currently it'll just a static default, but in the future this will be implemented if possible.</remarks>
         </member>
         <member name="T:HopLib.PlayerEventArgs">
             <summary>Arguments for an avatar related event.</summary>
@@ -103,6 +97,13 @@
         </member>
         <member name="F:HopLib.PropEventArgs.Prop">
             <summary>The prop that the event relates to.</summary>
+        </member>
+        <member name="T:HopLib.WorldEventArgs">
+            <summary>Arguments for a world related event.</summary>
+            <remarks>Used for example in <see cref="E:HopLib.HopApi.WorldStarted" />.</remarks>
+        </member>
+        <member name="F:HopLib.WorldEventArgs.World">
+            <summary>The world that the event relates to.</summary>
         </member>
         <member name="T:HopLib.Extras.AllowingKeyboardShortcut">
             <summary>
