@@ -63,5 +63,15 @@ namespace HopLib
 		public CVRWorld World;
 		/// <summary>The instance's ID that this event relates to.</summary>
 		public string InstanceId;
+
+		/// <summary>The instance's gamemode that this event relates to.</summary>
+		/// <remarks>Currently it'll just a static default, but in the future this will be implemented if possible.</remarks>
+		public string GamemodeId
+		{
+			get
+			{
+				return "SocialVR";
+			}
+		}
 	}
 }

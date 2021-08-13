@@ -76,6 +76,10 @@
         <member name="F:HopLib.InstanceEventArgs.InstanceId">
             <summary>The instance's ID that this event relates to.</summary>
         </member>
+        <member name="P:HopLib.InstanceEventArgs.GamemodeId">
+            <summary>The instance's gamemode that this event relates to.</summary>
+            <remarks>Currently it'll just a static default, but in the future this will be implemented if possible.</remarks>
+        </member>
         <member name="T:HopLib.PlayerEventArgs">
             <summary>Arguments for an avatar related event.</summary>
             <remarks>
