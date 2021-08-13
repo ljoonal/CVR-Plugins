@@ -24,7 +24,7 @@ namespace PlayerRotater
 	public class PlayerRotaterPlugin : BaseUnityPlugin
 	{
 		private static PlayerRotaterPlugin Instance;
-		private ConfigEntry<KeyboardShortcut> mouseModeToggleKeybind, mouseModeHoldKey;
+		private ConfigEntry<KeyboardShortcut> mouseModeToggleKeybind, mouseModeHoldKeybind;
 		private Vector3? originalRotation = null;
 		private Transform PlayerRotationTransform
 		{
@@ -61,7 +61,7 @@ namespace PlayerRotater
 				new KeyboardShortcut(KeyCode.None),
 				"The keybind for toggling mouse mode");
 
-			mouseModeHoldKey = Config.Bind(
+			mouseModeHoldKeybind = Config.Bind(
 				inputPrefsCategory,
 				"KeycodeMouseModeHold",
 				new KeyboardShortcut(KeyCode.Mouse0),
@@ -165,12 +165,12 @@ namespace PlayerRotater
 
 		private void ProcessMouseLookState()
 		{
-			if (mouseModeToggleKeybind.Value.IsDown())
+			if (mouseModeToggleKeybind.Value.AllowingIsDown())
 			{
 				if (MouseLookEnabled == EnabledState.Toggled) MouseLookEnabled = EnabledState.Off;
 				else MouseLookEnabled = EnabledState.Toggled;
 			}
-			else if (mouseModeHoldKey.Value.AllowingIsPressed()) MouseLookEnabled = EnabledState.Holding;
+			else if (mouseModeHoldKeybind.Value.AllowingIsPressed()) MouseLookEnabled = EnabledState.Holding;
 			else if (MouseLookEnabled == EnabledState.Holding) MouseLookEnabled = EnabledState.Off;
 		}
 	}
