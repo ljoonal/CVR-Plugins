@@ -37,6 +37,10 @@ And running MelonLoader still requires .NET framework anyway, which BepInEx does
 
 MelonLoader also does not have a few features that BepInEx does, and BepInEx just seems way more mature for modding Unity (non-IL2CPP) games.
 
+## Skip intro
+
+A simple plugin to skip the intro scene automatically.
+
 ## Plugin list
 
 If you want the feature enough to get the plugin for it, you should probably also go upvote the feature request if there is one.
