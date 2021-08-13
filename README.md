@@ -138,20 +138,16 @@ You really should read the source code to see all the available ways to use it, 
 
 ```csharp
 void Awake() {
-  HopApi.InstanceJoined += delegate { DoThings(); };
-  HopApi.InstanceJoined += AlternativeHandler;
+  HopApi.PortalLoaded += delegate {
+    // Do stuff that doesn't require any data with an anonymous delegate.
+   };
+   // If you want to access the data of the event,
+  HopApi.InstanceJoined += OnInstancedJoined;
 }
 
-void DoThings() {
-  if (HopApi.CurrentGameModeId != "SocialVR") {
-    return;
-  }
-  // Do stuff...
-}
-
-void AlternativeHandler(object sender, System.EventArgs e) {
-  // sender & args are gonna be null, but you do you...
-  DoThings();
+void OnInstancedJoined(object sender, InstanceEventArgs ev) {
+  if (ev.GamemodeId != "SocialVR") return;
+  // Do stuff
 }
 ```
 
