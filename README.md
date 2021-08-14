@@ -4,7 +4,7 @@
 [![Latest release](https://img.shields.io/badge/dynamic/json.svg?label=release&url=https://git.ljoonal.xyz/api/v1/repos/ljoonal/CVR-Mods/releases&query=$[0].tag_name&style=flat&logo=gitea)](https://cvr.ljoonal.xyz/releases)
 [![Works in 2021r160 EV2](https://img.shields.io/badge/CVR-2021r160%20EV2-brightgreen?style=flat&logo=steam)](https://store.steampowered.com/app/661130/ChilloutVR/)
 [![GPL-3](https://img.shields.io/badge/license-GPL--3-black?style=flat)](https://tldrlegal.com/license/gnu-general-public-license-v3-(gpl-3))
-![Lines of code](https://img.shields.io/tokei/lines/git.ljoonal.xyz/ljoonal/CVR-Mods?label=code%20lines&style=flat)
+[![Lines of code](https://img.shields.io/tokei/lines/git.ljoonal.xyz/ljoonal/CVR-Mods?label=code%20lines&style=flat)](.)
 
 This repository contains some of my plugins for [ChilloutVR](https://store.steampowered.com/app/661130/ChilloutVR/) using [BepInEx](https://github.com/BepInEx/BepInEx).
 
