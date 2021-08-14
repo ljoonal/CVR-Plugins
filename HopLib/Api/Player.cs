@@ -51,10 +51,6 @@ namespace HopLib
 		[HarmonyPostfix]
 		private static void PlayerDeletedPostfix(CVRPlayerManager __instance, List<string> __state)
 		{
-#if DEBUG
-			HopLibPlugin.GetLogger()
-				.LogInfo($"PlayerDeleted {__state.Count()} vs {__instance.NetworkPlayers.Count()}");
-#endif
 			foreach (var playerId in __state.Where(id => !__instance.NetworkPlayers.Any(p => p.Uuid == id)))
 			{
 #if DEBUG
