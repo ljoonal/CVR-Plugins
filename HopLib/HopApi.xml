@@ -12,12 +12,9 @@
             Currently it is under heavy development, so expect breaking changes even with minor revisions before the 1.0.0 release
             </remarks>
             <example><code>
-            using ABI_RC.Core.Player;
             using HopLib;
-            HopApi.PlayerJoined += (object sender, PropEventArgs e) => {
-              Player.CVRPlayerEntity player = Player.CVRPlayerManager.Find(
-              	(Player.CVRPlayerEntity p) => p.Uuid == e.playerId
-              );
+            HopApi.PlayerAdded += (object sender, PlayerEventArgs ev) => {
+              Logger.LogInfo($"Player {ev.Player.Username} added.");
             };
             </code></example>
         </member>
@@ -37,9 +34,11 @@
         <member name="E:HopLib.HopApi.InstanceDisconnect">
             <summary>Invoked when the local player has disconnected from the game network.</summary>
         </member>
-        <member name="E:HopLib.HopApi.PlayerJoining">
-            <summary>Invoked when a remote player has mostly joined, but it yet to be added to the.</summary>
-            <remarks>Not invoked for blocked players or local player.</remarks>
+        <member name="E:HopLib.HopApi.PlayerAdded">
+            <summary>Invoked when a remote player has been added (when for example loading in or they connected).</summary>
+        </member>
+        <member name="E:HopLib.HopApi.PlayerRemoved">
+            <summary>Invoked when a remote player has been removed (when for example they disconnected).</summary>
         </member>
         <member name="E:HopLib.HopApi.PortalLoaded">
             <summary>Invoked when a portal has been loaded.</summary>
@@ -75,14 +74,22 @@
             <summary>The instance's ID that this event relates to.</summary>
         </member>
         <member name="T:HopLib.PlayerEventArgs">
-            <summary>Arguments for an avatar related event.</summary>
+            <summary>Arguments for a player related event.</summary>
             <remarks>
-            Used for example in <see cref="E:HopLib.HopApi.PlayerJoining" />.
+            Used for example in <see cref="E:HopLib.HopApi.PlayerAdded" />.
             If you want to access the player's avatar, you should instead use <see cref="E:HopLib.HopApi.AvatarLoaded" />.
+            Please note that this value might be copied via reflections to avoid the game recycling it, so some methods may not behave correctly.
             </remarks>
         </member>
-        <member name="F:HopLib.PlayerEventArgs.PlayerId">
-            <summary>The player's ID that the event relates to.</summary>
+        <member name="F:HopLib.PlayerEventArgs.Player">
+            <summary>The player that the event relates to.</summary>
+        </member>
+        <member name="T:HopLib.PlayerIdEventArgs">
+            <summary>Arguments for a player related event but with only the ID of the player.</summary>
+            <remarks>Used for example in <see cref="E:HopLib.HopApi.PlayerRemoved" />.</remarks>
+        </member>
+        <member name="F:HopLib.PlayerIdEventArgs.PlayerId">
+            <summary>The ID of the player that the event relates to.</summary>
         </member>
         <member name="T:HopLib.PortalEventArgs">
             <summary>Arguments for a portal related event.</summary>

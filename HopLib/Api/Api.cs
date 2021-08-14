@@ -7,12 +7,9 @@ namespace HopLib
 	/// Currently it is under heavy development, so expect breaking changes even with minor revisions before the 1.0.0 release
 	/// </remarks>
 	/// <example><code>
-	/// using ABI_RC.Core.Player;
 	/// using HopLib;
-	/// HopApi.PlayerJoined += (object sender, PropEventArgs e) => {
-	///   Player.CVRPlayerEntity player = Player.CVRPlayerManager.Find(
-	///   	(Player.CVRPlayerEntity p) => p.Uuid == e.playerId
-	///   );
+	/// HopApi.PlayerAdded += (object sender, PlayerEventArgs ev) => {
+	///   Logger.LogInfo($"Player {ev.Player.Username} added.");
 	/// };
 	/// </code></example>
 	public partial class HopApi
