@@ -98,8 +98,6 @@ Please note that the defaults are what I prefer, and for example have F1-8 rathe
 
 [Link to Feature request](https://forums.abinteractive.net/d/187-flight-speed-multiplier).
 
-![Broken](https://img.shields.io/badge/Status-Broken-red?style=flat)
-
 A plugin that allows changing your flying speed.
 
 ### Player Rotater
@@ -115,7 +113,7 @@ With configurable rotation speed and keybinds.
 
 ### M.A Logger
 
-A plugin for logging possibly Malicious Activity.
+A plugin for logging things, to help figuring out the cause of Malicious Activity.
 
 An example use case would be to get the last change before you crashed.
 Since if a lot of people crashed at once, it's probably a fault of the most recently loaded thing.
@@ -152,6 +150,14 @@ void OnInstancedJoined(object sender, InstanceEventArgs ev) {
 ```
 
 It's still under heavy development, I'd suggest others don't rely on it yet, as I'm trying to figure out what are the most useful & required abstractions.
+
+## Mods under consideration
+
+- Make the menu follow the local player/camera.
+- Add local metadata to other players. Nicknames/notes/profile picture replacements even perhaps?
+- Nameplate overdraw, basically draw nameplates over everything else.
+- Give the user more details about why a prop was filtered. Maybe avatars too, but lesser priority because the tags are already visible in the menus.
+- Teleportation to another player or some other good way to be able to find & get to them in a huge world.
 
 ## Building
 
