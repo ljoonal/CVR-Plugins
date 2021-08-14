@@ -103,6 +103,8 @@ A plugin that allows changing your flying speed.
 
 ### Player Rotater
 
+[![Requires HopLib](https://img.shields.io/badge/HopLib-Required-informational?style=flat)](https://cvr.ljoonal.xyz/releases)
+
 A plugin that allows rotating your own avatar whilst in flying mode.
 
 ### Rotate It
