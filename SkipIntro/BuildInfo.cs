@@ -2,12 +2,12 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 
 [assembly: ComVisible(false)]
-[assembly: AssemblyTitle(WhyFiltered.BuildInfo.GUID)]
-[assembly: AssemblyProduct(WhyFiltered.BuildInfo.Name)]
-[assembly: AssemblyVersion(WhyFiltered.BuildInfo.Version)]
+[assembly: AssemblyTitle(SkipIntro.BuildInfo.GUID)]
+[assembly: AssemblyProduct(SkipIntro.BuildInfo.Name)]
+[assembly: AssemblyVersion(SkipIntro.BuildInfo.Version)]
 [assembly: AssemblyCompany("cvr.ljoonal.xyz")]
 
-namespace WhyFiltered
+namespace SkipIntro
 {
 	public static class BuildInfo
 	{

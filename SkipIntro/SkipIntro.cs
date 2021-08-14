@@ -1,10 +1,10 @@
+using System.Reflection;
 using BepInEx;
 using BepInEx.Configuration;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Reflection;
 
-namespace WhyFiltered
+namespace SkipIntro
 {
 	[BepInPlugin(BuildInfo.GUID, BuildInfo.Name, BuildInfo.Version)]
 	[BepInProcess("ChilloutVR.exe")]
