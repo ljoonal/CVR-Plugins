@@ -1,7 +1,7 @@
 # CVR-Mods
 
 [![Discord](https://img.shields.io/discord/865118898889031690?label=discord&logo=discord&style=flat)](https://discord.gg/2WR6rGVzht)
-[![Latest release](https://img.shields.io/badge/dynamic/json.svg?label=release&url=https://git.ljoonal.xyz/api/v1/repos/ljoonal/CVR-Mods/releases&query=$[0].tag_name&style=flat&logo=gitea)](./releases/latest)
+[![Latest release](https://img.shields.io/badge/dynamic/json.svg?label=release&url=https://git.ljoonal.xyz/api/v1/repos/ljoonal/CVR-Mods/releases&query=$[0].tag_name&style=flat&logo=gitea)](https://cvr.ljoonal.xyz/releases)
 [![Works in 2021r160 EV2](https://img.shields.io/badge/CVR-2021r160%20EV2-brightgreen?style=flat&logo=steam)](https://store.steampowered.com/app/661130/ChilloutVR/)
 [![GPL-3](https://img.shields.io/badge/license-GPL--3-black?style=flat)](https://tldrlegal.com/license/gnu-general-public-license-v3-(gpl-3))
 ![Lines of code](https://img.shields.io/tokei/lines/git.ljoonal.xyz/ljoonal/CVR-Mods?label=code%20lines&style=flat)
@@ -47,7 +47,7 @@ A simple plugin to skip the intro scene automatically.
 
 ### Color Customizer
 
-[Roadmap entry for customizing UI](https://hub.abinteractive.net/roadmap/inspect?job=191).
+[![Roadmap entry](https://img.shields.io/badge/upstream-roadmap%20entry-pink?style=flat)](https://hub.abinteractive.net/roadmap/inspect?job=191).
 
 A plugin to allow customizing the colors.
 
@@ -66,13 +66,15 @@ And maybe that'll make this plugin not need to implement them if it's natively s
 
 ### Third person camera
 
-[Link to roadmap entry for third person camera](https://hub.abinteractive.net/roadmap/inspect?job=198).
+[![Requires HopLib](https://img.shields.io/badge/HopLib-Required-informational?style=flat)]((https://cvr.ljoonal.xyz/releases))
+[![Roadmap entry](https://img.shields.io/badge/upstream-roadmap%20entry-pink?style=flat)](https://hub.abinteractive.net/roadmap/inspect?job=198).
 
 Allows you to toggle to a third person mode with a keybind, and zoom in and out with your mouse scroll wheel.
 
 ### KeyRebinder
 
-[Link to thew roadmap entry for rebindable keys](https://hub.abinteractive.net/roadmap/inspect?job=212).
+[![Requires HopLib](https://img.shields.io/badge/HopLib-Required-informational?style=flat)]((https://cvr.ljoonal.xyz/releases))
+[![Roadmap entry](https://img.shields.io/badge/upstream-roadmap%20entry-pink?style=flat)](https://hub.abinteractive.net/roadmap/inspect?job=212).
 
 A plugin to allow for some desktop mode keyboard rebinds, since the game does not include it as a feature.
 
@@ -94,7 +96,8 @@ Please note that the defaults are what I prefer, and for example have F1-8 rathe
 
 ### Speed Multiplier
 
-[Link to Feature request](https://forums.abinteractive.net/d/187-flight-speed-multiplier).
+[![Requires HopLib](https://img.shields.io/badge/HopLib-Required-informational?style=flat)]((https://cvr.ljoonal.xyz/releases))
+[![Feature request](https://img.shields.io/badge/upstream-feature%20request-pink?style=flat)](https://forums.abinteractive.net/d/187-flight-speed-multiplier).
 
 A plugin that allows changing your flying speed.
 
@@ -104,12 +107,15 @@ A plugin that allows rotating your own avatar whilst in flying mode.
 
 ### Rotate It
 
-[Link to Feature request](https://forums.abinteractive.net/d/97-object-rotation-in-desktop).
+[![Requires HopLib](https://img.shields.io/badge/HopLib-Required-informational?style=flat)]((https://cvr.ljoonal.xyz/releases))
+[![Feature request](https://img.shields.io/badge/upstream-feature%20request-pink?style=flat)](https://forums.abinteractive.net/d/97-object-rotation-in-desktop).
 
 Ever wanted to rotate items in desktop mode? Well now you can with this plugin!
 With configurable rotation speed and keybinds.
 
 ### M.A Logger
+
+[![Requires HopLib](https://img.shields.io/badge/HopLib-Required-informational?style=flat)]((https://cvr.ljoonal.xyz/releases))
 
 A plugin for logging things, to help figuring out the cause of Malicious Activity.
 
