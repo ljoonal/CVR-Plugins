@@ -68,9 +68,7 @@ And maybe that'll make this plugin not need to implement them if it's natively s
 
 [Link to roadmap entry for third person camera](https://hub.abinteractive.net/roadmap/inspect?job=198).
 
-Allows you to toggle to a third person mode with a keybind, and zoom in and out with your mouse scrollwheel.
-
-This is quite heavily WIP still, expect jank!
+Allows you to toggle to a third person mode with a keybind, and zoom in and out with your mouse scroll wheel.
 
 ### KeyRebinder
 
