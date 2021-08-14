@@ -66,14 +66,14 @@ And maybe that'll make this plugin not need to implement them if it's natively s
 
 ### Third person camera
 
-[![Requires HopLib](https://img.shields.io/badge/HopLib-Required-informational?style=flat)]((https://cvr.ljoonal.xyz/releases))
+[![Requires HopLib](https://img.shields.io/badge/HopLib-Required-informational?style=flat)](https://cvr.ljoonal.xyz/releases)
 [![Roadmap entry](https://img.shields.io/badge/upstream-roadmap%20entry-pink?style=flat)](https://hub.abinteractive.net/roadmap/inspect?job=198).
 
 Allows you to toggle to a third person mode with a keybind, and zoom in and out with your mouse scroll wheel.
 
 ### KeyRebinder
 
-[![Requires HopLib](https://img.shields.io/badge/HopLib-Required-informational?style=flat)]((https://cvr.ljoonal.xyz/releases))
+[![Requires HopLib](https://img.shields.io/badge/HopLib-Required-informational?style=flat)](https://cvr.ljoonal.xyz/releases)
 [![Roadmap entry](https://img.shields.io/badge/upstream-roadmap%20entry-pink?style=flat)](https://hub.abinteractive.net/roadmap/inspect?job=212).
 
 A plugin to allow for some desktop mode keyboard rebinds, since the game does not include it as a feature.
@@ -96,7 +96,7 @@ Please note that the defaults are what I prefer, and for example have F1-8 rathe
 
 ### Speed Multiplier
 
-[![Requires HopLib](https://img.shields.io/badge/HopLib-Required-informational?style=flat)]((https://cvr.ljoonal.xyz/releases))
+[![Requires HopLib](https://img.shields.io/badge/HopLib-Required-informational?style=flat)](https://cvr.ljoonal.xyz/releases)
 [![Feature request](https://img.shields.io/badge/upstream-feature%20request-pink?style=flat)](https://forums.abinteractive.net/d/187-flight-speed-multiplier).
 
 A plugin that allows changing your flying speed.
@@ -107,7 +107,7 @@ A plugin that allows rotating your own avatar whilst in flying mode.
 
 ### Rotate It
 
-[![Requires HopLib](https://img.shields.io/badge/HopLib-Required-informational?style=flat)]((https://cvr.ljoonal.xyz/releases))
+[![Requires HopLib](https://img.shields.io/badge/HopLib-Required-informational?style=flat)](https://cvr.ljoonal.xyz/releases)
 [![Feature request](https://img.shields.io/badge/upstream-feature%20request-pink?style=flat)](https://forums.abinteractive.net/d/97-object-rotation-in-desktop).
 
 Ever wanted to rotate items in desktop mode? Well now you can with this plugin!
@@ -115,7 +115,7 @@ With configurable rotation speed and keybinds.
 
 ### M.A Logger
 
-[![Requires HopLib](https://img.shields.io/badge/HopLib-Required-informational?style=flat)]((https://cvr.ljoonal.xyz/releases))
+[![Requires HopLib](https://img.shields.io/badge/HopLib-Required-informational?style=flat)](https://cvr.ljoonal.xyz/releases)
 
 A plugin for logging things, to help figuring out the cause of Malicious Activity.
 
