@@ -47,7 +47,7 @@ A simple plugin to skip the intro scene automatically.
 
 ### Color Customizer
 
-[![Roadmap entry][RoadmapBadge]](https://hub.abinteractive.net/roadmap/inspect?job=191).
+[![Roadmap entry][RoadmapBadge]](https://hub.abinteractive.net/roadmap/inspect?job=191)
 
 A plugin to allow customizing the colors.
 
@@ -67,14 +67,14 @@ And maybe that'll make this plugin not need to implement them if it's natively s
 ### Third person camera
 
 [![Requires HopLib][HopLibBadge]](https://cvr.ljoonal.xyz/releases)
-[![Roadmap entry][RoadmapBadge]](https://hub.abinteractive.net/roadmap/inspect?job=198).
+[![Roadmap entry][RoadmapBadge]](https://hub.abinteractive.net/roadmap/inspect?job=198)
 
 Allows you to toggle to a third person mode with a keybind, and zoom in and out with your mouse scroll wheel.
 
 ### KeyRebinder
 
 [![Requires HopLib][HopLibBadge]](https://cvr.ljoonal.xyz/releases)
-[![Roadmap entry][RoadmapBadge]](https://hub.abinteractive.net/roadmap/inspect?job=212).
+[![Roadmap entry][RoadmapBadge]](https://hub.abinteractive.net/roadmap/inspect?job=212)
 
 A plugin to allow for some desktop mode keyboard rebinds, since the game does not include it as a feature.
 
@@ -97,7 +97,7 @@ The currently implemented keys are:
 ### Speed Multiplier
 
 [![Requires HopLib][HopLibBadge]](https://cvr.ljoonal.xyz/releases)
-[![Feature request][FeatureRequestBadge]](https://forums.abinteractive.net/d/187-flight-speed-multiplier).
+[![Feature request][FeatureRequestBadge]](https://forums.abinteractive.net/d/187-flight-speed-multiplier)
 
 A plugin that allows changing your flying speed.
 
