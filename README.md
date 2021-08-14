@@ -1,4 +1,4 @@
-# CVR-Mods
+# CVR-Mods<!-- omit in toc -->
 
 [![Discord](https://img.shields.io/discord/865118898889031690?label=discord&logo=discord&style=flat)](https://discord.gg/2WR6rGVzht)
 [![Latest release](https://img.shields.io/badge/dynamic/json.svg?label=release&url=https://git.ljoonal.xyz/api/v1/repos/ljoonal/CVR-Mods/releases&query=$[0].tag_name&style=flat&logo=gitea)](https://cvr.ljoonal.xyz/releases)
@@ -14,7 +14,7 @@ If you need help, I encourage you to join my [CVR modding discord corner](https:
 
 I'd recommend you also get [sinai-dev's BepInExConfigManager](https://github.com/sinai-dev/BepInExConfigManager) so that you can edit your configs in game. You'll want the Mono version for CVR.
 
-## Warning
+## Warning<!-- omit in toc -->
 
 No warranty is provided for these plugins, and they're provided as-is.
 Please have a look at the source code & build from source for maximal safety.
@@ -24,22 +24,23 @@ As far as I'm aware, the CVR devs allow modding to some extent now.
 This doesn't mean though that they endorse the mods by me or that I'm in any way representing or affiliated with CVR or Alpha Blend Interactive.
 It's up to you to make sure that you're following their rules & TOS, as I am only providing the code for my plugins and nothing else.
 
-## Why BepInEx and not MelonLoader
-
-If you're asking: "MelonLoader is the tool used with VRC modding, so why not use it for CVR too?"
-
-While it's a great tool, it requires .NET framework. Which is not available for linux.
-I can actually build my plugins on Linux with BepInEx and run them without needing to do wineprefix trickery.
-This is also why the build system is with VSC tasks instead of Visual Studio in this repository.
-
-While it's technically possible to build MelonLoader mods on linux, most mods aren't done that way.
-And running MelonLoader still requires .NET framework anyway, which BepInEx does not.
-
-MelonLoader also does not have a few features that BepInEx does, and BepInEx just seems way more mature for modding Unity (non-IL2CPP) games.
-
-## Plugin list
+## Plugin list<!-- omit in toc -->
 
 If you want the feature enough to get the plugin for it, you should probably also go upvote the feature request if there is one.
+
+- [Skip intro](#skip-intro)
+- [Color Customizer](#color-customizer)
+- [Third person camera](#third-person-camera)
+- [KeyRebinder](#keyrebinder)
+- [Speed Multiplier](#speed-multiplier)
+- [Player Rotater](#player-rotater)
+- [Rotate It](#rotate-it)
+- [M.A Logger](#ma-logger)
+- [Hop Lib](#hop-lib)
+- [Building](#building)
+- [Why BepInEx and not MelonLoader](#why-bepinex-and-not-melonloader)
+- [Contacting & contributing](#contacting--contributing)
+
 
 ### Skip intro
 
@@ -80,7 +81,7 @@ A plugin to allow for some desktop mode keyboard rebinds, since the game does no
 
 Please note that the defaults are what I prefer, and for example have F1-8 rather than standard 1-8 for Gestures&States&Emotes. You can change the keys back easily by changing `F1` to `Alpha1` and so on in the config file.
 
-#### Status
+The currently implemented keys are:
 
 - [x] Mic standard & extra push to talk key
 - [x] Zoom
@@ -157,7 +158,7 @@ void OnInstancedJoined(object sender, InstanceEventArgs ev) {
 
 It's still under heavy development, I'd suggest others don't rely on it yet, as I'm trying to figure out what are the most useful & required abstractions.
 
-## Mods under consideration
+## Mods under consideration<!-- omit in toc -->
 
 - Make the menu follow the local player/camera.
 - Add local metadata to other players. Nicknames/notes/profile picture replacements even perhaps?
@@ -165,7 +166,9 @@ It's still under heavy development, I'd suggest others don't rely on it yet, as 
 - Give the user more details about why a prop was filtered. Maybe avatars too, but lesser priority because the tags are already visible in the menus.
 - Teleportation to another player or some other good way to be able to find & get to them in a huge world.
 
-## Building
+## For developers<!-- omit in toc -->
+
+### Building
 
 Ensure that the required DLL's (listed in the `Directory.build.props` file and in the individual `.csproj` files) can be found from standard installation paths (check `Directory.build.props`).
 Then use the `dotnet build` command to build.
@@ -174,7 +177,20 @@ A few examples include running `dotnet build HopLib/HopLib.csproj` to build HopL
 Alternatively you can try to open the folder in Visual Studio, but I cannot provide help for using that.
 If you do want to improve the situation, do feel free to contribute!
 
-## Contacting & contributing
+### Why BepInEx and not MelonLoader
+
+If you're asking: "MelonLoader is the tool used with VRC modding, so why not use it for CVR too?"
+
+While it's a great tool, it requires .NET framework. Which is not available for linux.
+I can actually build my plugins on Linux with BepInEx and run them without needing to do wineprefix trickery.
+This is also why the build system is with VSC tasks instead of Visual Studio in this repository.
+
+While it's technically possible to build MelonLoader mods on linux, most mods aren't done that way.
+And running MelonLoader still requires .NET framework anyway, which BepInEx does not.
+
+MelonLoader also does not have a few features that BepInEx does, and BepInEx just seems way more mature for modding Unity (non-IL2CPP) games.
+
+### Contacting & contributing
 
 Contact me [on Discord](https://discord.gg/2WR6rGVzht), [elsewhere](https://ljoonal.xyz/contact), and possibly send me git patches if you've already written any code that you'd like to get merged.
 
