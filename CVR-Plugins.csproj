@@ -9,4 +9,8 @@
     <MSBuild Projects="@(ProjectFiles)" Targets="Rebuild" />
   </Target>
 
+  <Target Name="Restore">
+    <MSBuild Projects="@(ProjectFiles)" Targets="Restore" />
+  </Target>
+
 </Project>
