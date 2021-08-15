@@ -164,6 +164,7 @@ It's still under heavy development, I'd suggest others don't rely on it yet, as 
 - Nameplate overdraw, basically draw nameplates over everything else.
 - Give the user more details about why a prop was filtered. Maybe avatars too, but lesser priority because the tags are already visible in the menus.
 - Teleportation to another player or some other good way to be able to find & get to them in a huge world.
+- Better Content filtering
 
 ## For developers<!-- omit in toc -->
 
