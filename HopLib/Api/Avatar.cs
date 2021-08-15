@@ -1,11 +1,11 @@
 using System;
-using UnityEngine;
 using HarmonyLib;
+using UnityEngine;
 using Player = ABI_RC.Core.Player;
 
 namespace HopLib
 {
-	public partial class HopApi
+	public static partial class HopApi
 	{
 		/// <summary>Invoked when an user's avatar has been loaded.</summary>
 		public static event EventHandler<AvatarEventArgs> AvatarLoaded = delegate { };

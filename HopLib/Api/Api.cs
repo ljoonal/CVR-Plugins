@@ -12,7 +12,7 @@ namespace HopLib
 	///   Logger.LogInfo($"Player {ev.Player.Username} added.");
 	/// };
 	/// </code></example>
-	public partial class HopApi
+	public static partial class HopApi
 	{
 		// The api is split accross the whole Api folder, split into more logical sections.
 		// This file is used for generating the main doc comment.

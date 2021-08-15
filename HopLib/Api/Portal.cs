@@ -5,7 +5,7 @@ using CVRPortalManager = ABI_RC.Core.InteractionSystem.CVRPortalManager;
 
 namespace HopLib
 {
-	public partial class HopApi
+	public static partial class HopApi
 	{
 		/// <summary>Invoked when a portal has been loaded.</summary>
 		public static event EventHandler<PortalEventArgs> PortalLoaded = delegate { };

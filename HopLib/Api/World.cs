@@ -4,7 +4,7 @@ using HarmonyLib;
 
 namespace HopLib
 {
-	public partial class HopApi
+	public static partial class HopApi
 	{
 		/// <summary>The current world.</summary>
 		public static CVRWorld CurrentWorld

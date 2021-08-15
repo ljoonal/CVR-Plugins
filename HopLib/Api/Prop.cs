@@ -4,7 +4,7 @@ using CVRSyncHelper = ABI_RC.Core.Util.CVRSyncHelper;
 
 namespace HopLib
 {
-	public partial class HopApi
+	public static partial class HopApi
 	{
 		/// <summary>Invoked when a prop has been loaded.</summary>
 		/// <remarks>Not invoked for blocked props.</remarks>

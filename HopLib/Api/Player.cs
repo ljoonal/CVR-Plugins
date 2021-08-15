@@ -7,7 +7,7 @@ using CVRPlayerManager = ABI_RC.Core.Player.CVRPlayerManager;
 
 namespace HopLib
 {
-	public partial class HopApi
+	public static partial class HopApi
 	{
 		/// <summary>Invoked when a remote player has been added (when for example loading in or they connected).</summary>
 		public static event EventHandler<PlayerEventArgs> PlayerAdded = delegate { };

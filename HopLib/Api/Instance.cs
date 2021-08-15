@@ -7,7 +7,7 @@ using NetworkManager = ABI_RC.Core.Networking.NetworkManager;
 
 namespace HopLib
 {
-	public partial class HopApi
+	public static partial class HopApi
 	{
 		/// <summary>The current instance's ID.</summary>
 		/// <remarks>If you only need this on instance change, prefer using <see cref="InstanceJoined" />.</remarks>
