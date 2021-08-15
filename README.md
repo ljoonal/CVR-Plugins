@@ -36,6 +36,7 @@ If you want the feature enough to get the plugin for it, you should probably als
 - [Player Rotater](#player-rotater)
 - [Rotate It](#rotate-it)
 - [M.A Logger](#ma-logger)
+- [More Filters](#more-filters)
 - [Hop Lib](#hop-lib)
 - [Building](#building)
 - [Why BepInEx and not MelonLoader](#why-bepinex-and-not-melonloader)
@@ -132,6 +133,13 @@ Current status:
 - [x] Portal drops
 - [ ] Avatar state changes
 - [ ] Prop state changes
+
+### More Filters
+
+[![Requires HopLib][HopLibBadge]](https://cvr.ljoonal.xyz/releases)
+
+Adds more features related to content filtering.
+Currently it only has an option to feature spawn audio.
 
 ### Hop Lib
 
