@@ -10,7 +10,7 @@ This repository contains some of my plugins for [ChilloutVR](https://store.steam
 
 To install, just follow the [BepInEx guide](https://docs.bepinex.dev/articles/user_guide/installation/index.html) for Unity games for windows.
 After that just drag'n'drop the DLL's into the `BepInEx/plugins` folder.
-If you need help, I encourage you to join my [CVR modding discord corner](https://discord.gg/2WR6rGVzht).
+If you need help, I encourage you to a discord server I created, the [CVR modding corner](https://discord.gg/2WR6rGVzht).
 
 I'd recommend you also get [sinai-dev's BepInExConfigManager](https://github.com/sinai-dev/BepInExConfigManager) so that you can edit your configs in game. You'll want the Mono version for CVR.
 
@@ -200,7 +200,7 @@ MelonLoader also does not have a few features that BepInEx does, and BepInEx jus
 
 ### Contacting & contributing
 
-Contact me [on Discord](https://discord.gg/2WR6rGVzht), [elsewhere](https://ljoonal.xyz/contact), and possibly send me git patches if you've already written any code that you'd like to get merged.
+Contact me [on the modding corner Discord](https://discord.gg/2WR6rGVzht), [elsewhere](https://ljoonal.xyz/contact), and/or possibly send me git patches if you've already written any code that you'd like to get merged.
 
 Also if anyone from the CVR team is reading this, do feel free to get in touch! I tried to email you a few times but stopped after never hearing a reply.
 
