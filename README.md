@@ -1,4 +1,4 @@
-# CVR-Mods<!-- omit in toc -->
+# CVR-Plugins<!-- omit in toc -->
 
 [![Discord](https://img.shields.io/discord/865118898889031690?label=discord&logo=discord&style=flat)](https://discord.gg/2WR6rGVzht)
 [![Latest release](https://img.shields.io/badge/dynamic/json.svg?label=release&url=https://git.ljoonal.xyz/api/v1/repos/ljoonal/CVR-Mods/releases&query=$[0].tag_name&style=flat&logo=gitea)](https://cvr.ljoonal.xyz/releases)
