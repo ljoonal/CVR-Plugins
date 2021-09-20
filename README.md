@@ -2,7 +2,7 @@
 
 [![Discord](https://img.shields.io/discord/865118898889031690?label=discord&logo=discord&style=flat)](https://discord.gg/2WR6rGVzht)
 [![Latest release](https://img.shields.io/badge/dynamic/json.svg?label=release&url=https://git.ljoonal.xyz/api/v1/repos/ljoonal/CVR-Mods/releases&query=$[0].tag_name&style=flat&logo=gitea)](https://cvr.ljoonal.xyz/releases)
-[![Works in 2021r160 EV2](https://img.shields.io/badge/CVR-2021r160%20EV2-brightgreen?style=flat&logo=steam)](https://store.steampowered.com/app/661130/ChilloutVR/)
+[![Works in 2021r161](https://img.shields.io/badge/CVR-2021r161-brightgreen?style=flat&logo=steam)](https://store.steampowered.com/app/661130/ChilloutVR/)
 [![GPL-3](https://img.shields.io/badge/license-GPL--3-black?style=flat&logo=open-source-initiative)](https://tldrlegal.com/license/gnu-general-public-license-v3-(gpl-3))
 [![Lines of code](https://img.shields.io/tokei/lines/git.ljoonal.xyz/ljoonal/CVR-Mods?label=lines&style=flat&logo=C-Sharp)](.)
 
@@ -169,10 +169,12 @@ It's still under heavy development, I'd suggest others don't rely on it yet, as 
 
 - Make the menu follow the local player/camera.
 - Add local metadata to other players. Nicknames/notes/profile picture replacements even perhaps?
+  - Also to avatars, so you can write a reminder for yourself to why you blocked that thing (super laggy or just very annoying, etc)
 - Nameplate overdraw, basically draw nameplates over everything else.
 - Give the user more details about why a prop was filtered. Maybe avatars too, but lesser priority because the tags are already visible in the menus.
 - Teleportation to another player or some other good way to be able to find & get to them in a huge world.
 - Better Content filtering
+- Avatar performance evaluator - currently it's very tedious to hide each avatar and see the FPS difference before and after
 
 ## For developers<!-- omit in toc -->
 
