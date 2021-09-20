@@ -38,9 +38,6 @@ If you want the feature enough to get the plugin for it, you should probably als
 - [M.A Logger](#ma-logger)
 - [More Filters](#more-filters)
 - [Hop Lib](#hop-lib)
-- [Building](#building)
-- [Why BepInEx and not MelonLoader](#why-bepinex-and-not-melonloader)
-- [Contacting & contributing](#contacting--contributing)
 
 ### Skip intro
 
@@ -178,7 +175,7 @@ It's still under heavy development, I'd suggest others don't rely on it yet, as 
 
 ## For developers<!-- omit in toc -->
 
-### Building
+### Building<!-- omit in toc -->
 
 Ensure that the required DLL's (listed in the `Directory.build.props` file and in the individual `.csproj` files) can be found from standard installation paths (check `Directory.build.props`).
 Then use the `dotnet build` command to build.
@@ -187,7 +184,7 @@ A few examples include running `dotnet build HopLib/HopLib.csproj` to build HopL
 Alternatively you can try to open the folder in Visual Studio, but I cannot provide help for using that.
 If you do want to improve the situation, do feel free to contribute!
 
-### Why BepInEx and not MelonLoader
+### Why BepInEx and not MelonLoader<!-- omit in toc -->
 
 If you're asking: "MelonLoader is the tool used with VRC modding, so why not use it for CVR too?"
 
@@ -200,7 +197,7 @@ And running MelonLoader still requires .NET framework anyway, which BepInEx does
 
 MelonLoader also does not have a few features that BepInEx does, and BepInEx just seems way more mature for modding Unity (non-IL2CPP) games.
 
-### Contacting & contributing
+### Contacting & contributing<!-- omit in toc -->
 
 Contact me [on the modding corner Discord](https://discord.gg/2WR6rGVzht), [elsewhere](https://ljoonal.xyz/contact), and/or possibly send me git patches if you've already written any code that you'd like to get merged.
 
