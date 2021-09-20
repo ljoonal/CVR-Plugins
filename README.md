@@ -143,9 +143,10 @@ Currently it only has an option to feature spawn audio.
 A library plugin for other plugins to use.
 Mainly supposed to help making mods more wholesome easily, leading to less code repeat & complex code needing to be implemented only once.
 
-You really should read the source code to see all the available ways to use it, but the basics are as follows:
-
 ```csharp
+// This example is WIP; It very well might be fully outdated.
+// Wait until HopLib reaches v1.x.x for it's APIs to be more stable.
+
 void Awake() {
   HopApi.PortalLoaded += delegate {
     // Do stuff that doesn't require any data with an anonymous delegate.
