@@ -1,7 +1,12 @@
-using HarmonyLib;
 using BepInEx.Configuration;
-using UnityEngine;
+using HarmonyLib;
 using HopLib.Extras;
+using UnityEngine;
+using CVR_MovementSystem = ABI_RC.Core.Player.CVR_MovementSystem;
+using CVRInputManager = ABI_RC.Core.Savior.CVRInputManager;
+using CVRPathCamController = ABI_RC.Core.IO.CVRPathCamController;
+using InputModuleMouseKeyboard = ABI_RC.Core.Savior.InputModuleMouseKeyboard;
+using PlayerSetup = ABI_RC.Core.Player.PlayerSetup;
 
 namespace KeyRebinder
 {
@@ -60,43 +65,43 @@ namespace KeyRebinder
 			Harmony.CreateAndPatchAll(typeof(MovementPatches));
 		}
 
-		[HarmonyPatch(typeof(ABI_RC.Core.Savior.InputModuleMouseKeyboard), "UpdateInput")]
+		[HarmonyPatch(typeof(InputModuleMouseKeyboard), nameof(InputModuleMouseKeyboard.UpdateInput))]
 		[HarmonyPrefix]
 		static void PreUpdateInputValues(ref float __state)
 		{
-			__state = ABI_RC.Core.Savior.CVRInputManager.Instance.floatDirection;
+			__state = CVRInputManager.Instance.floatDirection;
 		}
 
-		[HarmonyPatch(typeof(ABI_RC.Core.Savior.InputModuleMouseKeyboard), "UpdateInput")]
+		[HarmonyPatch(typeof(InputModuleMouseKeyboard), nameof(InputModuleMouseKeyboard.UpdateInput))]
 		[HarmonyPostfix]
 		static void OverwriteInputs(ref float __state)
 		{
 			// Setting these only in the Harmony patch prefix,
 			// because otherwise the game input handling will overwrite our changes on Update
 
-			ABI_RC.Core.Savior.CVRInputManager.Instance.crouchToggle = ConfigCrouch.Value.AllowingIsDown();
-			ABI_RC.Core.Savior.CVRInputManager.Instance.proneToggle = ConfigProne.Value.AllowingIsDown();
-			ABI_RC.Core.Savior.CVRInputManager.Instance.jump = ConfigJump.Value.AllowingIsPressed();
-			ABI_RC.Core.Savior.CVRInputManager.Instance.sprint = ConfigSprint.Value.AllowingIsPressed();
+			CVRInputManager.Instance.crouchToggle = ConfigCrouch.Value.AllowingIsDown();
+			CVRInputManager.Instance.proneToggle = ConfigProne.Value.AllowingIsDown();
+			CVRInputManager.Instance.jump = ConfigJump.Value.AllowingIsPressed();
+			CVRInputManager.Instance.sprint = ConfigSprint.Value.AllowingIsPressed();
 
 			if (ConfigFlyUp.Value.AllowingIsPressed()) __state += 1f;
 			if (ConfigFlyDown.Value.AllowingIsPressed()) __state -= 1f;
 
-			ABI_RC.Core.Savior.CVRInputManager.Instance.floatDirection = __state;
+			CVRInputManager.Instance.floatDirection = __state;
 		}
 
-		[HarmonyPatch(typeof(ABI_RC.Core.IO.CVRPathCamController), "Update")]
+		[HarmonyPatch(typeof(CVRPathCamController), "Update")]
 		[HarmonyPrefix]
 		static void FlyingToggling()
 		{
 			if (ConfigFlyToggle.Value.AllowingIsDown())
 			{
-				ABI_RC.Core.Player.PlayerSetup.Instance._movementSystem.toggleFlight();
+				ABI_RC.Core.Player.PlayerSetup.Instance._movementSystem.ToggleFlight();
 			}
 			AllowFlyingToggle = false;
 		}
 
-		[HarmonyPatch(typeof(ABI_RC.Core.IO.CVRPathCamController), "Update")]
+		[HarmonyPatch(typeof(CVRPathCamController), "Update")]
 		[HarmonyPostfix]
 		static void FlyingTogglingAfter()
 		{
@@ -104,7 +109,7 @@ namespace KeyRebinder
 			AllowFlyingToggle = true;
 		}
 
-		[HarmonyPatch(typeof(ABI_RC.Core.Player.CVR_MovementSystem), "toggleFlight")]
+		[HarmonyPatch(typeof(CVR_MovementSystem), nameof(CVR_MovementSystem.ToggleFlight))]
 		[HarmonyPrefix]
 		static bool LimitFlying()
 		{
