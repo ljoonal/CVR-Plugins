@@ -10,7 +10,8 @@ This repository contains some of my plugins for [ChilloutVR](https://store.steam
 
 To install, just follow the [BepInEx guide](https://docs.bepinex.dev/articles/user_guide/installation/index.html) for Unity games for windows.
 After that just drag'n'drop the DLL's into the `BepInEx/plugins` folder.
-If you need help, I encourage you to a discord server I created, the [CVR modding corner](https://discord.gg/2WR6rGVzht).
+
+I encourage you join the [CVR modding corner discord server](https://discord.gg/2WR6rGVzht) if you need help or are interested in modding the game.
 
 I'd recommend you also get [sinai-dev's BepInExConfigManager](https://github.com/sinai-dev/BepInExConfigManager) so that you can edit your configs in game. You'll want the Mono version for CVR.
 
