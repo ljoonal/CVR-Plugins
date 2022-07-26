@@ -1,6 +1,6 @@
+using System.Linq;
 using BepInEx.Configuration;
 using UnityEngine;
-using System.Linq;
 
 namespace HopLib.Extras
 {

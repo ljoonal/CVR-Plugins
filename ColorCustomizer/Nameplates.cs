@@ -1,6 +1,6 @@
-using UnityEngine;
-using HarmonyLib;
 using BepInEx.Configuration;
+using HarmonyLib;
+using UnityEngine;
 
 namespace ColorCustomizer
 {

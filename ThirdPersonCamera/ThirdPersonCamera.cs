@@ -1,9 +1,9 @@
 using BepInEx;
 using BepInEx.Configuration;
-using UnityEngine;
 using HarmonyLib;
-using HopLib.Extras;
 using HopLib;
+using HopLib.Extras;
+using UnityEngine;
 
 namespace ThirdPersonCamera
 {

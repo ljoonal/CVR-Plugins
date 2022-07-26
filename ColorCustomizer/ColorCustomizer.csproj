@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <ItemGroup>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>$(GameRefsPath)UnityEngine.UI.dll</HintPath>
-    </Reference>
-  </ItemGroup>
+	<ItemGroup>
+		<Reference Include="UnityEngine.UI">
+			<HintPath>$(GameRefsPath)UnityEngine.UI.dll</HintPath>
+		</Reference>
+	</ItemGroup>
 </Project>

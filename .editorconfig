@@ -1,0 +1,12 @@
+root = true
+
+[*]
+end_of_line = lf
+charset = utf-8
+insert_final_newline = true
+
+[*.{cs,csproj,props}]
+indent_style = tab
+# Prefer actual type checks over null checks due to mod types not being too trustworthy
+csharp_style_prefer_null_check_over_type_check = false
+

@@ -2,9 +2,9 @@ using BepInEx.Configuration;
 using HarmonyLib;
 using HopLib.Extras;
 using UnityEngine;
-using CVR_MovementSystem = ABI_RC.Core.Player.CVR_MovementSystem;
 using CVRInputManager = ABI_RC.Core.Savior.CVRInputManager;
 using CVRPathCamController = ABI_RC.Core.IO.CVRPathCamController;
+using CVR_MovementSystem = ABI_RC.Core.Player.CVR_MovementSystem;
 using InputModuleMouseKeyboard = ABI_RC.Core.Savior.InputModuleMouseKeyboard;
 using PlayerSetup = ABI_RC.Core.Player.PlayerSetup;
 

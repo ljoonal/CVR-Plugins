@@ -1,8 +1,8 @@
-using HarmonyLib;
-using BepInEx.Configuration;
-using UnityEngine;
 using System.Reflection;
+using BepInEx.Configuration;
+using HarmonyLib;
 using HopLib.Extras;
+using UnityEngine;
 
 namespace KeyRebinder
 {

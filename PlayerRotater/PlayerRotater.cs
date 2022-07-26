@@ -1,13 +1,13 @@
 using BepInEx;
 using BepInEx.Configuration;
-using UnityEngine;
 using HarmonyLib;
-using CVRInputManager = ABI_RC.Core.Savior.CVRInputManager;
-using InputModuleMouseKeyboard = ABI_RC.Core.Savior.InputModuleMouseKeyboard;
-using PlayerSetup = ABI_RC.Core.Player.PlayerSetup;
-using CVR_MovementSystem = ABI_RC.Core.Player.CVR_MovementSystem;
 using HopLib;
 using HopLib.Extras;
+using UnityEngine;
+using CVRInputManager = ABI_RC.Core.Savior.CVRInputManager;
+using CVR_MovementSystem = ABI_RC.Core.Player.CVR_MovementSystem;
+using InputModuleMouseKeyboard = ABI_RC.Core.Savior.InputModuleMouseKeyboard;
+using PlayerSetup = ABI_RC.Core.Player.PlayerSetup;
 
 namespace PlayerRotater
 {
@@ -75,7 +75,7 @@ namespace PlayerRotater
 				HopApi.InstanceJoined += delegate { ResetRotation(); };
 
 #if DEBUG
-					Logger.LogInfo($"{nameof(PlayerRotaterPlugin)} started successfully");
+				Logger.LogInfo($"{nameof(PlayerRotaterPlugin)} started successfully");
 #endif
 			}
 			catch (System.Exception ex)
@@ -105,7 +105,7 @@ namespace PlayerRotater
 			if (originalRotation is not null)
 			{
 #if DEBUG
-					Logger.LogInfo($"Disabled rotation mode");
+				Logger.LogInfo($"Disabled rotation mode");
 #endif
 				PlayerRotationTransform.eulerAngles = new Vector3(
 					originalRotation.Value.x,
@@ -155,7 +155,7 @@ namespace PlayerRotater
 			if (originalRotation is null)
 			{
 #if DEBUG
-					Logger.LogInfo($"Enabled rotation mode");
+				Logger.LogInfo($"Enabled rotation mode");
 #endif
 				originalRotation = PlayerRotationTransform.eulerAngles;
 			}

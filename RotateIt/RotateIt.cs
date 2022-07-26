@@ -1,10 +1,10 @@
 using BepInEx;
 using BepInEx.Configuration;
-using UnityEngine;
 using HarmonyLib;
-using CVRPickupObject = ABI.CCK.Components.CVRPickupObject;
-using HopLib.Extras;
 using HopLib;
+using HopLib.Extras;
+using UnityEngine;
+using CVRPickupObject = ABI.CCK.Components.CVRPickupObject;
 
 namespace RotateIt
 {
