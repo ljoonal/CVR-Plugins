@@ -87,7 +87,15 @@ namespace PlayerRotater
 		private void RotatePlayer(float pitch = 0f, float roll = 0f, float yaw = 0f)
 		{
 			if (pitch == 0f && roll == 0f && yaw == 0f) return;
-			float m = Traverse.Create(PlayerSetup.Instance._movementSystem).Field("RotationMultiplier").GetValue<float>();
+			float m = 5f;
+			try
+			{
+				m = Traverse.Create(PlayerSetup.Instance._movementSystem).Field("rotationMultiplier").GetValue<float>();
+			}
+			catch (System.Exception ex)
+			{
+				Logger.LogWarning($"Failed to get rotationMultiplier: {ex}");
+			}
 			PlayerRotationTransform.Rotate(new Vector3(pitch * m, yaw * m, roll * m));
 		}
 

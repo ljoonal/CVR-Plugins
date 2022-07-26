@@ -15,6 +15,6 @@ namespace RotateIt
 
 		public const string Name = "Rotate It";
 
-		public const string Version = "0.3.0";
+		public const string Version = "0.3.1";
 	}
 }

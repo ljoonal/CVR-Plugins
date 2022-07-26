@@ -15,6 +15,6 @@ namespace MoreFilters
 
 		public const string Name = "More filters";
 
-		public const string Version = "0.0.1";
+		public const string Version = "0.0.2";
 	}
 }

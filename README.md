@@ -165,6 +165,7 @@ It's still under heavy development, I'd suggest others don't rely on it yet, as 
 
 ## Mods under consideration<!-- omit in toc -->
 
+- Progress bar/% on loading worlds
 - Make the menu follow the local player/camera.
 - Add local metadata to other players. Nicknames/notes/profile picture replacements even perhaps?
   - Also to avatars, so you can write a reminder for yourself to why you blocked that thing (super laggy or just very annoying, etc)

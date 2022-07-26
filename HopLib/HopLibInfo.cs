@@ -18,6 +18,6 @@ namespace HopLib
 		internal const string Name = "Hop Lib";
 
 		/// <summary>The current version of HopLib.</summary>
-		public const string Version = "0.0.1";
+		public const string Version = "0.0.2";
 	}
 }

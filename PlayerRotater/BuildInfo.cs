@@ -15,6 +15,6 @@ namespace PlayerRotater
 
 		public const string Name = "Player Rotater";
 
-		public const string Version = "0.1.0";
+		public const string Version = "0.1.1";
 	}
 }
