@@ -1,3 +1,5 @@
+using System;
+
 namespace HopLib
 {
 	/// <summary>The main Hop API.</summary>
@@ -15,6 +17,17 @@ namespace HopLib
 	public static partial class HopApi
 	{
 		// The api is split accross the whole Api folder, split into more logical sections.
-		// This file is used for generating the main doc comment.
+
+		/// <summary>Invoked only once, sometime after the game and HopLib have intialized their data.</summary>
+		public static event EventHandler LateInit = delegate { };
+
+		internal static void InvokeLateInit()
+		{
+#if DEBUG
+			HopLibPlugin.GetLogger()
+				.LogInfo($"Invoking {nameof(LateInit)}");
+#endif
+			LateInit.Invoke(null, null);
+		}
 	}
 }

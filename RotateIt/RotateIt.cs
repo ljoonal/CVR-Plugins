@@ -8,8 +8,8 @@ using CVRPickupObject = ABI.CCK.Components.CVRPickupObject;
 
 namespace RotateIt
 {
-	[BepInDependency(HopLibInfo.GUID, HopLibInfo.Version)]
-	[BepInPlugin(BuildInfo.GUID, BuildInfo.Name, BuildInfo.Version)]
+	[BepInDependency(HopLibInfo.Id, HopLibInfo.Version)]
+	[BepInPlugin(BuildInfo.Id, BuildInfo.Name, BuildInfo.Version)]
 	[BepInProcess("ChilloutVR.exe")]
 	public class RotateItPlugin : BaseUnityPlugin
 	{
@@ -74,7 +74,7 @@ namespace RotateIt
 		public static void GrabbedObjectPatch(ref CVRPickupObject __instance)
 		{
 			// Need to only run when the object is grabbed by the local player
-			if (__instance._controllerRay is null) return;
+			if (__instance is null || __instance._controllerRay is null) return;
 
 			__instance.transform.rotation *= GrabbedRotationOffset;
 

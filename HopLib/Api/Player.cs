@@ -15,7 +15,6 @@ namespace HopLib
 		/// <summary>Invoked when a remote player has been removed (when for example they disconnected).</summary>
 		public static event EventHandler<PlayerIdEventArgs> PlayerRemoved = delegate { };
 
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "IDE0051", Justification = "Harmony patch uses this")]
 		[HarmonyPatch(typeof(CVRPlayerManager), nameof(CVRPlayerManager.TryCreatePlayer))]
 		[HarmonyPrefix]
 		private static void PlayerAddedPrefix(CVRPlayerManager __instance, ref List<string> __state)
@@ -23,7 +22,6 @@ namespace HopLib
 			__state = __instance.NetworkPlayers.Select(p => p.Uuid).ToList();
 		}
 
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "IDE0051", Justification = "Harmony patch uses this")]
 		[HarmonyPatch(typeof(CVRPlayerManager), nameof(CVRPlayerManager.TryCreatePlayer))]
 		[HarmonyPostfix]
 		private static void PlayerAddedPostfix(CVRPlayerManager __instance, List<string> __state)
@@ -38,7 +36,6 @@ namespace HopLib
 			}
 		}
 
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "IDE0051", Justification = "Harmony patch uses this")]
 		[HarmonyPatch(typeof(CVRPlayerManager), nameof(CVRPlayerManager.TryDeletePlayer))]
 		[HarmonyPrefix]
 		private static void PlayerDeletedPrefix(CVRPlayerManager __instance, ref List<string> __state)
@@ -46,7 +43,6 @@ namespace HopLib
 			__state = __instance.NetworkPlayers.Select(p => p.Uuid).ToList();
 		}
 
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "IDE0051", Justification = "Harmony patch uses this")]
 		[HarmonyPatch(typeof(CVRPlayerManager), nameof(CVRPlayerManager.TryDeletePlayer))]
 		[HarmonyPostfix]
 		private static void PlayerDeletedPostfix(CVRPlayerManager __instance, List<string> __state)

@@ -18,14 +18,13 @@ namespace HopLib
 		/// <summary>Invoked when a world has been loaded.</summary>
 		public static event EventHandler<WorldEventArgs> WorldStarted = delegate { };
 
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "IDE0051", Justification = "Harmony patch uses this")]
-		[HarmonyPatch(typeof(CVRWorld), "Start")]
+		[HarmonyPatch(typeof(CVRWorld), nameof(CVRWorld.Start))]
 		[HarmonyPostfix]
 		private static void OnWorldStartPatch(CVRWorld __instance)
 		{
 #if DEBUG
 			HopLibPlugin.GetLogger()
-				.LogInfo($"Invoking {nameof(WorldStarted)} by {__instance.gameObject.GetComponent<CVRAssetInfo>()?.guid}");
+				.LogInfo($"Invoking {nameof(WorldStarted)} by {__instance?.gameObject?.GetComponent<CVRAssetInfo>()?.guid}");
 #endif
 			WorldStarted.Invoke(null, new WorldEventArgs(__instance));
 		}

@@ -4,8 +4,8 @@ using HopLib;
 
 namespace KeyRebinder
 {
-	[BepInDependency(HopLibInfo.GUID, HopLibInfo.Version)]
-	[BepInPlugin(BuildInfo.GUID, BuildInfo.Name, BuildInfo.Version)]
+	[BepInDependency(HopLibInfo.Id, HopLibInfo.Version)]
+	[BepInPlugin(BuildInfo.Id, BuildInfo.Name, BuildInfo.Version)]
 	[BepInProcess("ChilloutVR.exe")]
 	public class KeyRebinderPlugin : BaseUnityPlugin
 	{

@@ -1,5 +1,6 @@
 /Libs
-/plugins
+/Plugins
+.build
 
 # ---> VisualStudio
 ## Ignore Visual Studio temporary files, build results, and

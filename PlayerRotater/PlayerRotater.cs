@@ -18,15 +18,15 @@ namespace PlayerRotater
 		Holding
 	}
 
-	[BepInDependency(HopLibInfo.GUID, HopLibInfo.Version)]
-	[BepInPlugin(BuildInfo.GUID, BuildInfo.Name, BuildInfo.Version)]
+	[BepInDependency(HopLibInfo.Id, HopLibInfo.Version)]
+	[BepInPlugin(BuildInfo.Id, BuildInfo.Name, BuildInfo.Version)]
 	[BepInProcess("ChilloutVR.exe")]
 	public class PlayerRotaterPlugin : BaseUnityPlugin
 	{
 		private static PlayerRotaterPlugin Instance;
 		private ConfigEntry<KeyboardShortcut> mouseModeToggleKeybind, mouseModeHoldKeybind;
-		private Vector3? originalRotation = null;
-		private Transform PlayerRotationTransform
+		private Vector3? originalRotation;
+		private static Transform PlayerRotationTransform
 		{
 			get
 			{

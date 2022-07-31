@@ -1,14 +1,16 @@
 using System.Collections.Generic;
+using System.Linq;
 using BepInEx;
 using BepInEx.Configuration;
 using HopLib;
+using UnityEngine;
 using CVRPlayerManager = ABI_RC.Core.Player.CVRPlayerManager;
 using CVRPortalManager = ABI_RC.Core.InteractionSystem.CVRPortalManager;
 
 namespace MALogger
 {
-	[BepInDependency(HopLibInfo.GUID, HopLibInfo.Version)]
-	[BepInPlugin(BuildInfo.GUID, BuildInfo.Name, BuildInfo.Version)]
+	[BepInDependency(HopLibInfo.Id, HopLibInfo.Version)]
+	[BepInPlugin(BuildInfo.Id, BuildInfo.Name, BuildInfo.Version)]
 	[BepInProcess("ChilloutVR.exe")]
 	public class MALoggerPlugin : BaseUnityPlugin
 	{
@@ -92,6 +94,15 @@ namespace MALogger
 			string dropperId = ev.Portal.portalOwner;
 			string dropperName = CVRPlayerManager.Instance.TryGetPlayerName(dropperId);
 			Instance.Logger.LogInfo($"Portal: {ev.Portal.Portal.PortalName} by {dropperName} ({dropperId})");
+		}
+
+
+		private static void LogGameObjectDetails(GameObject gameObject)
+		{
+			List<Component> components = new();
+			gameObject.GetComponents(components);
+			var materials = gameObject.GetComponent<MeshRenderer>().materials;
+			var shaders = materials.Select(mat => mat.shader);
 		}
 	}
 }

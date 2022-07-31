@@ -6,14 +6,12 @@
 [![GPL-3](https://img.shields.io/badge/license-GPL--3-black?style=flat&logo=open-source-initiative)](https://tldrlegal.com/license/gnu-general-public-license-v3-(gpl-3))
 [![Lines of code](https://img.shields.io/tokei/lines/git.ljoonal.xyz/ljoonal/CVR-Mods?label=lines&style=flat&logo=C-Sharp)](.)
 
-This repository contains some of my plugins for [ChilloutVR](https://store.steampowered.com/app/661130/ChilloutVR/) using [BepInEx](https://github.com/BepInEx/BepInEx).
+This repository contains some of my plugins for [ChilloutVR](https://store.steampowered.com/app/661130/ChilloutVR/) using [BepInEx](https://github.com/BepInEx/BepInEx) 6.
 
-To install, just follow the [BepInEx guide](https://docs.bepinex.dev/articles/user_guide/installation/index.html) for Unity games for windows.
-After that just drag'n'drop the DLL's into the `BepInEx/plugins` folder.
+To install, just follow the [BepInEx guide](https://docs.bepinex.dev/master/articles/user_guide/installation/index.html) for Unity games for windows.
+After that just drag'n'drop the DLLs into the `BepInEx/plugins` folder.
 
 I encourage you join the [CVR modding corner discord server](https://discord.gg/2WR6rGVzht) if you need help or are interested in modding the game.
-
-I'd recommend you also get [sinai-dev's BepInExConfigManager](https://github.com/sinai-dev/BepInExConfigManager) so that you can edit your configs in game. You'll want the Mono version for CVR.
 
 ## Warning<!-- omit in toc -->
 
@@ -193,12 +191,10 @@ If you're asking: "MelonLoader is the tool used with VRC modding, so why not use
 
 While it's a great tool, it requires .NET framework. Which is not available for linux.
 I can actually build my plugins on Linux with BepInEx and run them without needing to do wineprefix trickery.
-This is also why the build system is with VSC tasks instead of Visual Studio in this repository.
 
-While it's technically possible to build MelonLoader mods on linux, most mods aren't done that way.
-And running MelonLoader still requires .NET framework anyway, which BepInEx does not.
+![Social VR Game mod loader comparison chart](./Loader-Comparison.png)
 
-MelonLoader also does not have a few features that BepInEx does, and BepInEx just seems way more mature for modding Unity (non-IL2CPP) games.
+And running MelonLoader still requires .NET framework anyway, which BepInEx does not, leading to less wine/proton tinkering.
 
 ### Contacting & contributing<!-- omit in toc -->
 

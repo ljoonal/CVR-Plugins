@@ -15,8 +15,8 @@ namespace ThirdPersonCamera
 		Freeform
 	}
 
-	[BepInDependency(HopLibInfo.GUID, HopLibInfo.Version)]
-	[BepInPlugin(BuildInfo.GUID, BuildInfo.Name, BuildInfo.Version)]
+	[BepInDependency(HopLibInfo.Id, HopLibInfo.Version)]
+	[BepInPlugin(BuildInfo.Id, BuildInfo.Name, BuildInfo.Version)]
 	[BepInProcess("ChilloutVR.exe")]
 	public class ThirdPersonCameraPlugin : BaseUnityPlugin
 	{
@@ -157,7 +157,7 @@ namespace ThirdPersonCamera
 		}
 
 		// Negative values 'zoom' (move) out, positive move closer.
-		private void ZoomOurCamera(float forwardOrBack)
+		private static void ZoomOurCamera(float forwardOrBack)
 		{
 			CameraObject.transform.position += (CameraObject.transform.forward * forwardOrBack);
 		}

@@ -5,8 +5,8 @@ using Player = ABI_RC.Core.Player;
 
 namespace SpeedMultiplier
 {
-	[BepInDependency(HopLibInfo.GUID, HopLibInfo.Version)]
-	[BepInPlugin(BuildInfo.GUID, BuildInfo.Name, BuildInfo.Version)]
+	[BepInDependency(HopLibInfo.Id, HopLibInfo.Version)]
+	[BepInPlugin(BuildInfo.Id, BuildInfo.Name, BuildInfo.Version)]
 	[BepInProcess("ChilloutVR.exe")]
 	class SpeedMultiplierPlugin : BaseUnityPlugin
 	{
@@ -20,7 +20,7 @@ namespace SpeedMultiplier
 				5f,
 				"The flying speed multiplier. Set to <= 0 to disable (requires world reload)");
 
-			HopApi.WorldStarted += delegate { ProcessUpdate(); };
+			HopApi.InstanceJoined += delegate { ProcessUpdate(); };
 			FlyingMultiplier.SettingChanged += delegate { ProcessUpdate(); };
 		}
 

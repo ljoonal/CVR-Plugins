@@ -2,7 +2,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 
 [assembly: ComVisible(false)]
-[assembly: AssemblyTitle(ThirdPersonCamera.BuildInfo.GUID)]
+[assembly: AssemblyTitle(ThirdPersonCamera.BuildInfo.Id)]
 [assembly: AssemblyProduct(ThirdPersonCamera.BuildInfo.Name)]
 [assembly: AssemblyVersion(ThirdPersonCamera.BuildInfo.Version)]
 [assembly: AssemblyCompany("cvr.ljoonal.xyz")]
@@ -11,7 +11,7 @@ namespace ThirdPersonCamera
 {
 	public static class BuildInfo
 	{
-		public const string GUID = "xyz.ljoonal.cvr.thirdpersoncamera";
+		public const string Id = "xyz.ljoonal.cvr.thirdpersoncamera";
 
 		public const string Name = "Third person camera";
 

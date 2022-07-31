@@ -4,11 +4,14 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Reference Include="UnityEngine.InputLegacyModule">
-			<HintPath>$(GameRefsPath)UnityEngine.InputLegacyModule.dll</HintPath>
-		</Reference>
 		<Reference Include="DarkRift.Client">
 			<HintPath>$(GameRefsPath)DarkRift.Client.dll</HintPath>
+		</Reference>
+		<Reference Include="Cohtml.Runtime">
+			<HintPath>$(GameRefsPath)Cohtml.Runtime.dll</HintPath>
+		</Reference>
+		<Reference Include="cohtml.Net">
+			<HintPath>$(GameRefsPath)cohtml.Net.dll</HintPath>
 		</Reference>
 	</ItemGroup>
 </Project>

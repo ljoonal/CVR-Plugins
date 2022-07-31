@@ -6,12 +6,12 @@ using UnityEngine.SceneManagement;
 
 namespace SkipIntro
 {
-	[BepInPlugin(BuildInfo.GUID, BuildInfo.Name, BuildInfo.Version)]
+	[BepInPlugin(BuildInfo.Id, BuildInfo.Name, BuildInfo.Version)]
 	[BepInProcess("ChilloutVR.exe")]
 	public class SkipIntroPlugin : BaseUnityPlugin
 	{
 		private ConfigEntry<bool> Enabled;
-		private bool Skipped = false;
+		private bool Skipped;
 		public void Awake()
 		{
 			Enabled = Config.Bind(

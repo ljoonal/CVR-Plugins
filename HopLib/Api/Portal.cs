@@ -10,8 +10,7 @@ namespace HopLib
 		/// <summary>Invoked when a portal has been loaded.</summary>
 		public static event EventHandler<PortalEventArgs> PortalLoaded = delegate { };
 
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "IDE0051", Justification = "Harmony patch uses this")]
-		[HarmonyPatch(typeof(CVRPortalManager), "WriteData")]
+		[HarmonyPatch(typeof(CVRPortalManager), nameof(CVRPortalManager.WriteData))]
 		[HarmonyPostfix]
 		private static void OnPortalDropPatch(CVRPortalManager __instance)
 		{

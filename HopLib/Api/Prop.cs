@@ -10,7 +10,6 @@ namespace HopLib
 		/// <remarks>Not invoked for blocked props.</remarks>
 		public static event EventHandler<PropEventArgs> PropLoaded = delegate { };
 
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "IDE0051", Justification = "Harmony patch uses this")]
 		[HarmonyPatch(typeof(CVRSyncHelper), nameof(CVRSyncHelper.ApplyPropValuesSpawn))]
 		[HarmonyPostfix]
 		private static void OnPropLoadPatch(CVRSyncHelper.PropData __0)

@@ -38,6 +38,9 @@
             };
             </code></example>
         </member>
+        <member name="E:HopLib.HopApi.LateInit">
+            <summary>Invoked only once, sometime after the game and HopLib have intialized their data.</summary>
+        </member>
         <member name="E:HopLib.HopApi.AvatarLoaded">
             <summary>Invoked when an user's avatar has been loaded.</summary>
         </member>
@@ -66,6 +69,9 @@
         <member name="E:HopLib.HopApi.PropLoaded">
             <summary>Invoked when a prop has been loaded.</summary>
             <remarks>Not invoked for blocked props.</remarks>
+        </member>
+        <member name="E:HopLib.HopApi.UIEventsRegistered">
+            <summary>The moment when UI injections should happen.</summary>
         </member>
         <member name="P:HopLib.HopApi.CurrentWorld">
             <summary>The current world.</summary>
@@ -125,6 +131,13 @@
         <member name="F:HopLib.PropEventArgs.Prop">
             <summary>The prop that the event relates to.</summary>
         </member>
+        <member name="T:HopLib.InjectUiEventArgs">
+            <summary>Arguments to an UI event.</summary>
+            <remarks>Used for example in <see cref="E:HopLib.HopApi.UIEventsRegistered" />.</remarks>
+        </member>
+        <member name="F:HopLib.InjectUiEventArgs.Manager">
+            <summary>The ID of the player that the event relates to.</summary>
+        </member>
         <member name="T:HopLib.WorldEventArgs">
             <summary>Arguments for a world related event.</summary>
             <remarks>Used for example in <see cref="E:HopLib.HopApi.WorldStarted" />.</remarks>
@@ -135,7 +148,7 @@
         <member name="T:HopLib.HopLibInfo">
             <summary>Info about the current HopLib.</summary>
         </member>
-        <member name="F:HopLib.HopLibInfo.GUID">
+        <member name="F:HopLib.HopLibInfo.Id">
             <summary>The plugin's constant GUID.</summary>
         </member>
         <member name="F:HopLib.HopLibInfo.Version">

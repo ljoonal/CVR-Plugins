@@ -1,6 +1,5 @@
 using BepInEx;
 using HarmonyLib;
-using UnityEngine.SceneManagement;
 using NetworkManager = ABI_RC.Core.Networking.NetworkManager;
 
 // This file contains some logic that requires keeping state.
@@ -8,7 +7,7 @@ using NetworkManager = ABI_RC.Core.Networking.NetworkManager;
 
 namespace HopLib
 {
-	[BepInPlugin(HopLibInfo.GUID, HopLibInfo.Name, HopLibInfo.Version)]
+	[BepInPlugin(HopLibInfo.Id, HopLibInfo.Name, HopLibInfo.Version)]
 	[BepInProcess("ChilloutVR.exe")]
 	internal class HopLibPlugin : BaseUnityPlugin
 	{
@@ -25,15 +24,16 @@ namespace HopLib
 			{
 				string errMsg = "This plugin should only have a single instance";
 				Logger.LogError(errMsg);
-				throw new System.Exception(errMsg);
+				throw new System.InvalidOperationException(errMsg);
 			}
 			Instance = this;
 		}
 
-		private void OnceClientFullyInitialized(object sender, System.EventArgs e)
+		private void LateInit(object sender, System.EventArgs e)
 		{
 			NetworkManager.Instance.GameNetwork.Disconnected += delegate { HopApi.InvokeDisconnect(); };
-			HopApi.WorldStarted -= OnceClientFullyInitialized;
+			HopApi.WorldStarted -= LateInit;
+			HopApi.InvokeLateInit();
 		}
 
 		private void Awake()
@@ -41,7 +41,7 @@ namespace HopLib
 			try
 			{
 				Harmony.CreateAndPatchAll(typeof(HopApi));
-				HopApi.WorldStarted += OnceClientFullyInitialized;
+				HopApi.WorldStarted += LateInit;
 #if DEBUG
 				Logger.LogInfo($"{nameof(HopLibPlugin)} started successfully");
 #endif

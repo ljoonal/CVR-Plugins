@@ -4,7 +4,7 @@ using BepInEx.Configuration;
 namespace ColorCustomizer
 {
 
-	[BepInPlugin(BuildInfo.GUID, BuildInfo.Name, BuildInfo.Version)]
+	[BepInPlugin(BuildInfo.Id, BuildInfo.Name, BuildInfo.Version)]
 	[BepInProcess("ChilloutVR.exe")]
 	public class ColorCustomizerPlugin : BaseUnityPlugin
 	{

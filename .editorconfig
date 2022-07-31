@@ -9,4 +9,17 @@ insert_final_newline = true
 indent_style = tab
 # Prefer actual type checks over null checks due to mod types not being too trustworthy
 csharp_style_prefer_null_check_over_type_check = false
-
+# Catching most generic errors as possible is kinda required for good modding error handling
+dotnet_diagnostic.CA1031.severity = none
+# Instead of machine generated GUIDs, using human readable reverse domain notation
+dotnet_diagnostic.CA2243.severity = none
+# It should be fine to drop the references to disposable harmony handles if we never are going use them again
+dotnet_code_quality.CA2000.excluded_symbol_names = Harmony
+# No, too verbose to always need to define getters and setters for everything
+dotnet_diagnostic.CA1051.severity = none
+# Harmony patches use underscores in parameter names
+dotnet_diagnostic.CA1707.severity = none
+# No need for whatever CLS compliant is
+dotnet_diagnostic.CA1014.severity = none
+# BepInEx instantiates our plugins
+dotnet_diagnostic.CA1812.severity = none

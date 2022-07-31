@@ -1,5 +1,4 @@
 using System;
-using ABI.CCK.Components;
 using HarmonyLib;
 using Instancing = ABI_RC.Core.Networking.IO.Instancing;
 using MetaPort = ABI_RC.Core.Savior.MetaPort;
@@ -28,7 +27,6 @@ namespace HopLib
 		/// <summary>Invoked when the local player has disconnected from the game network.</summary>
 		public static event EventHandler InstanceDisconnect = delegate { };
 
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "IDE0051", Justification = "Harmony patch uses this")]
 		[HarmonyPatch(typeof(Instancing.Instances), nameof(Instancing.Instances.SetJoinTarget))]
 		[HarmonyPostfix]
 		private static void OnInstanceJoiningStartPatch(string __0)
@@ -48,8 +46,7 @@ namespace HopLib
 			InstanceDisconnect.Invoke(null, null);
 		}
 
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "IDE0051", Justification = "Harmony patch uses this")]
-		[HarmonyPatch(typeof(NetworkManager), "OnGameNetworkConnected")]
+		[HarmonyPatch(typeof(NetworkManager), nameof(NetworkManager.OnGameNetworkConnected))]
 		[HarmonyPostfix]
 		private static void OnInstanceJoinedPatch()
 		{

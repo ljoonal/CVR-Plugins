@@ -1,8 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<ItemGroup>
 		<ProjectReference Include="..\HopLib\HopLib.csproj" />
-		<Reference Include="UnityEngine.AudioModule">
-      <HintPath>$(GameRefsPath)UnityEngine.AudioModule.dll</HintPath>
-    </Reference>
 	</ItemGroup>
 </Project>

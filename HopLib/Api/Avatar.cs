@@ -10,7 +10,6 @@ namespace HopLib
 		/// <summary>Invoked when an user's avatar has been loaded.</summary>
 		public static event EventHandler<AvatarEventArgs> AvatarLoaded = delegate { };
 
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "IDE0051", Justification = "Harmony patch uses this")]
 		[HarmonyPatch(typeof(Player.PlayerSetup), nameof(Player.PlayerSetup.SetupAvatar))]
 		[HarmonyPostfix]
 		private static void OnLocalAvatarLoadPatch(GameObject __0)
@@ -22,7 +21,6 @@ namespace HopLib
 			AvatarLoaded.Invoke(null, new AvatarEventArgs(__0, null));
 		}
 
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "IDE0051", Justification = "Harmony patch uses this")]
 		[HarmonyPatch(typeof(Player.PuppetMaster), nameof(Player.PuppetMaster.AvatarInstantiated))]
 		[HarmonyPostfix]
 		private static void OnRemoteAvatarLoadPatch(Player.PuppetMaster __instance)
