@@ -1,4 +1,3 @@
-using BepInEx;
 using HarmonyLib;
 using NetworkManager = ABI_RC.Core.Networking.NetworkManager;
 
@@ -7,23 +6,42 @@ using NetworkManager = ABI_RC.Core.Networking.NetworkManager;
 
 namespace HopLib
 {
-	[BepInPlugin(HopLibInfo.Id, HopLibInfo.Name, HopLibInfo.Version)]
-	[BepInProcess("ChilloutVR.exe")]
-	internal class HopLibPlugin : BaseUnityPlugin
-	{
-		private static HopLibPlugin Instance;
+#if BepInEx
+	[BepInEx.BepInPlugin(HopLibInfo.Id, HopLibInfo.Name, HopLibInfo.Version)]
+	[BepInEx.BepInProcess("ChilloutVR.exe")]
 
-		internal static BepInEx.Logging.ManualLogSource GetLogger()
+	internal class LoadedHopLib : BepInEx.BaseUnityPlugin
+#else
+	internal class LoadedHopLib : MelonLoader.MelonMod
+#endif
+	{
+		private static LoadedHopLib Instance;
+
+
+		internal static void LogInfo(object data)
 		{
-			return Instance.Logger;
+#if BepInEx
+			Instance.Logger.LogInfo(data);
+#else
+Instance.LoggerInstance.Msg(data);
+#endif
 		}
 
-		private HopLibPlugin()
+		internal static void LogError(object data)
+		{
+#if BepInEx
+			Instance.Logger.LogInfo(data);
+#else
+Instance.LoggerInstance.Msg(data);
+#endif
+		}
+
+		private LoadedHopLib()
 		{
 			if (Instance is not null)
 			{
 				string errMsg = "This plugin should only have a single instance";
-				Logger.LogError(errMsg);
+				LogError(errMsg);
 				throw new System.InvalidOperationException(errMsg);
 			}
 			Instance = this;
@@ -36,21 +54,28 @@ namespace HopLib
 			HopApi.InvokeLateInit();
 		}
 
+#if BepInEx
 		private void Awake()
+#else
+		private override void OnApplicationStart()
+#endif
 		{
 			try
 			{
+#if BepInEx
 				Harmony.CreateAndPatchAll(typeof(HopApi));
+#else
+HarmonyInstance.PatchAll(typeof(HopApi));
+#endif
 				HopApi.WorldStarted += LateInit;
 #if DEBUG
-				Logger.LogInfo($"{nameof(HopLibPlugin)} started successfully");
+				LogInfo($"{nameof(LoadedHopLib)} started successfully");
 #endif
 			}
 			catch (System.Exception ex)
 			{
-				Logger.LogError($"Failed to apply patch: {ex}");
+				LogError($"Failed to apply patch: {ex}");
 			}
 		}
-
 	}
 }

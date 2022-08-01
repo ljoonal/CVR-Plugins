@@ -24,8 +24,7 @@ namespace HopLib
 		internal static void InvokeLateInit()
 		{
 #if DEBUG
-			HopLibPlugin.GetLogger()
-				.LogInfo($"Invoking {nameof(LateInit)}");
+			LoadedHopLib.LogInfo($"Invoking {nameof(LateInit)}");
 #endif
 			LateInit.Invoke(null, null);
 		}

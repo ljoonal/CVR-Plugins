@@ -32,7 +32,7 @@ namespace HopLib
 		private static void OnInstanceJoiningStartPatch(string __0)
 		{
 #if DEBUG
-			HopLibPlugin.GetLogger().LogInfo($"Invoking {nameof(InstanceJoiningStarted)} {__0}");
+			LoadedHopLib.LogInfo($"Invoking {nameof(InstanceJoiningStarted)} {__0}");
 #endif
 			InstanceJoiningStarted.Invoke(null, new InstanceEventArgs(__0));
 		}
@@ -40,8 +40,7 @@ namespace HopLib
 		internal static void InvokeDisconnect()
 		{
 #if DEBUG
-			HopLibPlugin.GetLogger()
-				.LogInfo($"Invoking {nameof(InstanceDisconnect)}");
+			LoadedHopLib.LogInfo($"Invoking {nameof(InstanceDisconnect)}");
 #endif
 			InstanceDisconnect.Invoke(null, null);
 		}
@@ -51,7 +50,7 @@ namespace HopLib
 		private static void OnInstanceJoinedPatch()
 		{
 #if DEBUG
-			HopLibPlugin.GetLogger().LogInfo($"Invoking {nameof(InstanceJoined)}");
+			LoadedHopLib.LogInfo($"Invoking {nameof(InstanceJoined)}");
 #endif
 			InstanceJoined.Invoke(null, null);
 		}

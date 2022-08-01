@@ -7,6 +7,11 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyVersion(HopLib.HopLibInfo.Version)]
 [assembly: AssemblyCompany("cvr.ljoonal.xyz")]
 
+#if MelonLoader
+[assembly: MelonLoader.MelonInfo(typeof(HopLib.LoadedHopLib), HopLib.HopLibInfo.Name, HopLib.HopLibInfo.Version, HopLib.HopLibInfo.Id)]
+[assembly: MelonLoader.MelonGame("Alpha Blend Interactive", "ChilloutVR")]
+#endif
+
 namespace HopLib
 {
 	/// <summary>Info about the current HopLib.</summary>

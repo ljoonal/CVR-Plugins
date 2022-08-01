@@ -15,8 +15,7 @@ namespace HopLib
 		private static void OnPropLoadPatch(CVRSyncHelper.PropData __0)
 		{
 #if DEBUG
-			HopLibPlugin.GetLogger()
-				.LogInfo($"Invoking {nameof(PropLoaded)} by {__0.SpawnedBy}, prop {__0.Spawnable.guid}");
+			LoadedHopLib.LogInfo($"Invoking {nameof(PropLoaded)} by {__0.SpawnedBy}, prop {__0.Spawnable.guid}");
 #endif
 			PropLoaded.Invoke(null, new PropEventArgs(__0));
 		}

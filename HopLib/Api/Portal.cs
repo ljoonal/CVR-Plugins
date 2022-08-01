@@ -15,8 +15,7 @@ namespace HopLib
 		private static void OnPortalDropPatch(CVRPortalManager __instance)
 		{
 #if DEBUG
-			HopLibPlugin.GetLogger()
-				.LogInfo($"Invoking {nameof(PortalLoaded)} by {__instance.portalOwner} to {__instance.Portal.PortalName}");
+			LoadedHopLib.LogInfo($"Invoking {nameof(PortalLoaded)} by {__instance.portalOwner} to {__instance.Portal.PortalName}");
 #endif
 			PortalLoaded.Invoke(null, new PortalEventArgs(__instance));
 		}

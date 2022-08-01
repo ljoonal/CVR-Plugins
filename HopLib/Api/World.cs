@@ -23,8 +23,7 @@ namespace HopLib
 		private static void OnWorldStartPatch(CVRWorld __instance)
 		{
 #if DEBUG
-			HopLibPlugin.GetLogger()
-				.LogInfo($"Invoking {nameof(WorldStarted)} by {__instance?.gameObject?.GetComponent<CVRAssetInfo>()?.guid}");
+			LoadedHopLib.LogInfo($"Invoking {nameof(WorldStarted)} by {__instance?.gameObject?.GetComponent<CVRAssetInfo>()?.guid}");
 #endif
 			WorldStarted.Invoke(null, new WorldEventArgs(__instance));
 		}

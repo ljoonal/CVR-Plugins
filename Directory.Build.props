@@ -33,13 +33,31 @@
 		<Copy SourceFiles="$(TargetPath)" DestinationFolder="$(PluginsOutputPath)" />
 	</Target>
 
+	<PropertyGroup>
+		<MlInsteadOfBepInEx Condition="'$(MlInsteadOfBepInEx)'=='true'">false</MlInsteadOfBepInEx>
+		<DefineConstants Condition="'$(MlInsteadOfBepInEx)'=='true'">MelonLoader</DefineConstants>
+		<DefineConstants Condition="'$(MlInsteadOfBepInEx)'!='true'">BepInEx</DefineConstants>
+	</PropertyGroup>
+
 	<ItemGroup>
+		<PackageReference Condition="'$(MlInsteadOfBepInEx)'!='true'" Include="BepInEx.Unity" Version="6.0.0-*" IncludeAssets="compile" />
+
 		<PackageReference Include="ChilloutVR.GameLibs" Version="0.*-*" />
-		<PackageReference Include="BepInEx.Unity" Version="6.0.0-*" IncludeAssets="compile" />
 		<PackageReference Include="UnityEngine.Modules" Version="2019.4.28" IncludeAssets="compile" />
 		<PackageReference Include="BepInEx.Analyzers" Version="1.*" PrivateAssets="all" />
 
 		<PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="6.0.0" PrivateAssets="all" />
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(MlInsteadOfBepInEx)'=='true'">
+		<Reference Include="MelonLoader">
+			<HintPath>$(CVRPath)MelonLoader\MelonLoader\MelonLoader.dll</HintPath>
+			<HintPath Condition="Exists('$(CVRPath)MelonLoader\MelonLoader.dll')">$(CVRPath)MelonLoader\MelonLoader.dll</HintPath>
+		</Reference>
+		<Reference Include="HarmonyLib">
+			<HintPath>$(CVRPath)BepInEx\core\0Harmony.dll</HintPath>
+			<HintPath Condition="Exists('$(CVRPath)MelonLoader\0Harmony.dll')">$(CVRPath)MelonLoader\0Harmony.dll</HintPath>
+		</Reference>
 	</ItemGroup>
 
 

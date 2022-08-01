@@ -21,7 +21,7 @@ namespace HopLib
 				}
 				catch (Exception ex)
 				{
-					HopLibPlugin.GetLogger().LogError($"UIEventsRegistered's handler {handler} threw an exception: {ex}");
+					LoadedHopLib.LogError($"UIEventsRegistered's handler {handler} threw an exception: {ex}");
 				}
 			}
 		}

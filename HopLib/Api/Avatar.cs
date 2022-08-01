@@ -15,8 +15,7 @@ namespace HopLib
 		private static void OnLocalAvatarLoadPatch(GameObject __0)
 		{
 #if DEBUG
-			HopLibPlugin.GetLogger()
-				.LogInfo($"Invoking {nameof(AvatarLoaded)} with local avatar {__0.GetComponent<ABI.CCK.Components.CVRAssetInfo>().guid}");
+			LoadedHopLib.LogInfo($"Invoking {nameof(AvatarLoaded)} with local avatar {__0.GetComponent<ABI.CCK.Components.CVRAssetInfo>().guid}");
 #endif
 			AvatarLoaded.Invoke(null, new AvatarEventArgs(__0, null));
 		}
@@ -30,8 +29,7 @@ namespace HopLib
 				.GetValue<Player.PlayerDescriptor>();
 
 #if DEBUG
-			HopLibPlugin.GetLogger()
-				.LogInfo($"Invoking {nameof(AvatarLoaded)} for {playerDescription.ownerId} with avatar {__instance.avatarObject.GetComponent<ABI.CCK.Components.CVRAssetInfo>().guid}");
+			LoadedHopLib.LogInfo($"Invoking {nameof(AvatarLoaded)} for {playerDescription.ownerId} with avatar {__instance.avatarObject.GetComponent<ABI.CCK.Components.CVRAssetInfo>().guid}");
 #endif
 
 			AvatarLoaded.Invoke(null, new AvatarEventArgs(__instance.avatarObject, playerDescription));

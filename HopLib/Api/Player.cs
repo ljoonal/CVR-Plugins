@@ -29,8 +29,7 @@ namespace HopLib
 			foreach (var player in __instance.NetworkPlayers.Where(p => !__state.Contains(p.Uuid)))
 			{
 #if DEBUG
-				HopLibPlugin.GetLogger()
-					.LogInfo($"Invoking {nameof(PlayerAdded)} for {player.Uuid}");
+				LoadedHopLib.LogInfo($"Invoking {nameof(PlayerAdded)} for {player.Uuid}");
 #endif
 				PlayerAdded.Invoke(null, new PlayerEventArgs(player));
 			}
@@ -50,8 +49,7 @@ namespace HopLib
 			foreach (var playerId in __state.Where(id => !__instance.NetworkPlayers.Any(p => p.Uuid == id)))
 			{
 #if DEBUG
-				HopLibPlugin.GetLogger()
-					.LogInfo($"Invoking {nameof(PlayerRemoved)} for {playerId}");
+				LoadedHopLib.LogInfo($"Invoking {nameof(PlayerRemoved)} for {playerId}");
 #endif
 				PlayerRemoved.Invoke(null, new PlayerIdEventArgs(playerId));
 			}

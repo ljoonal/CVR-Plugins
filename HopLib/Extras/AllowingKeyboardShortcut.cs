@@ -1,9 +1,27 @@
 using System.Linq;
-using BepInEx.Configuration;
 using UnityEngine;
+
+#if BepInEx
+using BepInEx.Configuration;
+#endif
 
 namespace HopLib.Extras
 {
+#if MelonLoader
+	public class KeyboardShortcut
+	{
+		public KeyCode MainKey;
+		public KeyCode[] Modifiers;
+		// Taken with LGPL2.1 license from BepInEx repo
+		public KeyboardShortcut(KeyCode mainKey, KeyCode[] modifiers) {
+			if (mainKey == KeyCode.None && modifiers.Any())
+				throw new System.ArgumentException($"Can't set {nameof(mainKey)} to KeyCode.None if there are any {nameof(modifiers)}");
+			MainKey = mainKey;
+			Modifiers = modifiers;
+		}
+	}
+#endif
+
 	/// <summary>
 	/// `KeyboardShortcut` but allows other keys to be pressed at the same time.
 	/// </summary>
