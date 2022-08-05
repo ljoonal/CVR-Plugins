@@ -25,7 +25,7 @@
 		<GameRefsPath Condition="Exists('$(CVRPath)ChilloutVR_Data\Managed\')">$(CVRPath)ChilloutVR_Data\Managed\</GameRefsPath>
 		<PluginsOutputPath>$(MSBuildThisFileDirectory)\Plugins\Debug\</PluginsOutputPath>
 		<PluginsOutputPath Condition="'$(Configuration)'=='Release'">$(MSBuildThisFileDirectory)\Plugins\Release\</PluginsOutputPath>
-		<PluginsOutputPath Condition="Exists('$(CVRPath)BepInEx\plugins\')">$(CVRPath)BepInEx\plugins\</PluginsOutputPath>
+		<PluginsOutputPath Condition="Exists('$(CVRPath)BepInEx\plugins\ljoonal\')">$(CVRPath)BepInEx\plugins\ljoonal\</PluginsOutputPath>
 	</PropertyGroup>
 
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition="'$(CopyPluginFiles)'=='true'">
@@ -51,7 +51,7 @@
 
 	<ItemGroup Condition="'$(MlInsteadOfBepInEx)'=='true'">
 		<Reference Include="MelonLoader">
-			<HintPath>$(CVRPath)MelonLoader\MelonLoader\MelonLoader.dll</HintPath>
+			<HintPath>$(CVRPath)MlLoader\MLLoader\MelonLoader.dll</HintPath>
 			<HintPath Condition="Exists('$(CVRPath)MelonLoader\MelonLoader.dll')">$(CVRPath)MelonLoader\MelonLoader.dll</HintPath>
 		</Reference>
 		<Reference Include="HarmonyLib">

@@ -14,6 +14,7 @@ namespace KeyRebinder
 		private static ConfigEntry<bool> EnableModuleMisc;
 		private static ConfigEntry<bool> EnableModuleMovement;
 		private static ConfigEntry<bool> EnableModuleGestures;
+		private static ConfigEntry<bool> EnableModuleVrGestures;
 		private static ConfigEntry<bool> EnableModuleStates;
 		private static ConfigEntry<bool> EnableModuleEmotes;
 
@@ -85,6 +86,22 @@ namespace KeyRebinder
 				Logger.LogError($"{nameof(GesturePatches)} failed: {ex}");
 			}
 
+			try // GestureVRPatches
+			{
+				GestureVrPatches.RegisterConfigs(Config);
+				if (EnableModuleVrGestures.Value)
+				{
+					GestureVrPatches.Patch();
+#if DEBUG
+					Logger.LogInfo($"{nameof(GestureVrPatches)} applied");
+#endif
+				}
+			}
+			catch (System.Exception ex)
+			{
+				Logger.LogError($"{nameof(GestureVrPatches)} failed: {ex}");
+			}
+
 			try // StatePatches
 			{
 				StatePatches.RegisterConfigs(Config);
@@ -140,6 +157,11 @@ namespace KeyRebinder
 				"EnableModuleGestures",
 				true,
 				"If to apply gesture patches. Requires a restart to take effect.");
+			EnableModuleVrGestures = Config.Bind(
+				EnabledModules,
+				"EnableModuleVrGestures",
+				true,
+				"If to apply VR gesture patches. Requires a restart to take effect.");
 			EnableModuleStates = Config.Bind(
 				EnabledModules,
 				"EnableModuleStates",

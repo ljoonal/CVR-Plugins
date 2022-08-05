@@ -89,6 +89,7 @@ The currently implemented keys are:
 - [x] Flying controls
 - [x] Toggling hud & nameplates
 - [x] Reconnecting keybinds
+- [x] Optionally replace the non-individual finger control mode with gesture lock toggle
 - [ ] Other controls
 
 ### Speed Multiplier
