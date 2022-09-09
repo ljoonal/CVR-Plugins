@@ -17,8 +17,6 @@ namespace RotateIt
 		private readonly ConfigEntry<KeyboardShortcut> KeyPitchRight, KeyPitchLeft, KeyYawRight, KeyYawLeft, KeyRollRight, KeyRollLeft;
 		private readonly ConfigEntry<float> RotationSpeed;
 
-		private static Quaternion GrabbedRotationOffset = Quaternion.identity;
-
 		private ConfigEntry<KeyboardShortcut> RegisterKeybind(string prefName, KeyCode keyCode, string description)
 		{
 			const string keybindCategory = "Keybinds";
@@ -76,10 +74,8 @@ namespace RotateIt
 			// Need to only run when the object is grabbed by the local player
 			if (__instance is null || __instance._controllerRay is null) return;
 
-			__instance.transform.rotation *= GrabbedRotationOffset;
-
 			Quaternion originalRotation = __instance.transform.rotation;
-			Transform referenceTransform = ABI_RC.Core.Player.PlayerSetup.Instance.desktopCamera.transform;
+			Transform referenceTransform = __instance._controllerRay.transform;
 
 			(float pitch, float yaw, float roll) = Instance.GetRotationInput();
 			__instance.transform.RotateAround(__instance.transform.position, referenceTransform.right, pitch);
@@ -87,16 +83,7 @@ namespace RotateIt
 			__instance.transform.RotateAround(__instance.transform.position, referenceTransform.forward, roll);
 
 			// Add the new difference between the og rotation and our newly added rotation the the stored offset.
-			GrabbedRotationOffset *= Quaternion.Inverse(__instance.transform.rotation) * originalRotation;
-		}
-
-		[HarmonyPatch(typeof(CVRPickupObject), "Grab")]
-		[HarmonyPostfix]
-		public static void OnGrabObject()
-		//public static void OnGrabObject(CVRPickupObject __instance)
-		{
-			//GrabbedRotationOffset = __instance.transform.rotation;
-			GrabbedRotationOffset = Quaternion.identity;
+			__instance.initialRotationalOffset *= Quaternion.Inverse(__instance.transform.rotation) * originalRotation;
 		}
 	}
 }
