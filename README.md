@@ -1,3 +1,6 @@
+Reason for archival: I don't have time to maintain these as I'm currently focused on working on <https://onlivfe.com>.
+I might unarchive this later, but remember that forks are allowed with OSS licenses :)
+
 # CVR-Plugins<!-- omit in toc -->
 
 [![Discord](https://img.shields.io/discord/865118898889031690?label=discord&logo=discord&style=flat)](https://discord.gg/2WR6rGVzht)
